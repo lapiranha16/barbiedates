@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbie y el Castillo de Diamantes - Barbie Dates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 25%, #90CAF9 50%, #64B5F6 75%, #42A5F5 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            opacity: 0.7;
+            animation: floatParticles infinite ease-in-out;
+        }
+
+        .diamond-sparkle {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(187, 222, 251, 0.4) 70%);
+            box-shadow: 0 0 10px rgba(187, 222, 251, 0.5);
+            border-radius: 50%;
+            transform: rotate(45deg);
+        }
+
+        .music-note {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(66, 165, 245, 0.4) 70%);
+            box-shadow: 0 0 12px rgba(66, 165, 245, 0.6);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+
+        .friendship-heart {
+            background: linear-gradient(45deg, #E3F2FD, #64B5F6);
+            border-radius: 50% 50% 0 0;
+        }
+
+        @keyframes floatParticles {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-25px) translateX(8px) rotate(90deg) scale(1.1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-15px) translateX(-5px) rotate(180deg) scale(0.95);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateY(-30px) translateX(5px) rotate(270deg) scale(1.05);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg) scale(1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes diamondSparkle {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            25% {
+                transform: translateY(-8px) rotate(90deg);
+                opacity: 1;
+            }
+            75% {
+                transform: translateY(-12px) rotate(-90deg);
+                opacity: 0.9;
+            }
+        }
+
+        @keyframes musicGlow {
+            0%, 100% {
+                opacity: 0.8;
+                filter: brightness(1);
+            }
+            50% {
+                opacity: 1;
+                filter: brightness(1.3);
+            }
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            margin-top: 2rem;
+            border: 4px solid #64B5F6;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #E3F2FD, #BBDEFB, #90CAF9, #64B5F6, #42A5F5);
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+
+        h1.barbie-font {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #42A5F5;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .poster-img {
+            border-radius: 2rem;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 4px solid #64B5F6;
+        }
+
+        .poster-img:hover {
+            transform: scale(1.07);
+            box-shadow: 0 25px 55px rgba(100, 181, 246, 0.4);
+        }
+
+        a.button {
+            background: linear-gradient(135deg, #42A5F5, #64B5F6);
+            color: white;
+            padding: 1rem 2.2rem;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            font-size: 1.1rem;
+        }
+
+        a.button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(100, 181, 246, 0.5);
+            background: linear-gradient(135deg, #64B5F6, #42A5F5);
+        }
+
+        .diamond-theme {
+            background: linear-gradient(135deg, #E3F2FD, #BBDEFB, #90CAF9, #64B5F6, #42A5F5);
+            background-size: 400% 400%;
+            animation: diamondShift 18s ease infinite;
+        }
+
+        @keyframes diamondShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .diamond-icon {
+            display: inline-block;
+            animation: diamondSparkle 4s ease-in-out infinite;
+        }
+
+        .music-icon {
+            display: inline-block;
+            animation: musicGlow 3s ease-in-out infinite;
+        }
+
+        .friendship-border {
+            border-left: 6px solid;
+            border-image: linear-gradient(to bottom, #E3F2FD, #BBDEFB, #64B5F6) 1;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .wave-divider {
+            height: 60px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="%2364B5F6"/></svg>');
+            background-size: 1200px 60px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-radius: 1.2rem;
+            padding: 1.8rem;
+            margin: 1rem 0;
+            border: 3px solid #64B5F6;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .musical-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #42A5F5, #64B5F6);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        .friendship-companion {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .friendship-companion::before {
+            content: "💎";
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<div class="wrap">
+
+    <header class="bg-white shadow-lg content-box max-w-6xl mx-auto mt-4 flex justify-between items-center px-6 py-4">
+        <h1 class="barbie-font italic">Barbie Dates</h1>
+        <nav class="space-x-6">
+            <a href="index.html" class="button">Inicio</a>
+            <a href="peliculas.html" class="button">Películas</a>
+            <a href="videos.html" class="button">Videos</a>
+        </nav>
+    </header>
+
+    <section class="text-center py-24 content-box max-w-6xl mx-auto mt-8 diamond-theme rounded-2xl shadow-2xl animate__animated animate__fadeIn relative">
+        <div class="musical-badge">PELÍCULA MUSICAL</div>
+        <h2 class="text-white text-5xl font-extrabold mb-6 animate__animated animate__bounce" style="text-shadow: 3px 3px 8px rgba(0,0,0,0.5);">
+            <span class="diamond-icon"></span> Barbie y el Castillo de Diamantes <span class="music-icon"></span>
+        </h2>
+        <p class="text-white text-xl max-w-2xl mx-auto mb-8" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Donde la amistad y la música son los tesoros más valiosos</p>
+        <div class="space-x-6">
+            <a href="#ficha" class="button">Ver ficha</a>
+            <a href="peliculas.html" class="button">Ver catálogo</a>
+        </div>
+    </section>
+
+    <div class="wave-divider my-12"></div>
+
+    <section id="pelicula" class="max-w-5xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-12 items-center content-box mt-8">
+        <img src="fotos de inicio/barbie diamantes.jpg" alt="Poster de Barbie y el Castillo de Diamantes" class="poster-img">
+        <div>
+            <h3 class="text-3xl font-bold text-blue-500 mb-6">Sinopsis</h3>
+            <p class="text-gray-700 mb-6 text-lg">La película narra la historia de dos mejores amigas, Liana y Alexa, quienes comparten una pasión por la música y la amistad. Desde pequeñas, han creado una hermosa amistad basada en la confianza y el amor por cantar.</p>
+            <p class="text-gray-700 mb-6 text-lg">Un día, encuentran una historia antigua sobre un legendario Castillo de Diamantes que alberga una magia especial. Deciden embarcarse en una aventura para encontrar este castillo con la esperanza de salvarlo de una malvada bruja llamada Roxanne.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li class="text-lg"><b>Año:</b> 2008</li>
+                <li class="text-lg"><b>Duración:</b> 80 minutos</li>
+                <li class="text-lg"><b>Género:</b> Fantasía, Musical, Aventura</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-blue-500 mb-8 text-center">Galería del Castillo</h3>
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
+            <img src="fotos barbie/fotos barbie/13 castillo de diamantes/Barbie y el castillo de diamaantes.jpg" alt="Liana y Alexa en su aventura musical" class="poster-img">
+            <img src="fotos barbie/fotos barbie/13 castillo de diamantes/Barbie y el castillo de diamaantes (2).jpg" alt="El majestuoso Castillo de Diamantes" class="poster-img">
+        </div>
+    </section>
+
+    <section id="ficha" class="py-12 content-box max-w-5xl mx-auto mt-12 animate__animated animate__fadeInUp">
+        <h3 class="text-3xl font-bold text-blue-500 mb-8">Ficha Técnica</h3>
+        <ul class="space-y-3 text-gray-700 text-lg">
+            <li><b>Título original:</b> Barbie & the Diamond Castle</li>
+            <li><b>Título en español:</b> Barbie y el castillo de diamantes</li>
+            <li><b>Año de estreno:</b> 2008</li>
+            <li><b>Duración:</b> 80 minutos</li>
+            <li><b>Director:</b> Gino Nichele</li>
+            <li><b>Producción:</b> Mainframe Entertainment y Mattel Entertainment</li>
+            <li><b>Género:</b> Fantasía, Musical, Aventura</li>
+            <li><b>Música:</b> Arnie Roth</li>
+        </ul>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="animate__animated animate__fadeIn">
+                <h3 class="text-3xl font-bold text-blue-500 mb-8">Resumen completo de la historia</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    La película narra la historia de dos mejores amigas, Liana y Alexa, quienes comparten una pasión por la música y la amistad. Desde pequeñas, han creado una hermosa amistad basada en la confianza y el amor por cantar.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Un día, encuentran una historia antigua sobre un legendario Castillo de Diamantes que alberga una magia especial. Deciden embarcarse en una aventura para encontrar este castillo con la esperanza de salvarlo de una malvada bruja llamada Roxanne, que desea apoderarse de la magia para sí misma.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    En su viaje, se encuentran con varios personajes, incluidos dos músicos llamados Chester y Darin, que se unen a ellas en la misión. Juntos, enfrentan pruebas, superan obstáculos y aprenden el verdadero significado de la amistad y el sacrificio.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    El poder de su amistad y la música serán las claves para restaurar la paz y la belleza en el Castillo de Diamantes, demostrando que la bondad y la colaboración pueden vencer al mal.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="mb-12">
+            <h3 class="text-3xl font-bold text-blue-500 mb-8">Mensaje central y temas clave</h3>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "La verdadera amistad es un tesoro que puede iluminar los momentos más oscuros."</p>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "Con amor, música y unión, se pueden superar todos los obstáculos."</p>
+            <div class="friendship-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Valor de la amistad: Liana y Alexa muestran cómo la amistad auténtica es fundamental</li>
+                    <li>Música como fuerza unificadora: la música es un lenguaje que une y fortalece</li>
+                    <li>Lucha contra la maldad: Roxanne representa la envidia y la codicia que pueden destruir la armonía</li>
+                    <li>Trabajo en equipo: la colaboración de todos es esencial para triunfar</li>
+                    <li>Sacrificio y altruismo: la disposición a ayudar sin esperar nada a cambio</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-blue-500 mb-8">Notas especiales</h3>
+            <div class="friendship-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Es una película musical con canciones originales que refuerzan el mensaje y el tono emocional</li>
+                    <li>La animación tiene un estilo colorido y encantador, muy atractivo para el público infantil</li>
+                    <li>La historia está inspirada en cuentos clásicos de amistad y aventura</li>
+                    <li>Fue muy bien recibida por su combinación de música, personajes entrañables y valores positivos</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-blue-500 mb-8 text-center">Personajes Principales</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-blue-500 mb-3">👭 Liana y Alexa</h4>
+                <p class="text-gray-700">Las mejores amigas cuya amistad y amor por la música son el corazón de la historia.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-blue-500 mb-3">🎵 Chester y Darin</h4>
+                <p class="text-gray-700">Los músicos que se unen a la aventura, demostrando que el trabajo en equipo es esencial.</p>
+            </div>
+            <div class="feature-card friendship-companion">
+                <h4 class="text-xl font-bold text-blue-500 mb-3">Bruja Roxanne</h4>
+                <p class="text-gray-700">La villana que representa la codicia y la envidia, amenazando con destruir la magia del castillo.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-blue-500 mb-3">🏰 Castillo de Diamantes</h4>
+                <p class="text-gray-700">El legendario castillo que simboliza la magia, la belleza y los valores que deben protegerse.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-blue-500 mb-3">🎶 La Música</h4>
+                <p class="text-gray-700">No es solo un elemento, sino un personaje que une corazones y supera barreras.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-blue-500 mb-3">💖 La Amistad</h4>
+                <p class="text-gray-700">El verdadero tesoro que guía a los personajes y les da fuerza para enfrentar cualquier desafío.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-blue-500 mb-8 text-center">Elementos Musicales</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-blue-500 mb-3">🎼 Canciones Originales</h4>
+                <p class="text-gray-700">La película incluye varias canciones que refuerzan los temas de amistad y valentía.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-blue-500 mb-3">🎹 Música como Lenguaje</h4>
+                <p class="text-gray-700">La música sirve como medio de comunicación y unión entre los personajes.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-blue-500 mb-3">🎤 Expresión Emocional</h4>
+                <p class="text-gray-700">Las canciones permiten a los personajes expresar sus sentimientos más profundos.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-blue-500 mb-3">✨ Magia Musical</h4>
+                <p class="text-gray-700">La música tiene un poder mágico que ayuda a restaurar la armonía en el castillo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12 text-center">
+        <h3 class="text-3xl font-bold text-blue-500 mb-8">Descubre el Poder de la Amistad</h3>
+        <p class="text-gray-700 mb-8 text-lg">
+            Podés ver Barbie y el Castillo de Diamantes haciendo clic en el siguiente enlace:
+        </p>
+        <a href="https://www.youtube.com/watch?v=mzh9d7S9bZY&list=PLJORio-QwqRLh4L2R1xdWIuvzW-IqadwY" id="verPeliLink" class="button text-xl px-12 py-4" target="_blank">Ver película</a>
+    </section>
+
+    <footer class="bg-blue-500 text-white mt-16 content-box max-w-6xl mx-auto mb-12 rounded-2xl shadow-2xl">
+        <div class="py-12 px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="text-xl font-bold">Barbie Movies</h4>
+                <p class="mt-3 text-lg">Explora el mundo mágico de todas las películas de Barbie™.</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Navegación</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="index.html" class="hover:text-yellow-300 transition-colors">Inicio</a></li>
+                    <li><a href="peliculas.html" class="hover:text-yellow-300 transition-colors">Películas</a></li>
+                    <li><a href="videos.html" class="hover:text-yellow-300 transition-colors">Videos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Redes</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="https://www.facebook.com/share/17SzdE5NAC/" target="_blank">Facebook</a></li>
+      	            <li><a href="https://www.instagram.com/barbie?igsh=MWs0bWpkbzV2aXMxdw==" target="_blank">Instagram</a></li>
+      	            <li><a href="https://www.youtube.com/@barbielatinoamericano" target="_blank">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center py-6 bg-blue-600 text-lg rounded-b-2xl">
+            © 2025 Mattel | Sitio de fans, no oficial
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    (function createParticles() {
+        const count = 35;
+        const container = document.getElementById('particles');
+        
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement('div');
+            const particleType = Math.random();
+            
+            if (particleType < 0.5) {
+                el.className = 'particle diamond-sparkle';
+                const size = 8 + Math.random() * 15;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else if (particleType < 0.8) {
+                el.className = 'particle music-note';
+                const size = 6 + Math.random() * 12;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else {
+                el.className = 'particle friendship-heart';
+                const width = 4 + Math.random() * 8;
+                const height = 15 + Math.random() * 25;
+                el.style.width = width + 'px';
+                el.style.height = height + 'px';
+            }
+            
+            el.style.left = (Math.random() * 100) + '%';
+            el.style.top = (Math.random() * 100) + '%';
+            el.style.animationDuration = (10 + Math.random() * 15) + 's';
+            el.style.animationDelay = (Math.random() * 8) + 's';
+            
+            container.appendChild(el);
+        }
+    })();
+</script>
+
+</body>
+</html>

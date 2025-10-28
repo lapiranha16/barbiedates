@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbie Fairytopia: La Magia del Arcoíris - Barbie Dates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FF6B6B 0%, #FFA36B 16.66%, #FFE66B 33.33%, #6BFF6B 50%, #6BFFFF 66.66%, #6B6BFF 83.33%, #D66BFF 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            opacity: 0.7;
+            animation: floatParticles infinite ease-in-out;
+        }
+
+        .rainbow-sparkle {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 107, 107, 0.4) 70%);
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+            border-radius: 50%;
+        }
+
+        .magic-crystal {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(107, 255, 255, 0.4) 70%);
+            box-shadow: 0 0 12px rgba(107, 255, 255, 0.6);
+            border-radius: 50%;
+        }
+
+        .fairy-dust {
+            background: linear-gradient(45deg, #FFE66B, #D66BFF);
+            border-radius: 50% 50% 0 0;
+        }
+
+        @keyframes floatParticles {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-25px) translateX(8px) rotate(90deg) scale(1.1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-15px) translateX(-5px) rotate(180deg) scale(0.95);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateY(-30px) translateX(5px) rotate(270deg) scale(1.05);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg) scale(1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes fairyFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-8px) rotate(2deg);
+            }
+            75% {
+                transform: translateY(-12px) rotate(-2deg);
+            }
+        }
+
+        @keyframes rainbowGlow {
+            0%, 100% {
+                opacity: 0.8;
+                filter: brightness(1);
+            }
+            50% {
+                opacity: 1;
+                filter: brightness(1.3);
+            }
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            margin-top: 2rem;
+            border: 4px solid #D66BFF;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #FF6B6B, #FFA36B, #FFE66B, #6BFF6B, #6BFFFF, #6B6BFF, #D66BFF);
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+
+        h1.barbie-font {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #D66BFF;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .poster-img {
+            border-radius: 2rem;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 4px solid #D66BFF;
+        }
+
+        .poster-img:hover {
+            transform: scale(1.07);
+            box-shadow: 0 25px 55px rgba(214, 107, 255, 0.4);
+        }
+
+        a.button {
+            background: linear-gradient(135deg, #FF6B6B, #D66BFF);
+            color: white;
+            padding: 1rem 2.2rem;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            font-size: 1.1rem;
+        }
+
+        a.button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(214, 107, 255, 0.5);
+            background: linear-gradient(135deg, #D66BFF, #FF6B6B);
+        }
+
+        .rainbow-theme {
+            background: linear-gradient(135deg, #FF6B6B, #FFA36B, #FFE66B, #6BFF6B, #6BFFFF, #6B6BFF, #D66BFF);
+            background-size: 400% 400%;
+            animation: rainbowShift 18s ease infinite;
+        }
+
+        @keyframes rainbowShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .fairy-icon {
+            display: inline-block;
+            animation: fairyFloat 4s ease-in-out infinite;
+        }
+
+        .rainbow-icon {
+            display: inline-block;
+            animation: rainbowGlow 3s ease-in-out infinite;
+        }
+
+        .rainbow-border {
+            border-left: 6px solid;
+            border-image: linear-gradient(to bottom, #FF6B6B, #FFA36B, #FFE66B, #6BFF6B, #6BFFFF, #6B6BFF, #D66BFF) 1;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .wave-divider {
+            height: 60px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="%23D66BFF"/></svg>');
+            background-size: 1200px 60px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-radius: 1.2rem;
+            padding: 1.8rem;
+            margin: 1rem 0;
+            border: 3px solid #D66BFF;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .trilogy-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #FF6B6B, #D66BFF);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        .character-companion {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .character-companion::before {
+            content: "🧚‍♀️";
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<div class="wrap">
+
+    <header class="bg-white shadow-lg content-box max-w-6xl mx-auto mt-4 flex justify-between items-center px-6 py-4">
+        <h1 class="barbie-font italic">Barbie Dates</h1>
+        <nav class="space-x-6">
+            <a href="index.html" class="button">Inicio</a>
+            <a href="peliculas.html" class="button">Películas</a>
+            <a href="videos.html" class="button">Videos</a>
+        </nav>
+    </header>
+
+    <section class="text-center py-24 content-box max-w-6xl mx-auto mt-8 rainbow-theme rounded-2xl shadow-2xl animate__animated animate__fadeIn relative">
+        <div class="trilogy-badge">CIERRE DE TRILOGÍA</div>
+        <h2 class="text-white text-5xl font-extrabold mb-6 animate__animated animate__bounce" style="text-shadow: 3px 3px 8px rgba(0,0,0,0.5);">
+            <span class="fairy-icon"></span> Barbie Fairytopia: La Magia del Arcoíris <span class="rainbow-icon"></span>
+        </h2>
+        <p class="text-white text-xl max-w-2xl mx-auto mb-8" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Donde la esperanza y la unión iluminan hasta los momentos más oscuros</p>
+        <div class="space-x-6">
+            <a href="#ficha" class="button">Ver ficha</a>
+            <a href="peliculas.html" class="button">Ver catálogo</a>
+        </div>
+    </section>
+
+    <div class="wave-divider my-12"></div>
+
+    <section id="pelicula" class="max-w-5xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-12 items-center content-box mt-8">
+        <img src="fotos de inicio/barbie arcoiris.jpg" alt="Poster de Barbie Fairytopia: La Magia del Arcoíris" class="poster-img">
+        <div>
+            <h3 class="text-3xl font-bold text-purple-600 mb-6">Sinopsis</h3>
+            <p class="text-gray-700 mb-6 text-lg">Esta es la tercera película de la saga Fairytopia, que continúa con la historia de Elina, el hada sin alas. Después de sus aventuras anteriores, Elina ahora debe enfrentarse a una nueva amenaza: la desaparición del arcoíris mágico que mantiene el equilibrio y la vida en Fairytopia.</p>
+            <p class="text-gray-700 mb-6 text-lg">El malvado hechicero Laverna regresa, buscando destruir la magia del arcoíris para apoderarse del reino y sumirlo en la oscuridad. Para evitar esto, Elina debe encontrar los siete cristales mágicos que forman el arcoíris y restaurar su poder.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li class="text-lg"><b>Año:</b> 2007</li>
+                <li class="text-lg"><b>Duración:</b> 82 minutos</li>
+                <li class="text-lg"><b>Género:</b> Fantasía, Aventura</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8 text-center">Galería de Fairytopia</h3>
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
+            <img src="fotos barbie/fotos barbie/10 barbie arcoiris/Barbie la magia del arcoiris.jpg" alt="Elina en busca de los cristales del arcoíris" class="poster-img">
+            <img src="fotos barbie/fotos barbie/10 barbie arcoiris/Barbie la magia del arcoiris (2).jpg" alt="El mundo mágico de Fairytopia" class="poster-img">
+        </div>
+    </section>
+
+    <section id="ficha" class="py-12 content-box max-w-5xl mx-auto mt-12 animate__animated animate__fadeInUp">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8">Ficha Técnica</h3>
+        <ul class="space-y-3 text-gray-700 text-lg">
+            <li><b>Título original:</b> Barbie Fairytopia: Magic of the Rainbow</li>
+            <li><b>Título en español:</b> Barbie Fairytopia: La magia del arcoíris</li>
+            <li><b>Año de estreno:</b> 2007</li>
+            <li><b>Duración:</b> 82 minutos</li>
+            <li><b>Director:</b> Walter P. Martishius</li>
+            <li><b>Producción:</b> Mainframe Entertainment y Mattel Entertainment</li>
+            <li><b>Género:</b> Fantasía, Aventura</li>
+            <li><b>Música:</b> Arnie Roth</li>
+        </ul>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="animate__animated animate__fadeIn">
+                <h3 class="text-3xl font-bold text-purple-600 mb-8">Resumen completo de la historia</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    Esta es la tercera película de la saga Fairytopia, que continúa con la historia de Elina, el hada sin alas. Después de sus aventuras anteriores, Elina ahora debe enfrentarse a una nueva amenaza: la desaparición del arcoíris mágico que mantiene el equilibrio y la vida en Fairytopia.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    El malvado hechicero Laverna regresa, buscando destruir la magia del arcoíris para apoderarse del reino y sumirlo en la oscuridad. Para evitar esto, Elina debe encontrar los siete cristales mágicos que forman el arcoíris y restaurar su poder.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Durante su viaje, Elina conoce a nuevos amigos y enfrenta numerosos desafíos, incluyendo peligrosas trampas y criaturas oscuras enviadas por Laverna. Además, descubre que su propio poder y coraje serán claves para salvar el reino.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Elina aprende que para completar su misión, necesita confiar en la fuerza del amor, la esperanza y la unidad entre todos los habitantes de Fairytopia.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Finalmente, con valentía y la ayuda de sus amigos, Elina logra reunir los cristales y restaurar el arcoíris, devolviendo la vida y la luz a su mundo.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="mb-12">
+            <h3 class="text-3xl font-bold text-purple-600 mb-8">Mensaje central y temas clave</h3>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "La esperanza y la unión son la fuerza que puede iluminar incluso los momentos más oscuros."</p>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "Con valentía y amistad, se pueden superar todos los obstáculos."</p>
+            <div class="rainbow-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Esperanza y fe en el futuro: Elina nunca pierde la esperanza aunque las cosas parezcan imposibles</li>
+                    <li>Amistad y trabajo en equipo: la colaboración es esencial para lograr grandes metas</li>
+                    <li>Valor y perseverancia: Elina enfrenta sus miedos y sigue adelante</li>
+                    <li>Protección del medio ambiente: la magia del arcoíris simboliza el equilibrio natural y la vida</li>
+                    <li>Lucha contra la oscuridad: una batalla clásica entre el bien y el mal con valores positivos</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-purple-600 mb-8">Notas especiales</h3>
+            <div class="rainbow-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Esta película cierra la trilogía principal de la saga Fairytopia, consolidando su éxito</li>
+                    <li>Se destaca por su animación colorida y efectos visuales brillantes que representan el arcoíris y la magia</li>
+                    <li>Incluye temas musicales inspiradores que refuerzan el mensaje de esperanza y valentía</li>
+                    <li>Presenta un desarrollo profundo del personaje de Elina, mostrando crecimiento y liderazgo</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8 text-center">Personajes de Fairytopia</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🧚‍♀️ Elina</h4>
+                <p class="text-gray-700">El hada sin alas que demuestra que el verdadero poder está en la valentía y la esperanza, no en las alas.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🌈 Cristales del Arcoíris</h4>
+                <p class="text-gray-700">Los siete cristales mágicos que representan el equilibrio y la vida en Fairytopia.</p>
+            </div>
+            <div class="feature-card character-companion">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">Laverna</h4>
+                <p class="text-gray-700">La villana que regresa más poderosa que nunca, buscando sumir a Fairytopia en la oscuridad.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">✨ Nuevos Amigos</h4>
+                <p class="text-gray-700">Criaturas mágicas que ayudan a Elina en su búsqueda, demostrando el poder de la amistad.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🌺 Habitantes de Fairytopia</h4>
+                <p class="text-gray-700">Los seres mágicos que dependen del arcoíris para su supervivencia y felicidad.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">💖 Esperanza</h4>
+                <p class="text-gray-700">El tema central que guía a Elina y sus amigos a través de los desafíos más difíciles.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8 text-center">Cierre de la Trilogía Fairytopia</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🎬 Conclusión Épica</h4>
+                <p class="text-gray-700">Esta película cierra la trilogía principal con una aventura que lleva a Elina a su máximo potencial.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🌟 Desarrollo del Personaje</h4>
+                <p class="text-gray-700">Elina muestra un crecimiento significativo, pasando de un hada insegura a una verdadera heroína.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🎨 Animación Mejorada</h4>
+                <p class="text-gray-700">Los efectos visuales y la animación alcanzan su punto más alto en la trilogía.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">💫 Mensaje Poderoso</h4>
+                <p class="text-gray-700">Refuerza valores de esperanza, amistad y perseverancia de manera memorable.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12 text-center">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8">Descubre la Magia del Arcoíris</h3>
+        <p class="text-gray-700 mb-8 text-lg">
+            Podés ver Barbie Fairytopia: La Magia del Arcoíris haciendo clic en el siguiente enlace:
+        </p>
+        <a href="https://www.youtube.com/watch?v=AtpxN488DNA&list=PLtg-pmXw5U7IS0KHPxpBV-reavRFp5Dg2" id="verPeliLink" class="button text-xl px-12 py-4" target="_blank">Ver película</a>
+    </section>
+
+    <footer class="bg-purple-600 text-white mt-16 content-box max-w-6xl mx-auto mb-12 rounded-2xl shadow-2xl">
+        <div class="py-12 px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="text-xl font-bold">Barbie Movies</h4>
+                <p class="mt-3 text-lg">Explora el mundo mágico de todas las películas de Barbie™.</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Navegación</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="index.html" class="hover:text-yellow-300 transition-colors">Inicio</a></li>
+                    <li><a href="peliculas.html" class="hover:text-yellow-300 transition-colors">Películas</a></li>
+                    <li><a href="videos.html" class="hover:text-yellow-300 transition-colors">Videos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Redes</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="https://www.facebook.com/share/17SzdE5NAC/" target="_blank">Facebook</a></li>
+      	            <li><a href="https://www.instagram.com/barbie?igsh=MWs0bWpkbzV2aXMxdw==" target="_blank">Instagram</a></li>
+                  	<li><a href="https://www.youtube.com/@barbielatinoamericano" target="_blank">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center py-6 bg-purple-700 text-lg rounded-b-2xl">
+            © 2025 Mattel | Sitio de fans, no oficial
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    (function createParticles() {
+        const count = 35;
+        const container = document.getElementById('particles');
+        
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement('div');
+            const particleType = Math.random();
+            
+            if (particleType < 0.5) {
+                el.className = 'particle rainbow-sparkle';
+                const size = 8 + Math.random() * 15;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else if (particleType < 0.8) {
+                el.className = 'particle magic-crystal';
+                const size = 6 + Math.random() * 12;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else {
+                el.className = 'particle fairy-dust';
+                const width = 4 + Math.random() * 8;
+                const height = 15 + Math.random() * 25;
+                el.style.width = width + 'px';
+                el.style.height = height + 'px';
+            }
+            
+            el.style.left = (Math.random() * 100) + '%';
+            el.style.top = (Math.random() * 100) + '%';
+            el.style.animationDuration = (10 + Math.random() * 15) + 's';
+            el.style.animationDelay = (Math.random() * 8) + 's';
+            
+            container.appendChild(el);
+        }
+    })();
+</script>
+
+</body>
+</html>

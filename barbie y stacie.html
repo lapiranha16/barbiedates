@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbie y Stacie a la rescate - Barbie Dates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2E8B57 0%, #3CB371 25%, #98FB98 50%, #FFD700 75%, #FFA500 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            opacity: 0.7;
+            animation: floatParticles infinite ease-in-out;
+        }
+
+        .nature-sparkle {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(46, 139, 87, 0.4) 70%);
+            box-shadow: 0 0 10px rgba(46, 139, 87, 0.5);
+            border-radius: 50%;
+        }
+
+        .animal-paw {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 165, 0, 0.4) 70%);
+            box-shadow: 0 0 12px rgba(255, 165, 0, 0.6);
+            border-radius: 50%;
+        }
+
+        .rescue-badge {
+            background: linear-gradient(45deg, #2E8B57, #FFD700);
+            border-radius: 30% 30% 0 0;
+        }
+
+        @keyframes floatParticles {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-25px) translateX(8px) rotate(90deg) scale(1.1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-15px) translateX(-5px) rotate(180deg) scale(0.95);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateY(-30px) translateX(5px) rotate(270deg) scale(1.05);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg) scale(1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes animalRescue {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            25% {
+                transform: translateY(-8px) scale(1.05);
+            }
+            75% {
+                transform: translateY(-12px) scale(1.03);
+            }
+        }
+
+        @keyframes natureGlow {
+            0%, 100% {
+                opacity: 0.8;
+                filter: brightness(1);
+                box-shadow: 0 0 10px rgba(46, 139, 87, 0.5);
+            }
+            50% {
+                opacity: 1;
+                filter: brightness(1.3);
+                box-shadow: 0 0 20px rgba(46, 139, 87, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+            }
+        }
+
+        .content-box {
+            background: rgba(255, 253, 250, 0.95);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            margin-top: 2rem;
+            border: 4px solid #2E8B57;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #2E8B57, #3CB371, #98FB98, #FFD700, #FFA500);
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+
+        h1.barbie-font {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #2E8B57;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .poster-img {
+            border-radius: 2rem;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 4px solid #2E8B57;
+        }
+
+        .poster-img:hover {
+            transform: scale(1.07);
+            box-shadow: 0 25px 55px rgba(46, 139, 87, 0.4);
+        }
+
+        a.button {
+            background: linear-gradient(135deg, #2E8B57, #FFD700);
+            color: white;
+            padding: 1rem 2.2rem;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            font-size: 1.1rem;
+            animation: natureGlow 2s ease-in-out infinite;
+        }
+
+        a.button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(46, 139, 87, 0.5);
+            background: linear-gradient(135deg, #FFD700, #2E8B57);
+        }
+
+        .rescue-theme {
+            background: linear-gradient(135deg, #2E8B57, #3CB371, #98FB98, #FFD700, #FFA500);
+            background-size: 400% 400%;
+            animation: rescueShift 15s ease infinite;
+        }
+
+        @keyframes rescueShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .animal-icon {
+            display: inline-block;
+            animation: animalRescue 3s ease-in-out infinite;
+        }
+
+        .rescue-icon {
+            display: inline-block;
+            animation: natureGlow 2.5s ease-in-out infinite;
+        }
+
+        .nature-border {
+            border-left: 6px solid;
+            border-image: linear-gradient(to bottom, #2E8B57, #3CB371, #FFD700) 1;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .paw-divider {
+            height: 60px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%233CB371"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%233CB371"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23FFD700"/></svg>');
+            background-size: 1200px 60px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f0fff0, #f8fff8);
+            border-radius: 1.2rem;
+            padding: 1.8rem;
+            margin: 1rem 0;
+            border: 3px solid #2E8B57;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(46, 139, 87, 0.2);
+        }
+
+        .rescue-badge-header {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #2E8B57, #FFD700);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            animation: natureGlow 3s ease-in-out infinite;
+        }
+
+        .character-companion {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .character-companion::before {
+            content: "🐾";
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+
+        .rescue-highlight {
+            background: linear-gradient(135deg, #2E8B57, #FFD700);
+            color: white;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: natureGlow 4s ease-in-out infinite;
+        }
+
+        .mission-point {
+            background: linear-gradient(135deg, #3CB371, #98FB98);
+            color: white;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            border-left: 5px solid #FFD700;
+        }
+
+        .animal-rescue {
+            position: relative;
+            padding: 1.5rem;
+            background: #f8fff8;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            border: 2px dashed #2E8B57;
+        }
+    </style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<div class="wrap">
+
+    <header class="bg-white shadow-lg content-box max-w-6xl mx-auto mt-4 flex justify-between items-center px-6 py-4">
+        <h1 class="barbie-font italic">Barbie Dates</h1>
+        <nav class="space-x-6">
+            <a href="index.html" class="button">Inicio</a>
+            <a href="peliculas.html" class="button">Películas</a>
+            <a href="videos.html" class="button">Videos</a>
+        </nav>
+    </header>
+
+    <section class="text-center py-24 content-box max-w-6xl mx-auto mt-8 rescue-theme rounded-2xl shadow-2xl animate__animated animate__fadeIn relative">
+        <div class="rescue-badge-header">¡STACIE PROTAGONISTA!</div>
+        <h2 class="text-white text-5xl font-extrabold mb-6 animate__animated animate__bounce" style="text-shadow: 3px 3px 8px rgba(0,0,0,0.5);">
+            <span class="animal-icon"></span> Barbie y Stacie a la rescate <span class="rescue-icon"></span>
+        </h2>
+        <p class="text-white text-xl max-w-2xl mx-auto mb-8" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Donde el coraje de una hermana salva el día y protege a los animales</p>
+        <div class="space-x-6">
+            <a href="#ficha" class="button">Ver ficha</a>
+            <a href="peliculas.html" class="button">Ver catálogo</a>
+        </div>
+    </section>
+
+    <div class="paw-divider my-12"></div>
+
+    <section id="pelicula" class="max-w-5xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-12 items-center content-box mt-8">
+        <img src="fotos de inicio/Barbie y Stacie al rescate.jpg" alt="Poster de Barbie y Stacie a la rescate" class="poster-img">
+        <div>
+            <h3 class="text-3xl font-bold text-green-600 mb-6">Sinopsis</h3>
+            <p class="text-gray-700 mb-6 text-lg">Stacie, la hermana de Barbie, se convierte en la heroína de una emocionante misión de rescate cuando visita un centro de rescate de animales para realizar una pasantía. Su amor por los animales la lleva a enfrentar una situación inesperada que pondrá a prueba su valentía.</p>
+            
+            <div class="rescue-highlight">
+                ¡MISIÓN DE RESCATE ANIMAL! Stacie demuestra que la edad no importa cuando se trata de hacer la diferencia
+            </div>
+            
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li class="text-lg"><b>Año:</b> 2021</li>
+                <li class="text-lg"><b>Duración:</b> 60 minutos</li>
+                <li class="text-lg"><b>Género:</b> Animación, Aventura, Comedia Familiar</li>
+                <li class="text-lg"><b>Distribución:</b> Mattel / Netflix</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-green-600 mb-8 text-center">Galería del Rescate</h3>
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
+            <img src="fotos barbie/fotos barbie/43 Barbie y Stacie a la rescate/Barbie y stace al rescate.jpg" alt="Stacie en el centro de rescate de animales" class="poster-img">
+            <img src="fotos barbie/fotos barbie/43 Barbie y Stacie a la rescate/Barbie y stace al rescate (2).jpg" alt="Barbie y Stacie trabajando en equipo" class="poster-img">
+        </div>
+    </section>
+
+    <section id="ficha" class="py-12 content-box max-w-5xl mx-auto mt-12 animate__animated animate__fadeInUp">
+        <h3 class="text-3xl font-bold text-green-600 mb-8">Ficha Técnica</h3>
+        <ul class="space-y-3 text-gray-700 text-lg">
+            <li><b>Título original:</b> Barbie & Stacie: To the Rescue</li>
+            <li><b>Título en español:</b> Barbie y Stacie a la rescate</li>
+            <li><b>Año de estreno:</b> 2021</li>
+            <li><b>Duración:</b> 60 minutos</li>
+            <li><b>Director:</b> Conrad Helten</li>
+            <li><b>Producción:</b> Mattel Creations</li>
+            <li><b>Género:</b> Animación, Aventura, Comedia Familiar</li>
+            <li><b>Distribución:</b> Mattel / Netflix</li>
+        </ul>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="animate__animated animate__fadeIn">
+                <h3 class="text-3xl font-bold text-green-600 mb-8">Resumen completo de la historia</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    Stacie y su familia visitan un centro de rescate de animales, donde ella está realizando una pasantía para ayudar a cuidar y proteger a los animales. Stacie siempre ha amado los animales, y ahora tiene la oportunidad de hacer una diferencia real en sus vidas.
+                </p>
+                
+                <div class="mission-point">
+                    <strong>¡Emergencia animal!</strong> Un accidente inesperado pone en peligro a un grupo de animales del centro de rescate.
+                </div>
+
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Stacie debe actuar rápidamente para rescatar a los animales antes de que sea demasiado tarde. Junto con Barbie, su hermana mayor, Stacie forma un equipo que trabaja incansablemente para salvar a los animales en apuros.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Con la ayuda de sus amigos y de su gran conocimiento sobre el cuidado animal, Stacie se embarca en una aventura llena de desafíos, pero también de momentos llenos de valentía y generosidad.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    A medida que la historia avanza, Stacie demuestra ser una verdadera líder, mostrando coraje, trabajo en equipo y una profunda empatía por los animales que necesita salvar.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    A lo largo de la misión, Stacie no solo salva a los animales, sino que también aprende lecciones valiosas sobre la importancia de la dedicación, la perseverancia y el amor por lo que haces.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="mb-12">
+            <h3 class="text-3xl font-bold text-green-600 mb-8">Mensaje central y temas clave</h3>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "La valentía y el trabajo en equipo pueden ayudarnos a superar cualquier desafío, incluso cuando parece imposible."</p>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "Cada pequeña acción que hacemos para proteger a los animales cuenta y puede marcar una gran diferencia."</p>
+            <div class="nature-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li><b>Amor y respeto por los animales:</b> Cuidar y proteger a todas las criaturas</li>
+                    <li><b>Trabajo en equipo:</b> Colaboración para lograr objetivos comunes</li>
+                    <li><b>Valentía:</b> Ser fuerte incluso en situaciones difíciles</li>
+                    <li><b>Dedicación y perseverancia:</b> No rendirse ante los desafíos</li>
+                    <li><b>Empatía y responsabilidad:</b> Cuidar el medio ambiente y los seres vivos</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-green-600 mb-8">Notas especiales</h3>
+            <div class="nature-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Stacie como protagonista principal, ofreciendo una perspectiva fresca</li>
+                    <li>Fuerte componente educativo sobre el cuidado de animales y medio ambiente</li>
+                    <li>Combina acción emocionante con valores importantes para niños</li>
+                    <li>Promueve trabajo en equipo, valentía y empatía de manera accesible</li>
+                    <li>Sensibiliza sobre el bienestar animal con un mensaje positivo y esperanzador</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-green-600 mb-8 text-center">Héroes del Rescate</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-green-600 mb-3">🌟 Stacie - Protagonista</h4>
+                <p class="text-gray-700">La hermana de Barbie que demuestra que la edad no importa cuando se trata de valentía y amor por los animales.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-green-600 mb-3">💖 Barbie - Apoyo Mayor</h4>
+                <p class="text-gray-700">La hermana mayor que apoya a Stacie y trabaja en equipo para lograr la misión de rescate.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-green-600 mb-3">👨‍👩‍👧‍👧 Familia</h4>
+                <p class="text-gray-700">El apoyo familiar que incentiva a Stacie a seguir su pasión por el cuidado animal.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-green-600 mb-3">🐕 Animales Rescatados</h4>
+                <p class="text-gray-700">Las adorables criaturas que necesitan ayuda y enseñan lecciones de empatía.</p>
+            </div>
+            <div class="feature-card character-companion">
+                <h4 class="text-xl font-bold text-green-600 mb-3">Amigos del Centro</h4>
+                <p class="text-gray-700">Compañeros que comparten el amor por los animales y ayudan en la misión.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-green-600 mb-3">🏥 Centro de Rescate</h4>
+                <p class="text-gray-700">El lugar que representa la esperanza y el cuidado para animales necesitados.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-green-600 mb-8 text-center">Valores Educativos</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-green-600 mb-3">🌿 Conciencia Ambiental</h4>
+                <p class="text-gray-700">Enseña la importancia de proteger y cuidar a todos los seres vivos y su hábitat.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-green-600 mb-3">🤝 Trabajo en Equipo</h4>
+                <p class="text-gray-700">Muestra cómo la colaboración hace posible lograr objetivos difíciles.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-green-600 mb-3">💪 Coraje Infantil</h4>
+                <p class="text-gray-700">Demuestra que los niños pueden ser héroes y tomar acción cuando es necesario.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-green-600 mb-3">❤️ Empatía Animal</h4>
+                <p class="text-gray-700">Fomenta la comprensión y conexión emocional con las necesidades de los animales.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-green-600 mb-8 text-center">Lecciones del Rescate</h3>
+        <div class="animal-rescue">
+            <h4 class="text-xl font-bold text-green-600 mb-4">🐾 Lo que aprendemos con Stacie:</h4>
+            <div class="grid md:grid-cols-2 gap-6 mt-6">
+                <div class="mission-point">
+                    <h5 class="font-bold mb-2">🦮 Responsabilidad Animal</h5>
+                    <p class="text-sm">Cada animal merece cuidado, respeto y un lugar seguro donde vivir.</p>
+                </div>
+                <div class="mission-point">
+                    <h5 class="font-bold mb-2">👧 Liderazgo Juvenil</h5>
+                    <p class="text-sm">Los niños pueden tomar iniciativa y marcar una diferencia positiva.</p>
+                </div>
+            </div>
+            <p class="text-center mt-6 text-gray-600 italic">Stacie nos enseña que nunca somos demasiado jóvenes para hacer del mundo un lugar mejor.</p>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12 text-center">
+        <h3 class="text-3xl font-bold text-green-600 mb-8">¡Únete a la Misión de Rescate!</h3>
+        <p class="text-gray-700 mb-8 text-lg">
+            Podés ver Barbie y Stacie a la rescate en Netflix:
+        </p>
+        <a href="https://www.youtube.com/watch?v=UuADKK7iXbE&list=PL41FsJktnGxBrYNb2erc2a93VigC282aK" id="verPeliLink" class="button text-xl px-12 py-4" target="_blank">Ver en Netflix</a>
+        <p class="text-gray-600 mt-4 text-lg">Aprende sobre el cuidado animal mientras disfrutas de una aventura emocionante</p>
+    </section>
+
+    <footer class="bg-green-600 text-white mt-16 content-box max-w-6xl mx-auto mb-12 rounded-2xl shadow-2xl">
+        <div class="py-12 px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="text-xl font-bold">Barbie Movies</h4>
+                <p class="mt-3 text-lg">Explora el mundo mágico de todas las películas de Barbie™.</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Navegación</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="index.html" class="hover:text-yellow-200 transition-colors">Inicio</a></li>
+                    <li><a href="peliculas.html" class="hover:text-yellow-200 transition-colors">Películas</a></li>
+                    <li><a href="videos.html" class="hover:text-yellow-200 transition-colors">Videos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Redes</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="https://www.facebook.com/share/17SzdE5NAC/" target="_blank">Facebook</a></li>
+                  	<li><a href="https://www.instagram.com/barbie?igsh=MWs0bWpkbzV2aXMxdw==" target="_blank">Instagram</a></li>
+      	            <li><a href="https://www.youtube.com/@barbielatinoamericano" target="_blank">YouTube</a></li>
+    	       </ul>
+        </div>
+        <div class="text-center py-6 bg-green-700 text-lg rounded-b-2xl">
+            © 2025 Mattel | Sitio de fans, no oficial
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    (function createParticles() {
+        const count = 35;
+        const container = document.getElementById('particles');
+        
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement('div');
+            const particleType = Math.random();
+            
+            if (particleType < 0.5) {
+                el.className = 'particle nature-sparkle';
+                const size = 8 + Math.random() * 15;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else if (particleType < 0.8) {
+                el.className = 'particle animal-paw';
+                const size = 6 + Math.random() * 12;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else {
+                el.className = 'particle rescue-badge';
+                const width = 4 + Math.random() * 8;
+                const height = 15 + Math.random() * 25;
+                el.style.width = width + 'px';
+                el.style.height = height + 'px';
+            }
+            
+            el.style.left = (Math.random() * 100) + '%';
+            el.style.top = (Math.random() * 100) + '%';
+            el.style.animationDuration = (10 + Math.random() * 15) + 's';
+            el.style.animationDelay = (Math.random() * 8) + 's';
+            
+            container.appendChild(el);
+        }
+    })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El diario de Barbie - Barbie Dates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff69b4 0%, #ffb6c1 25%, #ffc0cb 50%, #ffe4e1 75%, #fff0f5 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            opacity: 0.7;
+            animation: floatParticles infinite ease-in-out;
+        }
+
+        .heart {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 105, 180, 0.9), rgba(255, 182, 193, 0.4) 70%);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+        }
+
+        .music-note {
+            background: linear-gradient(45deg, #ff69b4, #9370db);
+            border-radius: 60% 40% 40% 60%;
+        }
+
+        .journal-page {
+            background: linear-gradient(45deg, #fff0f5, #ffe4e1);
+            border-radius: 10% 90% 10% 90%;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        @keyframes floatParticles {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-15px) translateX(8px) rotate(90deg) scale(1.05);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-10px) translateX(-5px) rotate(180deg) scale(0.95);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateY(-20px) translateX(5px) rotate(270deg) scale(1.1);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg) scale(1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.1);
+            }
+            75% {
+                transform: scale(0.9);
+            }
+        }
+
+        @keyframes journalFlip {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            margin-top: 2rem;
+            border: 4px solid #ff69b4;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #ff69b4, #ffb6c1, #ffc0cb, #ffe4e1);
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+
+        h1.barbie-font {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #ff1493;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .poster-img {
+            border-radius: 2rem;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 4px solid #ff69b4;
+        }
+
+        .poster-img:hover {
+            transform: scale(1.07);
+            box-shadow: 0 25px 55px rgba(255, 105, 180, 0.4);
+        }
+
+        a.button {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            padding: 1rem 2.2rem;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            font-size: 1.1rem;
+        }
+
+        a.button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(255, 105, 180, 0.5);
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+        }
+
+        .modern-theme {
+            background: linear-gradient(135deg, #ff69b4, #ffb6c1, #ffc0cb, #ffe4e1, #fff0f5);
+            background-size: 400% 400%;
+            animation: modernShift 15s ease infinite;
+        }
+
+        @keyframes modernShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .heart-icon {
+            display: inline-block;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        .journal-icon {
+            display: inline-block;
+            animation: journalFlip 3s ease-in-out infinite;
+        }
+
+        .modern-border {
+            border-left: 6px solid;
+            border-image: linear-gradient(to bottom, #ff69b4, #ffb6c1, #ffc0cb) 1;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .heart-divider {
+            height: 60px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23ff69b4"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23ff69b4"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23ff69b4"/></svg>');
+            background-size: 1200px 60px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+            border-radius: 1.2rem;
+            padding: 1.8rem;
+            margin: 1rem 0;
+            border: 3px solid #ff69b4;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .contemporary-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        .character-modern {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .character-modern::before {
+            content: "📱";
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<div class="wrap">
+
+    <header class="bg-white shadow-lg content-box max-w-6xl mx-auto mt-4 flex justify-between items-center px-6 py-4">
+        <h1 class="barbie-font italic">Barbie Dates</h1>
+        <nav class="space-x-6">
+            <a href="index.html" class="button">Inicio</a>
+            <a href="peliculas.html" class="button">Películas</a>
+            <a href="videos.html" class="button">Videos</a>
+        </nav>
+    </header>
+
+    <section class="text-center py-24 content-box max-w-6xl mx-auto mt-8 modern-theme rounded-2xl shadow-2xl animate__animated animate__fadeIn relative">
+        <div class="contemporary-badge">MUNDO REAL</div>
+        <h2 class="text-white text-5xl font-extrabold mb-6 animate__animated animate__bounce" style="text-shadow: 3px 3px 8px rgba(0,0,0,0.5);">
+            <span class="journal-icon"></span> El diario de Barbie <span class="heart-icon"></span>
+        </h2>
+        <p class="text-white text-xl max-w-2xl mx-auto mb-8" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Donde las páginas de un diario revelan que la verdadera aventura está en crecer</p>
+        <div class="space-x-6">
+            <a href="#ficha" class="button">Ver ficha</a>
+            <a href="peliculas.html" class="button">Ver catálogo</a>
+        </div>
+    </section>
+
+    <div class="heart-divider my-12"></div>
+
+    <section id="pelicula" class="max-w-5xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-12 items-center content-box mt-8">
+        <img src="fotos de inicio/Barbie diario.jpg" alt="Poster de El diario de Barbie" class="poster-img">
+        <div>
+            <h3 class="text-3xl font-bold text-pink-600 mb-6">Sinopsis</h3>
+            <p class="text-gray-700 mb-6 text-lg">Barbie Roberts parece tener la vida perfecta en la secundaria, pero cuando todo comienza a desmoronarse, encuentra consuelo en las páginas de su diario. A través de la escritura, descubre quién es realmente y aprende que ser auténtica es más importante que ser popular.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li class="text-lg"><b>Año:</b> 2006</li>
+                <li class="text-lg"><b>Duración:</b> 74 minutos</li>
+                <li class="text-lg"><b>Género:</b> Comedia, Drama Adolescente, <b></b>Contemporáneo </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-pink-600 mb-8 text-center">Galería Contemporánea</h3>
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
+            <img src="fotos barbie/fotos barbie/7 barbie el diario/Barbie el diario.jpg" alt="Barbie escribiendo en su diario" class="poster-img">
+            <img src="fotos barbie/fotos barbie/7 barbie el diario/Barbie el diario (2).jpg" alt="Escenas de la vida escolar" class="poster-img">
+        </div>
+    </section>
+
+    <section id="ficha" class="py-12 content-box max-w-5xl mx-auto mt-12 animate__animated animate__fadeInUp">
+        <h3 class="text-3xl font-bold text-pink-600 mb-8">Ficha Técnica</h3>
+        <ul class="space-y-3 text-gray-700 text-lg">
+            <li><b>Título original:</b> The Barbie Diaries</li>
+            <li><b>Título en español:</b> El diario de Barbie</li>
+            <li><b>Año de estreno:</b> 2006</li>
+            <li><b>Duración:</b> 74 minutos</li>
+            <li><b>Director:</b> Eric Fogel</li>
+            <li><b>Producción:</b> Mainframe Entertainment y Mattel Entertainment</li>
+            <li><b>Género:</b> Comedia, drama adolescente, contemporáneo</li>
+            <li><b>Música:</b> Arnie Roth</li>
+        </ul>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="animate__animated animate__fadeIn">
+                <h3 class="text-3xl font-bold text-pink-600 mb-8">Resumen completo de la historia</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    Esta película es diferente a las anteriores, ya que tiene un enfoque más contemporáneo y realista, ambientada en la vida de una adolescente normal, Barbie Roberts, en la secundaria.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Barbie es una chica popular, deportista y amable, que tiene una vida aparentemente perfecta, con buenos amigos y un novio llamado Raúl. Sin embargo, tras una pelea con sus amigas y su novio, comienza a sentir que nadie la entiende realmente y que su vida está fuera de control.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Barbie encuentra un diario personal donde empieza a escribir sus pensamientos, emociones y preocupaciones, lo que le ayuda a procesar lo que está viviendo. A través del diario, Barbie reflexiona sobre la importancia de ser fiel a sí misma y no solo hacer lo que otros esperan.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Durante la película, Barbie aprende a enfrentar los desafíos típicos de la adolescencia: problemas de amistad, inseguridades, la presión social y la importancia de confiar en uno mismo.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Con la ayuda de su familia y nuevos amigos, Barbie recupera su confianza, aprende a perdonar y a abrirse a los demás. Al final, Barbie no solo mejora sus relaciones personales, sino que también descubre que la verdadera felicidad viene de aceptarse tal como es.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="mb-12">
+            <h3 class="text-3xl font-bold text-pink-600 mb-8">Mensaje central y temas clave</h3>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "Ser auténtico y expresar tus emociones es clave para crecer y conectar con los demás. La verdadera amistad y el amor propio se construyen con honestidad y respeto."</p>
+            <div class="modern-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Autoaceptación y autenticidad: Barbie aprende a valorarse por lo que es, no por lo que aparenta</li>
+                    <li>El poder de la comunicación: el diario es una herramienta para entenderse a sí misma</li>
+                    <li>Amistad y reconciliación: las relaciones se fortalecen con empatía y perdón</li>
+                    <li>Desafíos adolescentes reales: aborda temas como el bullying, la presión social y la autoestima</li>
+                    <li>Crecimiento personal: Barbie atraviesa un proceso de madurez emocional y social</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-pink-600 mb-8">Notas especiales</h3>
+            <div class="modern-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Es la primera película de Barbie ambientada en el mundo moderno, sin elementos de fantasía o cuentos clásicos</li>
+                    <li>Incluye música pop contemporánea que conecta con la audiencia adolescente</li>
+                    <li>Fue una de las películas más populares entre las chicas de la época por su cercanía con los problemas reales</li>
+                    <li>El formato del diario personal permite una narrativa introspectiva y cercana</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-pink-600 mb-8 text-center">Personajes Principales</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">👩‍🎓 Barbie Roberts</h4>
+                <p class="text-gray-700">Una adolescente que descubre que detrás de la vida perfecta hay emociones reales y la importancia de ser auténtica consigo misma.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">👫 Raúl</h4>
+                <p class="text-gray-700">El novio de Barbie, representando las relaciones adolescentes y los desafíos de la comunicación en el amor joven.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">👭 Las Amigas</h4>
+                <p class="text-gray-700">El grupo de amigas que enfrenta conflictos típicos de la adolescencia y aprende el valor de la amistad verdadera.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">📖 El Diario</h4>
+                <p class="text-gray-700">Más que un objeto, representa el viaje de autodescubrimiento y la importancia de expresar las emociones.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">👨‍👩‍👧 La Familia</h4>
+                <p class="text-gray-700">El apoyo fundamental que ayuda a Barbie a navegar por los desafíos de crecer y encontrarse a sí misma.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">🎵 Música Contemporánea</h4>
+                <p class="text-gray-700">La banda sonora pop que refleja las emociones adolescentes y conecta la historia con la audiencia joven.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-pink-600 mb-8 text-center">Innovación y Legado</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">🌍 Primer Acercamiento al Mundo Real</h4>
+                <p class="text-gray-700">Rompió el molde al presentar a Barbie en un entorno contemporáneo sin elementos fantásticos, conectando con problemas reales de adolescentes.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">💬 Narrativa Introspectiva</h4>
+                <p class="text-gray-700">El formato de diario permitió explorar la psicología adolescente de manera más profunda y personal.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">🎶 Conexión Musical</h4>
+                <p class="text-gray-700">La música pop contemporánea creó un puente generacional y hizo la historia más relatable para el público joven.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">👥 Representación Auténtica</h4>
+                <p class="text-gray-700">Abordó temas reales como presión social, autoestima y amistad de manera honesta y respetuosa.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12 text-center">
+        <h3 class="text-3xl font-bold text-pink-600 mb-8">Escribe Tu Propia Historia</h3>
+        <p class="text-gray-700 mb-8 text-lg">
+            Podés ver El diario de Barbie haciendo clic en el siguiente enlace:
+        </p>
+        <a href="https://www.youtube.com/watch?v=uVxepPQz8bk&list=PLJbN7mjYCKcdEmibTvrtpUsHueI5aI6t" id="verPeliLink" class="button text-xl px-12 py-4" target="_blank">Ver película</a>
+    </section>
+
+    <footer class="bg-pink-600 text-white mt-16 content-box max-w-6xl mx-auto mb-12 rounded-2xl shadow-2xl">
+        <div class="py-12 px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="text-xl font-bold">Barbie Movies</h4>
+                <p class="mt-3 text-lg">Explora el mundo mágico de todas las películas de Barbie™.</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Navegación</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="index.html" class="hover:text-yellow-300 transition-colors">Inicio</a></li>
+                    <li><a href="peliculas.html" class="hover:text-yellow-300 transition-colors">Películas</a></li>
+                    <li><a href="videos.html" class="hover:text-yellow-300 transition-colors">Videos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Redes</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="https://www.facebook.com/share/17SzdE5NAC/" target="_blank">Facebook</a></li>
+                   	<li><a href="https://www.instagram.com/barbie?igsh=MWs0bWpkbzV2aXMxdw==" target="_blank">Instagram</a></li>
+      	            <li><a href="https://www.youtube.com/@barbielatinoamericano" target="_blank">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center py-6 bg-pink-700 text-lg rounded-b-2xl">
+            © 2025 Mattel | Sitio de fans, no oficial
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    (function createParticles() {
+        const count = 30;
+        const container = document.getElementById('particles');
+        
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement('div');
+            const particleType = Math.random();
+            
+            if (particleType < 0.4) {
+                el.className = 'particle heart';
+                const size = 8 + Math.random() * 15;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else if (particleType < 0.7) {
+                el.className = 'particle music-note';
+                const width = 10 + Math.random() * 15;
+                const height = 8 + Math.random() * 12;
+                el.style.width = width + 'px';
+                el.style.height = height + 'px';
+            } else {
+                el.className = 'particle journal-page';
+                const size = 12 + Math.random() * 20;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            }
+            
+            el.style.left = (Math.random() * 100) + '%';
+            el.style.top = (Math.random() * 100) + '%';
+            el.style.animationDuration = (10 + Math.random() * 15) + 's';
+            el.style.animationDelay = (Math.random() * 8) + 's';
+            
+            container.appendChild(el);
+        }
+    })();
+</script>
+
+</body>
+</html>

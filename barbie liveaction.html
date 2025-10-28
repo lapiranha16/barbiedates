@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbie Live Action 2023 - Barbie Dates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FF69B4 0%, #FF1493 25%, #FF6B8B 50%, #FF85A1 75%, #FFAEC0 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            opacity: 0.7;
+            animation: floatParticles infinite ease-in-out;
+        }
+
+        .pink-glitter {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 105, 180, 0.4) 70%);
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+            border-radius: 50%;
+        }
+
+        .barbie-sparkle {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 20, 147, 0.4) 70%);
+            box-shadow: 0 0 12px rgba(255, 20, 147, 0.6);
+            border-radius: 50%;
+        }
+
+        .hearts {
+            background: linear-gradient(45deg, #FF69B4, #FF1493);
+            border-radius: 50% 50% 0 0;
+            transform: rotate(45deg);
+        }
+
+        @keyframes floatParticles {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-25px) translateX(8px) rotate(90deg) scale(1.1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-15px) translateX(-5px) rotate(180deg) scale(0.95);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateY(-30px) translateX(5px) rotate(270deg) scale(1.05);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg) scale(1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes barbieDance {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                text-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
+            }
+            25% {
+                transform: translateY(-8px) scale(1.05);
+                text-shadow: 0 0 20px rgba(255, 105, 180, 1);
+            }
+            75% {
+                transform: translateY(-12px) scale(1.03);
+                text-shadow: 0 0 15px rgba(255, 20, 147, 0.8);
+            }
+        }
+
+        @keyframes pinkGlow {
+            0%, 100% {
+                opacity: 0.8;
+                filter: brightness(1);
+                box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+            }
+            50% {
+                opacity: 1;
+                filter: brightness(1.3);
+                box-shadow: 0 0 20px rgba(255, 105, 180, 0.8), 0 0 30px rgba(255, 20, 147, 0.6);
+            }
+        }
+
+        .content-box {
+            background: rgba(255, 253, 250, 0.95);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            margin-top: 2rem;
+            border: 4px solid #FF69B4;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #FF69B4, #FF1493, #FF6B8B, #FF85A1, #FFAEC0);
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+
+        h1.barbie-font {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #FF1493;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .poster-img {
+            border-radius: 2rem;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 4px solid #FF69B4;
+        }
+
+        .poster-img:hover {
+            transform: scale(1.07);
+            box-shadow: 0 25px 55px rgba(255, 105, 180, 0.4);
+        }
+
+        a.button {
+            background: linear-gradient(135deg, #FF69B4, #FF1493);
+            color: white;
+            padding: 1rem 2.2rem;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            font-size: 1.1rem;
+            animation: pinkGlow 2s ease-in-out infinite;
+        }
+
+        a.button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(255, 105, 180, 0.5);
+            background: linear-gradient(135deg, #FF1493, #FF69B4);
+        }
+
+        .barbie-theme {
+            background: linear-gradient(135deg, #FF69B4, #FF1493, #FF6B8B, #FF85A1, #FFAEC0);
+            background-size: 400% 400%;
+            animation: barbieShift 15s ease infinite;
+        }
+
+        @keyframes barbieShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .barbie-icon {
+            display: inline-block;
+            animation: barbieDance 3s ease-in-out infinite;
+        }
+
+        .liveaction-icon {
+            display: inline-block;
+            animation: pinkGlow 2.5s ease-in-out infinite;
+        }
+
+        .pink-border {
+            border-left: 6px solid;
+            border-image: linear-gradient(to bottom, #FF69B4, #FF1493, #FF6B8B) 1;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .sparkle-divider {
+            height: 60px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23FF1493"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23FF1493"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23FF69B4"/></svg>');
+            background-size: 1200px 60px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #fff0f5, #ffe4ec);
+            border-radius: 1.2rem;
+            padding: 1.8rem;
+            margin: 1rem 0;
+            border: 3px solid #FF69B4;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2);
+        }
+
+        .liveaction-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #FF69B4, #FF1493);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            animation: pinkGlow 3s ease-in-out infinite;
+        }
+
+        .character-companion {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .character-companion::before {
+            content: "💖";
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+
+        .movie-highlight {
+            background: linear-gradient(135deg, #FF69B4, #FF1493);
+            color: white;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: pinkGlow 4s ease-in-out infinite;
+        }
+
+        .cast-info {
+            background: linear-gradient(135deg, #FF6B8B, #FF85A1);
+            color: white;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            border-left: 5px solid #FF1493;
+        }
+
+        .barbie-world {
+            position: relative;
+            padding: 1.5rem;
+            background: #fff0f5;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            border: 2px dashed #FF69B4;
+        }
+
+        .ken-card {
+            background: linear-gradient(135deg, #87CEEB, #4682B4);
+            color: white;
+            border: 3px solid #4682B4;
+        }
+
+        .ken-card .character-companion::before {
+            content: "🤵";
+        }
+    </style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<div class="wrap">
+
+    <header class="bg-white shadow-lg content-box max-w-6xl mx-auto mt-4 flex justify-between items-center px-6 py-4">
+        <h1 class="barbie-font italic">Barbie Dates</h1>
+        <nav class="space-x-6">
+            <a href="index.html" class="button">Inicio</a>
+            <a href="peliculas.html" class="button">Películas</a>
+            <a href="videos.html" class="button">Videos</a>
+        </nav>
+    </header>
+
+    <section class="text-center py-24 content-box max-w-6xl mx-auto mt-8 barbie-theme rounded-2xl shadow-2xl animate__animated animate__fadeIn relative">
+        <div class="liveaction-badge">¡LIVE ACTION 2023!</div>
+        <h2 class="text-white text-5xl font-extrabold mb-6 animate__animated animate__bounce" style="text-shadow: 3px 3px 8px rgba(0,0,0,0.5);">
+            <span class="barbie-icon"></span> Barbie: La Película <span class="liveaction-icon"></span>
+        </h2>
+        <p class="text-white text-xl max-w-2xl mx-auto mb-8" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Donde Barbie descubre que ser perfecta significa ser auténticamente tú misma</p>
+        <div class="space-x-6">
+            <a href="#ficha" class="button">Ver ficha</a>
+            <a href="peliculas.html" class="button">Ver catálogo</a>
+        </div>
+    </section>
+
+    <div class="sparkle-divider my-12"></div>
+
+    <section id="pelicula" class="max-w-5xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-12 items-center content-box mt-8">
+        <img src="fotos de inicio/barbie liveaction.jpg" alt="Poster de Barbie Live Action" class="poster-img">
+        <div>
+            <h3 class="text-3xl font-bold text-pink-600 mb-6">Sinopsis</h3>
+            <p class="text-gray-700 mb-6 text-lg">Barbie vive en el colorido y perfecto mundo de Barbieland, donde cada día es ideal. Pero cuando comienza a experimentar pensamientos extraños sobre la mortalidad, debe aventurarse al mundo real para entender su propósito y descubrir la verdad sobre la perfección.</p>
+            
+            <div class="movie-highlight">
+                ¡UNA AVENTURA ÉPICA! Del mundo perfecto de Barbieland al caótico mundo real
+            </div>
+            
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li class="text-lg"><b>Año:</b> 2023</li>
+                <li class="text-lg"><b>Duración:</b> 114 minutos</li>
+                <li class="text-lg"><b>Género:</b> Comedia, Fantasía, Live Action</li>
+                <li class="text-lg"><b>Director:</b> Greta Gerwig</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-pink-600 mb-8 text-center">Galería de Barbieland</h3>
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
+            <img src="fotos barbie/fotos barbie/45 live action/Barbie live action.jpg" alt="Barbie en Barbieland" class="poster-img">
+            <img src="fotos barbie/fotos barbie/45 live action/Barbie live action (2).jpg" alt="Barbie y Ken en el mundo real" class="poster-img">
+        </div>
+    </section>
+
+    <section id="ficha" class="py-12 content-box max-w-5xl mx-auto mt-12 animate__animated animate__fadeInUp">
+        <h3 class="text-3xl font-bold text-pink-600 mb-8">Ficha Técnica</h3>
+        <ul class="space-y-3 text-gray-700 text-lg">
+            <li><b>Título original:</b> Barbie</li>
+            <li><b>Título en español:</b> Barbie: La Película</li>
+            <li><b>Año de estreno:</b> 2023</li>
+            <li><b>Duración:</b> 114 minutos</li>
+            <li><b>Director:</b> Greta Gerwig</li>
+            <li><b>Producción:</b> Warner Bros. Pictures</li>
+            <li><b>Género:</b> Comedia, Fantasía, Live Action</li>
+            <li><b>Protagonistas:</b> Margot Robbie, Ryan Gosling</li>
+        </ul>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="animate__animated animate__fadeIn">
+                <h3 class="text-3xl font-bold text-pink-600 mb-8">La Historia Completa</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    En el perfecto y colorido Barbieland, Barbie (Margot Robbie) vive una existencia idílica donde cada día es fantástico. Las Barbies tienen trabajos increíbles, las casas son perfectas, y todo es rosa y alegre.
+                </p>
+                
+                <div class="cast-info">
+                    <strong>¡Cambio radical!</strong> Barbie comienza a tener pensamientos sobre la muerte y la imperfección, algo nunca antes visto en Barbieland.
+                </div>
+
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Para descubrir qué le está pasando, Barbie debe viajar al mundo real acompañada de Ken (Ryan Gosling). Allí descubre que la realidad es muy diferente a su mundo perfecto: las calles no son de plástico, la gente envejece, y la perfección no existe.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Mientras Barbie busca respuestas sobre su existencia y propósito, Ken descubre el concepto de patriarcado y decide importarlo a Barbieland, creando el "Kendom".
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Barbie debe entonces salvar tanto su mundo como a sí misma, aprendiendo que ser imperfecta, vulnerable y humana es lo que realmente la hace especial.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    La película explora temas profundos sobre la identidad, las expectativas sociales, y el significado de ser mujer en el mundo moderno, todo envuelto en una comedia brillante y visualmente espectacular.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="mb-12">
+            <h3 class="text-3xl font-bold text-pink-600 mb-8">Mensajes y Temas Principales</h3>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "La perfección no existe, y está bien ser imperfecta. La autenticidad es tu superpoder."</p>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "Ser mujer significa ser muchas cosas a la vez, y todas son válidas y hermosas."</p>
+            <div class="pink-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li><b>Feminismo y empoderamiento:</b> Crítica social con humor inteligente</li>
+                    <li><b>Autoaceptación:</b> Aprender a quererse con imperfecciones y todo</li>
+                    <li><b>Expectativas vs realidad:</b> La presión de ser perfecta en la sociedad</li>
+                    <li><b>Identidad femenina:</b> Exploración de lo que significa ser mujer hoy</li>
+                    <li><b>Humano vs ideal:</b> La belleza de la vulnerabilidad y emociones reales</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-pink-600 mb-8">Logros y Reconocimientos</h3>
+            <div class="pink-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Mayor estreno de 2023 a nivel mundial</li>
+                    <li>Críticas excelentes por su guión inteligente y dirección</li>
+                    <li>Reconocida por su diseño de producción y vestuario espectacular</li>
+                    <li>Fenómeno cultural que generó discusiones importantes</li>
+                    <li>Banda sonora aclamada con artistas como Dua Lipa, Billie Eilish y Lizzo</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-pink-600 mb-8 text-center">Elenco Estelar</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">👑 Margot Robbie</h4>
+                <p class="text-gray-700">Como Barbie - Protagonista que da vida a la muñeca más icónica del mundo con profundidad y humor.</p>
+            </div>
+            <div class="feature-card ken-card">
+                <h4 class="text-xl font-bold text-blue-600 mb-3">🤵 Ryan Gosling</h4>
+                <p class="text-gray-700">Como Ken - El acompañante perfecto que descubre su propia identidad más allá de ser "solo Ken".</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">👩 América Ferrera</h4>
+                <p class="text-gray-700">Como Gloria - Una mujer del mundo real que ayuda a Barbie a encontrar su camino.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">👧 Ariana Greenblatt</h4>
+                <p class="text-gray-700">Como Sasha - La hija de Gloria que cuestiona todo sobre Barbie.</p>
+            </div>
+            <div class="feature-card character-companion">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">Elenco Diverso</h4>
+                <p class="text-gray-700">Incluye múltiples versiones de Barbies y Kens representando diversidad e inclusión.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">🎬 Greta Gerwig</h4>
+                <p class="text-gray-700">Directora y co-guionista - La mente creativa detrás de esta visión única de Barbie.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-pink-600 mb-8 text-center">Fenómeno Cultural</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">💖 Barbiecore</h4>
+                <p class="text-gray-700">Tendencia de moda que popularizó el rosa Barbie en todo el mundo.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">🎵 Banda Sonora</h4>
+                <p class="text-gray-700">Álbum musical que se convirtió en éxito comercial y crítico.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">💬 Conversaciones</h4>
+                <p class="text-gray-700">Generó discusiones importantes sobre feminismo y representación.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-pink-600 mb-3">🎨 Estética Visual</h4>
+                <p class="text-gray-700">Diseño de producción que redefine el cine contemporáneo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-pink-600 mb-8 text-center">Los Dos Mundos</h3>
+        <div class="barbie-world">
+            <h4 class="text-xl font-bold text-pink-600 mb-4">🌍 Barbieland vs Mundo Real:</h4>
+            <div class="grid md:grid-cols-2 gap-6 mt-6">
+                <div class="cast-info">
+                    <h5 class="font-bold mb-2">🏰 Barbieland</h5>
+                    <p class="text-sm">Perfección rosa, casas de juguete, días siempre soleados y cero problemas.</p>
+                </div>
+                <div class="cast-info">
+                    <h5 class="font-bold mb-2">🏙️ Mundo Real</h5>
+                    <p class="text-sm">Caótico, imperfecto, lleno de emociones reales y desafíos auténticos.</p>
+                </div>
+            </div>
+            <p class="text-center mt-6 text-gray-600 italic">Un viaje de descubrimiento que cuestiona qué significa realmente "vivir"</p>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12 text-center">
+        <h3 class="text-3xl font-bold text-pink-600 mb-8">¡Experimenta el Fenómeno Barbie!</h3>
+        <p class="text-gray-700 mb-8 text-lg">
+            Disponible en cines y plataformas digitales:
+        </p>
+        <a href="https://www.youtube.com/watch?v=JnWXEUunzwM&list=PLK4Lvw59uq__NJwBcyJQtH93CjzbP_eXm" id="verPeliLink" class="button text-xl px-12 py-4" target="_blank">Ver Barbie Live Action</a>
+        <p class="text-gray-600 mt-4 text-lg">Una comedia inteligente que celebra la autenticidad y el empoderamiento femenino</p>
+    </section>
+
+    <footer class="bg-pink-600 text-white mt-16 content-box max-w-6xl mx-auto mb-12 rounded-2xl shadow-2xl">
+        <div class="py-12 px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="text-xl font-bold">Barbie Movies</h4>
+                <p class="mt-3 text-lg">Explora el universo mágico de todas las películas de Barbie™.</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Navegación</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="index.html" class="hover:text-yellow-200 transition-colors">Inicio</a></li>
+                    <li><a href="peliculas.html" class="hover:text-yellow-200 transition-colors">Películas</a></li>
+                    <li><a href="videos.html" class="hover:text-yellow-200 transition-colors">Videos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Redes</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="#" target="_blank" class="hover:text-yellow-200 transition-colors">Facebook</a></li>
+                    <li><a href="#" target="_blank" class="hover:text-yellow-200 transition-colors">Instagram</a></li>
+                    <li><a href="#" target="_blank" class="hover:text-yellow-200 transition-colors">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center py-6 bg-pink-700 text-lg rounded-b-2xl">
+            © 2025 Mattel | Sitio de fans, no oficial
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    (function createParticles() {
+        const count = 45;
+        const container = document.getElementById('particles');
+        
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement('div');
+            const particleType = Math.random();
+            
+            if (particleType < 0.5) {
+                el.className = 'particle pink-glitter';
+                const size = 8 + Math.random() * 15;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else if (particleType < 0.8) {
+                el.className = 'particle barbie-sparkle';
+                const size = 6 + Math.random() * 12;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else {
+                el.className = 'particle hearts';
+                const width = 4 + Math.random() * 8;
+                const height = 15 + Math.random() * 25;
+                el.style.width = width + 'px';
+                el.style.height = height + 'px';
+            }
+            
+            el.style.left = (Math.random() * 100) + '%';
+            el.style.top = (Math.random() * 100) + '%';
+            el.style.animationDuration = (10 + Math.random() * 15) + 's';
+            el.style.animationDelay = (Math.random() * 8) + 's';
+            
+            container.appendChild(el);
+        }
+    })();
+</script>
+
+</body>
+</html>

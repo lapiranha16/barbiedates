@@ -1,0 +1,492 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbie: Rock 'N Royals - Barbie Dates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 25%, #F59E0B 50%, #EF4444 75%, #3B82F6 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            opacity: 0.7;
+            animation: floatParticles infinite ease-in-out;
+        }
+
+        .music-note {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(139, 92, 246, 0.4) 70%);
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+        }
+
+        .rock-sparkle {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(239, 68, 68, 0.4) 70%);
+            box-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
+            border-radius: 50%;
+        }
+
+        .royal-jewel {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(245, 158, 11, 0.4) 70%);
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.7);
+            border-radius: 50%;
+        }
+
+        @keyframes floatParticles {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-25px) translateX(8px) rotate(90deg) scale(1.1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-15px) translateX(-5px) rotate(180deg) scale(0.95);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateY(-30px) translateX(5px) rotate(270deg) scale(1.05);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg) scale(1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes rockBeat {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.8;
+            }
+            25% {
+                transform: translateY(-8px) scale(1.1);
+                opacity: 1;
+            }
+            75% {
+                transform: translateY(-12px) scale(1.05);
+                opacity: 0.9;
+            }
+        }
+
+        @keyframes royalGlow {
+            0%, 100% {
+                opacity: 0.8;
+                filter: brightness(1);
+            }
+            50% {
+                opacity: 1;
+                filter: brightness(1.3);
+            }
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            margin-top: 2rem;
+            border: 4px solid #8B5CF6;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #8B5CF6, #EC4899, #F59E0B, #EF4444, #3B82F6);
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+
+        h1.barbie-font {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #8B5CF6;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .poster-img {
+            border-radius: 2rem;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 4px solid #8B5CF6;
+        }
+
+        .poster-img:hover {
+            transform: scale(1.07);
+            box-shadow: 0 25px 55px rgba(139, 92, 246, 0.4);
+        }
+
+        a.button {
+            background: linear-gradient(135deg, #8B5CF6, #EC4899);
+            color: white;
+            padding: 1rem 2.2rem;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            font-size: 1.1rem;
+        }
+
+        a.button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(139, 92, 246, 0.5);
+            background: linear-gradient(135deg, #EC4899, #8B5CF6);
+        }
+
+        .rock-royal-theme {
+            background: linear-gradient(135deg, #8B5CF6, #EC4899, #F59E0B, #EF4444, #3B82F6);
+            background-size: 400% 400%;
+            animation: musicShift 18s ease infinite;
+        }
+
+        @keyframes musicShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .rock-icon {
+            display: inline-block;
+            animation: rockBeat 2s ease-in-out infinite;
+        }
+
+        .royal-icon {
+            display: inline-block;
+            animation: royalGlow 3s ease-in-out infinite;
+        }
+
+        .music-border {
+            border-left: 6px solid;
+            border-image: linear-gradient(to bottom, #8B5CF6, #EC4899, #F59E0B) 1;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .guitar-divider {
+            height: 60px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%238B5CF6"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%238B5CF6"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%238B5CF6"/></svg>');
+            background-size: 1200px 60px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #faf5ff, #fce7f3);
+            border-radius: 1.2rem;
+            padding: 1.8rem;
+            margin: 1rem 0;
+            border: 3px solid #8B5CF6;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .music-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #8B5CF6, #EC4899);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        .character-companion {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .character-companion::before {
+            content: "🎤";
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<div class="wrap">
+
+    <header class="bg-white shadow-lg content-box max-w-6xl mx-auto mt-4 flex justify-between items-center px-6 py-4">
+        <h1 class="barbie-font italic">Barbie Dates</h1>
+        <nav class="space-x-6">
+            <a href="index.html" class="button">Inicio</a>
+            <a href="peliculas.html" class="button">Películas</a>
+            <a href="videos.html" class="button">Videos</a>
+        </nav>
+    </header>
+
+    <section class="text-center py-24 content-box max-w-6xl mx-auto mt-8 rock-royal-theme rounded-2xl shadow-2xl animate__animated animate__fadeIn relative">
+        <div class="music-badge">FUSIÓN MUSICAL</div>
+        <h2 class="text-white text-5xl font-extrabold mb-6 animate__animated animate__bounce" style="text-shadow: 3px 3px 8px rgba(0,0,0,0.5);">
+            <span class="rock-icon"></span> Barbie: Rock 'N Royals <span class="royal-icon"></span>
+        </h2>
+        <p class="text-white text-xl max-w-2xl mx-auto mb-8" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Donde la música rock y la realeza se encuentran para crear algo extraordinario</p>
+        <div class="space-x-6">
+            <a href="#ficha" class="button">Ver ficha</a>
+            <a href="peliculas.html" class="button">Ver catálogo</a>
+        </div>
+    </section>
+
+    <div class="guitar-divider my-12"></div>
+
+    <section id="pelicula" class="max-w-5xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-12 items-center content-box mt-8">
+        <img src="fotos de inicio/Barbie Rockera.jpg" alt="Poster de Barbie: Rock 'N Royals" class="poster-img">
+        <div>
+            <h3 class="text-3xl font-bold text-purple-600 mb-6">Sinopsis</h3>
+            <p class="text-gray-700 mb-6 text-lg">Dos mundos chocan cuando la princesa Courtney y la estrella de rock Dana descubren que son físicamente idénticas. Deciden intercambiar lugares, llevándolas a una aventura donde aprenderán sobre autenticidad, amistad y cómo romper estereotipos a través del poder de la música.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li class="text-lg"><b>Año:</b> 2015</li>
+                <li class="text-lg"><b>Duración:</b> 69 minutos</li>
+                <li class="text-lg"><b>Género:</b> Animación, Musical, Aventura</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8 text-center">Galería Musical</h3>
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
+            <img src="fotos barbie/fotos barbie/30 Barbie Princesa Rockera/Barbie princesa rockera.jpg" alt="Princesa Courtney en su mundo real" class="poster-img">
+            <img src="fotos barbie/fotos barbie/30 Barbie Princesa Rockera/Barbie princesa rockera 2.jpg" alt="Dana en el escenario rockero" class="poster-img">
+        </div>
+    </section>
+
+    <section id="ficha" class="py-12 content-box max-w-5xl mx-auto mt-12 animate__animated animate__fadeInUp">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8">Ficha Técnica</h3>
+        <ul class="space-y-3 text-gray-700 text-lg">
+            <li><b>Título original:</b> Barbie: Rock 'N Royals</li>
+            <li><b>Título en español:</b> Barbie: Princesa Rockera</li>
+            <li><b>Año de estreno:</b> 2015</li>
+            <li><b>Duración:</b> 69 minutos</li>
+            <li><b>Director:</b> Zeke Norton</li>
+            <li><b>Producción:</b> Mattel Entertainment</li>
+            <li><b>Género:</b> Animación, Musical, Aventura</li>
+            <li><b>Música:</b> Gabriel Mann</li>
+        </ul>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="animate__animated animate__fadeIn">
+                <h3 class="text-3xl font-bold text-purple-600 mb-8">Resumen completo de la historia</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    La película presenta dos mundos muy diferentes: uno lleno de glamour y etiqueta, donde vive la Princesa Courtney, y otro lleno de música y rebeldía, hogar de la estrella de rock Dana.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Cuando Courtney y Dana se conocen, inicialmente chocan por sus diferencias de estilo y forma de vida. Sin embargo, descubren que se parecen físicamente y deciden intercambiar lugares para experimentar la vida de la otra.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    A medida que viven esta aventura, ambas chicas aprenden sobre la importancia de la autenticidad y la aceptación, y cómo romper con los estereotipos puede llevar a la verdadera felicidad.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Juntas, enfrentan un desafío que amenaza con separarlas y con afectar a sus respectivos mundos, y deben unir fuerzas para superarlo con música, amistad y valentía.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="mb-12">
+            <h3 class="text-3xl font-bold text-purple-600 mb-8">Mensaje central y temas clave</h3>
+            <p class="text-gray-700 mb-4 text-lg"><b>Mensaje:</b> "Sé auténtico y fiel a ti mismo, sin importar lo diferente que seas."</p>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "La amistad y el respeto superan cualquier barrera social o cultural."</p>
+            <div class="music-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Autoaceptación y autenticidad</li>
+                    <li>Romper con estereotipos y prejuicios</li>
+                    <li>Amistad y trabajo en equipo</li>
+                    <li>Valor y expresión personal a través de la música</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-purple-600 mb-8">Notas especiales</h3>
+            <div class="music-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>La película combina elementos de música pop y cultura rock con una historia de princesas moderna</li>
+                    <li>Incluye canciones originales que reflejan el espíritu rebelde y el mensaje de la película</li>
+                    <li>Refuerza valores de inclusión y diversidad para el público infantil</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8 text-center">Personajes y Mundos</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">👸 Princesa Courtney</h4>
+                <p class="text-gray-700">La princesa elegante que descubre un mundo de libertad y expresión a través de la música rock.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🎸 Dana</h4>
+                <p class="text-gray-700">La estrella de rock rebelde que aprende sobre responsabilidad y elegancia en el mundo real.</p>
+            </div>
+            <div class="feature-card character-companion">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">June</h4>
+                <p class="text-gray-700">La amiga leal que apoya a Courtney en su aventura musical, representando la verdadera amistad.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🏰 Mundo Real</h4>
+                <p class="text-gray-700">El reino de elegancia y protocolo donde la tradición se encuentra con la modernidad.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🎶 Mundo Rock</h4>
+                <p class="text-gray-700">El vibrante mundo de la música donde la creatividad y la individualidad son celebradas.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🤝 Intercambio</h4>
+                <p class="text-gray-700">La aventura que transforma a ambas chicas y demuestra que todos tenemos múltiples facetas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8 text-center">Música y Valores</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🎵 Expresión Musical</h4>
+                <p class="text-gray-700">La música como herramienta para expresar identidad y conectar con los demás.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">💝 Autenticidad</h4>
+                <p class="text-gray-700">Aprender a ser fiel a uno mismo mientras se respetan las diferencias de los demás.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🌉 Romper Barreras</h4>
+                <p class="text-gray-700">Demostrar que las diferencias culturales y sociales pueden ser puentes, no muros.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🤗 Inclusión</h4>
+                <p class="text-gray-700">Celebrar la diversidad y encontrar fuerza en las diferencias.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12 text-center">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8">Únete a la Revolución Musical</h3>
+        <p class="text-gray-700 mb-8 text-lg">
+            Podés ver Barbie: Rock 'N Royals haciendo clic en el siguiente enlace:
+        </p>
+        <a href="https://www.youtube.com/watch?v=ufEsnXeoAHY&list=PL7BKcNM6VHQqlTs2xGx_oB7ojw_HkpXtl" id="verPeliLink" class="button text-xl px-12 py-4" target="_blank">Ver película</a>
+    </section>
+
+    <footer class="bg-purple-600 text-white mt-16 content-box max-w-6xl mx-auto mb-12 rounded-2xl shadow-2xl">
+        <div class="py-12 px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="text-xl font-bold">Barbie Movies</h4>
+                <p class="mt-3 text-lg">Explora el mundo mágico de todas las películas de Barbie™.</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Navegación</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="index.html" class="hover:text-yellow-300 transition-colors">Inicio</a></li>
+                    <li><a href="peliculas.html" class="hover:text-yellow-300 transition-colors">Películas</a></li>
+                    <li><a href="videos.html" class="hover:text-yellow-300 transition-colors">Videos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Redes</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="https://www.facebook.com/share/17SzdE5NAC/" target="_blank">Facebook</a></li>
+      	            <li><a href="https://www.instagram.com/barbie?igsh=MWs0bWpkbzV2aXMxdw==" target="_blank">Instagram</a></li>
+      	            <li><a href="https://www.youtube.com/@barbielatinoamericano" target="_blank">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center py-6 bg-purple-700 text-lg rounded-b-2xl">
+            © 2025 Mattel | Sitio de fans, no oficial
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    (function createParticles() {
+        const count = 35;
+        const container = document.getElementById('particles');
+        
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement('div');
+            const particleType = Math.random();
+            
+            if (particleType < 0.4) {
+                el.className = 'particle music-note';
+                const size = 8 + Math.random() * 12;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else if (particleType < 0.7) {
+                el.className = 'particle rock-sparkle';
+                const size = 6 + Math.random() * 10;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else {
+                el.className = 'particle royal-jewel';
+                const size = 8 + Math.random() * 14;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            }
+            
+            el.style.left = (Math.random() * 100) + '%';
+            el.style.top = (Math.random() * 100) + '%';
+            el.style.animationDuration = (10 + Math.random() * 15) + 's';
+            el.style.animationDelay = (Math.random() * 8) + 's';
+            
+            container.appendChild(el);
+        }
+    })();
+</script>
+
+</body>
+</html>

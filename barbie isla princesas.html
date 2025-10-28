@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbie en la princesa de la isla - Barbie Dates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffeb3b 0%, #4caf50 30%, #2196f3 70%, #ff9800 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            opacity: 0.7;
+            animation: floatParticles infinite ease-in-out;
+        }
+
+        .tropical-flower {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 235, 59, 0.9), rgba(255, 152, 0, 0.4) 70%);
+            box-shadow: 0 0 15px rgba(255, 235, 59, 0.6);
+            border-radius: 50% 50% 45% 55% / 60% 40% 60% 40%;
+        }
+
+        .palm-leaf {
+            background: linear-gradient(45deg, #4caf50, #8bc34a);
+            border-radius: 50% 0 50% 0;
+        }
+
+        .ocean-sparkle {
+            background: radial-gradient(circle at 30% 30%, rgba(33, 150, 243, 0.9), rgba(3, 169, 244, 0.3) 70%);
+            box-shadow: 0 0 12px rgba(33, 150, 243, 0.5);
+            border-radius: 50%;
+        }
+
+        @keyframes floatParticles {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-20px) translateX(10px) rotate(90deg) scale(1.1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-10px) translateX(-5px) rotate(180deg) scale(0.95);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateY(-25px) translateX(5px) rotate(270deg) scale(1.05);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg) scale(1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes islandSway {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-5px) rotate(1deg);
+            }
+            75% {
+                transform: translateY(-8px) rotate(-1deg);
+            }
+        }
+
+        @keyframes tropicalBreeze {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            margin-top: 2rem;
+            border: 4px solid #4caf50;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #ffeb3b, #4caf50, #2196f3, #ff9800);
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+
+        h1.barbie-font {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #ff1493;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .poster-img {
+            border-radius: 2rem;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 4px solid #4caf50;
+        }
+
+        .poster-img:hover {
+            transform: scale(1.07);
+            box-shadow: 0 25px 55px rgba(76, 175, 80, 0.4);
+        }
+
+        a.button {
+            background: linear-gradient(135deg, #ffeb3b, #4caf50);
+            color: #333;
+            padding: 1rem 2.2rem;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            font-size: 1.1rem;
+        }
+
+        a.button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(76, 175, 80, 0.5);
+            background: linear-gradient(135deg, #4caf50, #ffeb3b);
+        }
+
+        .tropical-theme {
+            background: linear-gradient(135deg, #ffeb3b, #4caf50, #2196f3, #ff9800);
+            background-size: 400% 400%;
+            animation: tropicalBreeze 20s ease infinite;
+        }
+
+        .island-icon {
+            display: inline-block;
+            animation: islandSway 4s ease-in-out infinite;
+        }
+
+        .tropical-border {
+            border-left: 6px solid;
+            border-image: linear-gradient(to bottom, #ffeb3b, #4caf50, #2196f3) 1;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .palm-divider {
+            height: 60px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z" fill="%234caf50"/></svg>');
+            background-size: 1200px 60px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f0f4c3, #c8e6c9);
+            border-radius: 1.2rem;
+            padding: 1.8rem;
+            margin: 1rem 0;
+            border: 3px solid #4caf50;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .animal-companion {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .animal-companion::before {
+            content: "🐘";
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<div class="wrap">
+
+    <header class="bg-white shadow-lg content-box max-w-6xl mx-auto mt-4 flex justify-between items-center px-6 py-4">
+        <h1 class="barbie-font italic">Barbie Dates</h1>
+        <nav class="space-x-6">
+            <a href="index.html" class="button">Inicio</a>
+            <a href="peliculas.html" class="button">Películas</a>
+            <a href="videos.html" class="button">Videos</a>
+        </nav>
+    </header>
+
+    
+    <section class="text-center py-24 content-box max-w-6xl mx-auto mt-8 tropical-theme rounded-2xl shadow-2xl animate__animated animate__fadeIn">
+        <h2 class="text-white text-5xl font-extrabold mb-6 animate__animated animate__bounce" style="text-shadow: 3px 3px 8px rgba(0,0,0,0.5);">
+            <span class="island-icon"></span> Barbie en la princesa de la isla <span class="island-icon"></span>
+        </h2>
+        <p class="text-white text-xl max-w-2xl mx-auto mb-8" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Una aventura tropical donde la verdadera nobleza nace del corazón</p>
+        <div class="space-x-6">
+            <a href="#ficha" class="button">Ver ficha</a>
+            <a href="peliculas.html" class="button">Ver catálogo</a>
+        </div>
+    </section>
+
+    <div class="palm-divider my-12"></div>
+
+    <section id="pelicula" class="max-w-5xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-12 items-center content-box mt-8">
+        <img src="fotos de inicio/barbie princesa en la isla.jpg" alt="Poster de Barbie en la princesa de la isla" class="poster-img">
+        <div>
+            <h3 class="text-3xl font-bold text-green-600 mb-6">Sinopsis</h3>
+            <p class="text-gray-700 mb-6 text-lg">Rosella, una niña criada por animales en una isla tropical, descubre que es una princesa perdida cuando el príncipe Antonio llega buscándola. Juntos enfrentan a la malvada Belfina mientras Rosella aprende que la verdadera nobleza viene del corazón.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li class="text-lg"><b>Año:</b> 2007</li>
+                <li class="text-lg"><b>Duración:</b> 82 minutos</li>
+                <li class="text-lg"><b>Género:</b> Aventura, Fantasía, Romance</li>
+            </ul>
+        </div>
+    </section>
+
+    
+    <section class="content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-green-600 mb-8 text-center">Galería Tropical</h3>
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
+            <img src="fotos barbie/fotos barbie/11 princesa en la isla/Barbie en la princesa de la isla.jpg" alt="Rosella con sus amigos animales" class="poster-img">
+            <img src="fotos barbie/fotos barbie/11 princesa en la isla/Barbie en la princesa de la isla (2).jpg" alt="La isla tropical y el palacio" class="poster-img">
+        </div>
+    </section>
+
+    <section id="ficha" class="py-12 content-box max-w-5xl mx-auto mt-12 animate__animated animate__fadeInUp">
+        <h3 class="text-3xl font-bold text-green-600 mb-8">Ficha Técnica</h3>
+        <ul class="space-y-3 text-gray-700 text-lg">
+            <li><b>Título original:</b> Barbie as the Island Princess</li>
+            <li><b>Título en español:</b> Barbie en la princesa de la isla</li>
+            <li><b>Año de estreno:</b> 2007</li>
+            <li><b>Duración:</b> 82 minutos</li>
+            <li><b>Director:</b> Greg Richardson</li>
+            <li><b>Ambientación:</b> Isla tropical exótica y reino palaciego</li>
+            <li><b>Producción:</b> Mainframe Entertainment y Mattel Entertainment</li>
+            <li><b>Música:</b> Arnie Roth</li>
+        </ul>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="animate__animated animate__fadeIn">
+                <h3 class="text-3xl font-bold text-green-600 mb-8">Resumen completo de la historia</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    La película narra la historia de Rosella, una niña que queda náufraga en una isla tropical cuando era bebé, y es criada por animales salvajes que se convierten en su familia: un oso llamado Tika, un elefante llamado Azul y un pequeño mono llamado Sagi.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Rosella crece en la isla con un espíritu libre, amable y valiente, disfrutando de la naturaleza y aprendiendo de sus amigos animales.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Un día, llega a la isla el príncipe Antonio, quien ha oído hablar de una princesa perdida y busca encontrarla para que pueda heredar el trono.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Rosella es llevada al palacio para descubrir su verdadero origen como princesa, pero enfrenta la resistencia y celos de la malvada consejera del rey, Belfina, quien intenta impedir que Rosella asuma su lugar legítimo.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Finalmente, gracias a la ayuda de sus amigos animales y su propio coraje, Rosella derrota a Belfina y encuentra su lugar como princesa, además de descubrir el amor con el príncipe Antonio.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="mb-12">
+            <h3 class="text-3xl font-bold text-green-600 mb-8">Mensaje central y temas clave</h3>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "La verdadera nobleza viene del corazón y la valentía, no del lugar de nacimiento. La amistad y la honestidad son las claves para superar cualquier desafío."</p>
+            <div class="tropical-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Identidad y autodescubrimiento: Rosella aprende quién es y acepta su destino</li>
+                    <li>Valor y honestidad: su fuerza radica en ser auténtica y justa</li>
+                    <li>Amor y amistad: el apoyo de sus amigos es fundamental para enfrentar adversidades</li>
+                    <li>Naturaleza y respeto: la conexión con los animales muestra la importancia del cuidado del medio ambiente</li>
+                    <li>Superación de obstáculos: la lucha contra la villana Belfina simboliza la perseverancia</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-green-600 mb-8">Notas especiales</h3>
+            <div class="tropical-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Esta película combina elementos de aventura y romance en un entorno exótico y colorido</li>
+                    <li>Los personajes animales tienen roles importantes y aportan humor y ternura</li>
+                    <li>La banda sonora y la animación reciben elogios por su calidad y estilo vibrante</li>
+                    <li>Es una de las historias favoritas por su mensaje positivo sobre la autoaceptación y la valentía</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-green-600 mb-8 text-center">Compañeros Animales de Rosella</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="feature-card animal-companion">
+                <h4 class="text-xl font-bold text-green-600 mb-3">Tika el Oso</h4>
+                <p class="text-gray-700">Protector y sabio, representa la fuerza y el cuidado paternal en la vida de Rosella.</p>
+            </div>
+            <div class="feature-card animal-companion">
+                <h4 class="text-xl font-bold text-green-600 mb-3">Azul el Elefante</h4>
+                <p class="text-gray-700">Amable y juguetón, aporta diversión y muestra la importancia de la alegría.</p>
+            </div>
+            <div class="feature-card animal-companion">
+                <h4 class="text-xl font-bold text-green-600 mb-3">Sagi el Mono</h4>
+                <p class="text-gray-700">Travieso y ágil, simboliza la curiosidad y la adaptabilidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-green-600 mb-8 text-center">Personajes Principales</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-green-600 mb-3">👑 Rosella/Princesa</h4>
+                <p class="text-gray-700">Una joven valiente criada por animales, que descubre su verdadera identidad mientras mantiene su autenticidad y conexión con la naturaleza.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-green-600 mb-3">🤴 Príncipe Antonio</h4>
+                <p class="text-gray-700">Un príncipe noble que busca a la princesa perdida y descubre el verdadero significado del amor y la valentía.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-green-600 mb-3">🦹‍♀️ Belfina</h4>
+                <p class="text-gray-700">La villana celosa que intenta impedir que Rosella reclame su trono legítimo, representando la ambición sin escrúpulos.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-green-600 mb-3">🌺 La Familia Animal</h4>
+                <p class="text-gray-700">Tika, Azul y Sagi demuestran que la familia no siempre es de sangre, sino de corazón y lealtad.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12 text-center">
+        <h3 class="text-3xl font-bold text-green-600 mb-8">Descubre la Aventura Tropical</h3>
+        <p class="text-gray-700 mb-8 text-lg">
+            Podés ver Barbie en la princesa de la isla haciendo clic en el siguiente enlace:
+        </p>
+        <a href="https://www.youtube.com/watch?v=HldTnrknSmQ&list=PLjsWxIXngXf3mta_CuEGzHvWqJTDwN_A0" id="verPeliLink" class="button text-xl px-12 py-4" target="_blank">Ver película</a>
+    </section>
+
+    <footer class="bg-green-600 text-white mt-16 content-box max-w-6xl mx-auto mb-12 rounded-2xl shadow-2xl">
+        <div class="py-12 px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="text-xl font-bold">Barbie Movies</h4>
+                <p class="mt-3 text-lg">Explora el mundo mágico de todas las películas de Barbie™.</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Navegación</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="index.html" class="hover:text-yellow-300 transition-colors">Inicio</a></li>
+                    <li><a href="peliculas.html" class="hover:text-yellow-300 transition-colors">Películas</a></li>
+                    <li><a href="videos.html" class="hover:text-yellow-300 transition-colors">Videos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Redes</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="https://www.facebook.com/share/17SzdE5NAC/" target="_blank">Facebook</a></li>
+      	            <li><a href="https://www.instagram.com/barbie?igsh=MWs0bWpkbzV2aXMxdw==" target="_blank">Instagram</a></li>
+      	            <li><a href="https://www.youtube.com/@barbielatinoamericano" target="_blank">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center py-6 bg-green-700 text-lg rounded-b-2xl">
+            © 2025 Mattel | Sitio de fans, no oficial
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    (function createParticles() {
+        const count = 30;
+        const container = document.getElementById('particles');
+        
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement('div');
+            const particleType = Math.random();
+            
+            if (particleType < 0.5) {
+                el.className = 'particle tropical-flower';
+                const size = 10 + Math.random() * 20;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else if (particleType < 0.8) {
+                el.className = 'particle palm-leaf';
+                const size = 8 + Math.random() * 15;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else {
+                el.className = 'particle ocean-sparkle';
+                const size = 6 + Math.random() * 12;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            }
+            
+            el.style.left = (Math.random() * 100) + '%';
+            el.style.top = (Math.random() * 100) + '%';
+            el.style.animationDuration = (12 + Math.random() * 18) + 's';
+            el.style.animationDelay = (Math.random() * 10) + 's';
+            
+            container.appendChild(el);
+        }
+    })();
+</script>
+
+</body>
+</html>

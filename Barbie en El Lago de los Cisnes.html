@@ -1,0 +1,495 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbie en el lago de los cisnes - Barbie Dates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 30%, #93c5fd 60%, #dbeafe 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            opacity: 0.7;
+            animation: floatParticles infinite ease-in-out;
+        }
+
+        .swan-feather {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3) 70%);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            border-radius: 80% 20% 60% 40%;
+        }
+
+        .magic-sparkle {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(147, 197, 253, 0.4) 70%);
+            box-shadow: 0 0 12px rgba(147, 197, 253, 0.6);
+            border-radius: 50%;
+        }
+
+        .water-ripple {
+            background: radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.7), rgba(30, 58, 138, 0.3) 70%);
+            border-radius: 50%;
+        }
+
+        @keyframes floatParticles {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-20px) translateX(8px) rotate(90deg) scale(1.1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-10px) translateX(-5px) rotate(180deg) scale(0.95);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateY(-25px) translateX(5px) rotate(270deg) scale(1.05);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg) scale(1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes swanGlide {
+            0%, 100% {
+                transform: translateX(0) rotate(0deg);
+            }
+            25% {
+                transform: translateX(5px) rotate(2deg);
+            }
+            75% {
+                transform: translateX(-5px) rotate(-2deg);
+            }
+        }
+
+        @keyframes balletSpin {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(180deg) scale(1.1);
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            margin-top: 2rem;
+            border: 4px solid #3b82f6;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6, #93c5fd);
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+
+        h1.barbie-font {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #1e3a8a;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .poster-img {
+            border-radius: 2rem;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 4px solid #3b82f6;
+        }
+
+        .poster-img:hover {
+            transform: scale(1.07);
+            box-shadow: 0 25px 55px rgba(59, 130, 246, 0.4);
+        }
+
+        a.button {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 1rem 2.2rem;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            font-size: 1.1rem;
+        }
+
+        a.button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(59, 130, 246, 0.5);
+            background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+        }
+
+        .swan-theme {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6, #93c5fd, #dbeafe);
+            background-size: 400% 400%;
+            animation: lakeShift 20s ease infinite;
+        }
+
+        @keyframes lakeShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .swan-icon {
+            display: inline-block;
+            animation: swanGlide 3s ease-in-out infinite;
+        }
+
+        .ballet-icon {
+            display: inline-block;
+            animation: balletSpin 4s ease-in-out infinite;
+        }
+
+        .lake-border {
+            border-left: 6px solid;
+            border-image: linear-gradient(to bottom, #1e3a8a, #3b82f6, #93c5fd) 1;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .wave-divider {
+            height: 60px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="%233b82f6"/></svg>');
+            background-size: 1200px 60px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #dbeafe, #eff6ff);
+            border-radius: 1.2rem;
+            padding: 1.8rem;
+            margin: 1rem 0;
+            border: 3px solid #3b82f6;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .ballet-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        .character-companion {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .character-companion::before {
+            content: "🦄";
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<div class="wrap">
+
+    <header class="bg-white shadow-lg content-box max-w-6xl mx-auto mt-4 flex justify-between items-center px-6 py-4">
+        <h1 class="barbie-font italic">Barbie Dates</h1>
+        <nav class="space-x-6">
+            <a href="index.html" class="button">Inicio</a>
+            <a href="peliculas.html" class="button">Películas</a>
+            <a href="videos.html" class="button">Videos</a>
+        </nav>
+    </header>
+
+    <section class="text-center py-24 content-box max-w-6xl mx-auto mt-8 swan-theme rounded-2xl shadow-2xl animate__animated animate__fadeIn relative">
+        <div class="ballet-badge">BALLET CLÁSICO</div>
+        <h2 class="text-white text-5xl font-extrabold mb-6 animate__animated animate__bounce" style="text-shadow: 3px 3px 8px rgba(0,0,0,0.5);">
+            <span class="swan-icon"></span> Barbie en el lago de los cisnes <span class="ballet-icon"></span>
+        </h2>
+        <p class="text-white text-xl max-w-2xl mx-auto mb-8" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Donde la gracia del ballet se encuentra con la magia del bosque encantado</p>
+        <div class="space-x-6">
+            <a href="#ficha" class="button">Ver ficha</a>
+            <a href="peliculas.html" class="button">Ver catálogo</a>
+        </div>
+    </section>
+
+    <div class="wave-divider my-12"></div>
+
+    <section id="pelicula" class="max-w-5xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-12 items-center content-box mt-8">
+        <img src="fotos de inicio/BARBIE cisnes.jpg" alt="Poster de Barbie en el lago de los cisnes" class="poster-img">
+        <div>
+            <h3 class="text-3xl font-bold text-blue-600 mb-6">Sinopsis</h3>
+            <p class="text-gray-700 mb-6 text-lg">Odette, una joven humilde, se convierte en la protectora del Bosque Encantado y es transformada en cisne por el malvado hechicero Rothbart. Con valentía y sacrificio, debe salvar el bosque y encontrar el amor verdadero con el Príncipe Daniel.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li class="text-lg"><b>Año:</b> 2003</li>
+                <li class="text-lg"><b>Duración:</b> 81 minutos</li>
+                <li class="text-lg"><b>Género:</b> Fantasía, Romance, Musical</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-blue-600 mb-8 text-center">Galería del Lago</h3>
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
+            <img src="fotos barbie/fotos barbie/3lago de los cisnes/Barbie Lago Cisnes.jpg" alt="Odette transformada en cisne" class="poster-img">
+            <img src="fotos barbie/fotos barbie/3lago de los cisnes/Barbie Lago Cisnes (2).jpg" alt="El Bosque Encantado" class="poster-img">
+        </div>
+    </section>
+
+    <section id="ficha" class="py-12 content-box max-w-5xl mx-auto mt-12 animate__animated animate__fadeInUp">
+        <h3 class="text-3xl font-bold text-blue-600 mb-8">Ficha Técnica</h3>
+        <ul class="space-y-3 text-gray-700 text-lg">
+            <li><b>Título original:</b> Barbie of Swan Lake</li>
+            <li><b>Título en español:</b> Barbie en el lago de los cisnes</li>
+            <li><b>Año de estreno:</b> 2003</li>
+            <li><b>Duración:</b> 81 minutos</li>
+            <li><b>Director:</b> Owen Hurley</li>
+            <li><b>Inspiración:</b> Basada en el famoso ballet El lago de los cisnes de Tchaikovsky</li>
+            <li><b>Música:</b> Peter Ilyich Tchaikovsky (adaptaciones del ballet original)</li>
+            <li><b>Producción:</b> Mainframe Entertainment / Mattel Entertainment</li>
+        </ul>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="animate__animated animate__fadeIn">
+                <h3 class="text-3xl font-bold text-blue-600 mb-8">Resumen completo de la trama</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    La historia comienza con Barbie contándole un cuento a su hermana Kelly, quien está nerviosa por asistir a un campamento. Barbie elige narrarle una historia que demuestra que la valentía puede encontrarse incluso en las personas más comunes.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    En el cuento, Barbie interpreta a Odette, una joven humilde que vive en un pueblo donde su padre tiene una panadería. Un día, mientras sigue a un unicornio llamado Lila, Odette se adentra en un misterioso bosque encantado.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Allí se topa con una gema mágica y sin querer activa su poder. Esa gema la convierte en la protectora elegida del Bosque Encantado. Odette es atacada por Rothbart, un malvado hechicero que quiere apoderarse del bosque.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Como castigo, Rothbart transforma a Odette en un cisne. Sin embargo, la Reina de las Hadas le concede un hechizo que le permite recuperar su forma humana solo durante la noche.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Odette se une a los animales encantados del bosque y conoce al Príncipe Daniel. Juntos planean asistir al baile real, pero Rothbart intenta engañar al príncipe usando un hechizo con su hija Odile.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    En el clímax, Odette se sacrifica para salvar a los demás y proteger el bosque. Su acto de valentía rompe el hechizo, derrota a Rothbart y restaura la armonía.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="mb-12">
+            <h3 class="text-3xl font-bold text-blue-600 mb-8">Mensaje central y temas clave</h3>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "Eres más valiente de lo que crees. La bondad, la valentía y el sacrificio son más poderosos que cualquier hechizo."</p>
+            <div class="lake-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Auto-descubrimiento: Odette encuentra fuerza que no sabía que tenía</li>
+                    <li>Valentía interior: La verdadera valentía surge en momentos de adversidad</li>
+                    <li>Sacrificio por el bien común: El acto desinteresado como máxima expresión de amor</li>
+                    <li>Amor verdadero: Que trasciende las apariencias y las transformaciones</li>
+                    <li>El poder de la bondad frente al egoísmo: El contraste entre Odette y Rothbart</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-blue-600 mb-8">Notas especiales</h3>
+            <div class="lake-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>La película adapta de manera accesible y visualmente encantadora un ballet clásico</li>
+                    <li>Usa música original de Tchaikovsky, dándole un aire elegante y mágico</li>
+                    <li>Fue una de las primeras películas de Barbie en introducir un fuerte mensaje de empoderamiento a través del sacrificio, no solo del romance</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-blue-600 mb-8 text-center">Personajes del Bosque Encantado</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card character-companion">
+                <h4 class="text-xl font-bold text-blue-600 mb-3">Lila el Unicornio</h4>
+                <p class="text-gray-700">Guía mágica que lleva a Odette al bosque encantado y la ayuda en su misión.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-blue-600 mb-3">👑 Odette / Cisne</h4>
+                <p class="text-gray-700">La protectora elegida que descubre su valentía interior a través del sacrificio y el amor.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-blue-600 mb-3">🤴 Príncipe Daniel</h4>
+                <p class="text-gray-700">Un príncipe que valora la autenticidad y se enamora del verdadero ser de Odette.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-blue-600 mb-3">🧙‍♂️ Rothbart</h4>
+                <p class="text-gray-700">El hechicero malvado que representa la ambición desmedida y el desprecio por la naturaleza.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-blue-600 mb-3">👸 Odile</h4>
+                <p class="text-gray-700">La hija de Rothbart, utilizada como instrumento en sus planes de engaño.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-blue-600 mb-3">✨ Reina de las Hadas</h4>
+                <p class="text-gray-700">La protectora del bosque que otorga a Odette la oportunidad de luchar contra la oscuridad.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-blue-600 mb-8 text-center">Legado Musical y Artístico</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-blue-600 mb-3">🎵 Música de Tchaikovsky</h4>
+                <p class="text-gray-700">Adaptación fiel de la partitura original que mantiene la esencia del ballet clásico.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-blue-600 mb-3">💃 Coreografía Elegante</h4>
+                <p class="text-gray-700">Movimientos inspirados en el ballet tradicional que dan gracia y belleza a la animación.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-blue-600 mb-3">🌈 Adaptación Accesible</h4>
+                <p class="text-gray-700">Lleva la complejidad del ballet clásico a un formato comprensible para todos los públicos.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-blue-600 mb-3">✨ Mensaje Empoderador</h4>
+                <p class="text-gray-700">Destaca el sacrificio y la valentía como fuentes de poder, no solo el romance.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12 text-center">
+        <h3 class="text-3xl font-bold text-blue-600 mb-8">Sumérgete en la Magia</h3>
+        <p class="text-gray-700 mb-8 text-lg">
+            Podés ver Barbie en el lago de los cisnes haciendo clic en el siguiente enlace:
+        </p>
+        <a href="https://www.youtube.com/watch?v=BDOA4oyDvHc&list=PLM330Yit708EJ9Ns38hMoDogUSgcho-h3" id="verPeliLink" class="button text-xl px-12 py-4" target="_blank">Ver película</a>
+    </section>
+
+    <footer class="bg-blue-600 text-white mt-16 content-box max-w-6xl mx-auto mb-12 rounded-2xl shadow-2xl">
+        <div class="py-12 px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="text-xl font-bold">Barbie Movies</h4>
+                <p class="mt-3 text-lg">Explora el mundo mágico de todas las películas de Barbie™.</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Navegación</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="index.html" class="hover:text-yellow-300 transition-colors">Inicio</a></li>
+                    <li><a href="peliculas.html" class="hover:text-yellow-300 transition-colors">Películas</a></li>
+                    <li><a href="videos.html" class="hover:text-yellow-300 transition-colors">Videos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Redes</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="https://www.facebook.com/share/17SzdE5NAC/" target="_blank">Facebook</a></li>
+      	            <li><a href="https://www.instagram.com/barbie?igsh=MWs0bWpkbzV2aXMxdw==" target="_blank">Instagram</a></li>
+                  	<li><a href="https://www.youtube.com/@barbielatinoamericano" target="_blank">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center py-6 bg-blue-700 text-lg rounded-b-2xl">
+            © 2025 Mattel | Sitio de fans, no oficial
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    (function createParticles() {
+        const count = 35;
+        const container = document.getElementById('particles');
+        
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement('div');
+            const particleType = Math.random();
+            
+            if (particleType < 0.4) {
+                el.className = 'particle swan-feather';
+                const width = 8 + Math.random() * 15;
+                const height = 4 + Math.random() * 8;
+                el.style.width = width + 'px';
+                el.style.height = height + 'px';
+            } else if (particleType < 0.7) {
+                el.className = 'particle magic-sparkle';
+                const size = 6 + Math.random() * 12;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else {
+                el.className = 'particle water-ripple';
+                const size = 10 + Math.random() * 20;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            }
+            
+            el.style.left = (Math.random() * 100) + '%';
+            el.style.top = (Math.random() * 100) + '%';
+            el.style.animationDuration = (10 + Math.random() * 15) + 's';
+            el.style.animationDelay = (Math.random() * 8) + 's';
+            
+            container.appendChild(el);
+        }
+    })();
+</script>
+
+</body>
+</html>

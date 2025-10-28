@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbie Fairytopia: Mermaidia - Barbie Dates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 25%, #60a5fa 50%, #06b6d4 75%, #22d3ee 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            opacity: 0.7;
+            animation: floatParticles infinite ease-in-out;
+        }
+
+        .ocean-bubble {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(34, 211, 238, 0.4) 70%);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+        }
+
+        .magic-pearl {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(147, 197, 253, 0.4) 70%);
+            box-shadow: 0 0 12px rgba(147, 197, 253, 0.6);
+            border-radius: 50%;
+        }
+
+        .sea-plant {
+            background: linear-gradient(45deg, #059669, #10b981);
+            border-radius: 50% 50% 0 0;
+        }
+
+        @keyframes floatParticles {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-25px) translateX(8px) rotate(90deg) scale(1.1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-15px) translateX(-5px) rotate(180deg) scale(0.95);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateY(-30px) translateX(5px) rotate(270deg) scale(1.05);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg) scale(1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes mermaidSwim {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-8px) rotate(2deg);
+            }
+            75% {
+                transform: translateY(-12px) rotate(-2deg);
+            }
+        }
+
+        @keyframes oceanGlow {
+            0%, 100% {
+                opacity: 0.8;
+                filter: brightness(1);
+            }
+            50% {
+                opacity: 1;
+                filter: brightness(1.3);
+            }
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            margin-top: 2rem;
+            border: 4px solid #06b6d4;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6, #60a5fa, #06b6d4);
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+
+        h1.barbie-font {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #1e3a8a;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .poster-img {
+            border-radius: 2rem;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 4px solid #06b6d4;
+        }
+
+        .poster-img:hover {
+            transform: scale(1.07);
+            box-shadow: 0 25px 55px rgba(6, 182, 212, 0.4);
+        }
+
+        a.button {
+            background: linear-gradient(135deg, #1e3a8a, #06b6d4);
+            color: white;
+            padding: 1rem 2.2rem;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            font-size: 1.1rem;
+        }
+
+        a.button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(6, 182, 212, 0.5);
+            background: linear-gradient(135deg, #06b6d4, #1e3a8a);
+        }
+
+        .mermaidia-theme {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6, #60a5fa, #06b6d4, #22d3ee);
+            background-size: 400% 400%;
+            animation: oceanShift 18s ease infinite;
+        }
+
+        @keyframes oceanShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .mermaid-icon {
+            display: inline-block;
+            animation: mermaidSwim 4s ease-in-out infinite;
+        }
+
+        .ocean-icon {
+            display: inline-block;
+            animation: oceanGlow 3s ease-in-out infinite;
+        }
+
+        .ocean-border {
+            border-left: 6px solid;
+            border-image: linear-gradient(to bottom, #1e3a8a, #3b82f6, #06b6d4) 1;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .wave-divider {
+            height: 60px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="%2306b6d4"/></svg>');
+            background-size: 1200px 60px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #ecfeff, #cffafe);
+            border-radius: 1.2rem;
+            padding: 1.8rem;
+            margin: 1rem 0;
+            border: 3px solid #06b6d4;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .sequel-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #1e3a8a, #06b6d4);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        .character-companion {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .character-companion::before {
+            content: "🐰";
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<div class="wrap">
+
+    <header class="bg-white shadow-lg content-box max-w-6xl mx-auto mt-4 flex justify-between items-center px-6 py-4">
+        <h1 class="barbie-font italic">Barbie Dates</h1>
+        <nav class="space-x-6">
+            <a href="index.html" class="button">Inicio</a>
+            <a href="peliculas.html" class="button">Películas</a>
+            <a href="videos.html" class="button">Videos</a>
+        </nav>
+    </header>
+
+    <section class="text-center py-24 content-box max-w-6xl mx-auto mt-8 mermaidia-theme rounded-2xl shadow-2xl animate__animated animate__fadeIn relative">
+        <div class="sequel-badge">SECUELA FAIRYTOPIA</div>
+        <h2 class="text-white text-5xl font-extrabold mb-6 animate__animated animate__bounce" style="text-shadow: 3px 3px 8px rgba(0,0,0,0.5);">
+            <span class="mermaid-icon"></span> Barbie Fairytopia: Mermaidia <span class="ocean-icon"></span>
+        </h2>
+        <p class="text-white text-xl max-w-2xl mx-auto mb-8" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Donde la valentía se sumerge en las profundidades para proteger dos mundos</p>
+        <div class="space-x-6">
+            <a href="#ficha" class="button">Ver ficha</a>
+            <a href="peliculas.html" class="button">Ver catálogo</a>
+        </div>
+    </section>
+
+    <div class="wave-divider my-12"></div>
+
+    <section id="pelicula" class="max-w-5xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-12 items-center content-box mt-8">
+        <img src="fotos de inicio/barbie mermaidia.jpg" alt="Poster de Barbie Fairytopia: Mermaidia" class="poster-img">
+        <div>
+            <h3 class="text-3xl font-bold text-cyan-600 mb-6">Sinopsis</h3>
+            <p class="text-gray-700 mb-6 text-lg">Elina regresa en esta secuela cuando la malvada Laverna secuestra a la princesa Nalu de Mermaidia. Convertida en sirena, Elina debe aventurarse en el mundo submarino para salvar tanto Mermaidia como Fairytopia, descubriendo que la verdadera fuerza está en su valentía.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li class="text-lg"><b>Año:</b> 2006</li>
+                <li class="text-lg"><b>Duración:</b> 75 minutos</li>
+                <li class="text-lg"><b>Género:</b> Fantasía, Aventura</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-cyan-600 mb-8 text-center">Galería Submarina</h3>
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
+            <img src="fotos barbie/fotos barbie/8 barbie mermaidia/Barbie Mermaidia.jpg" alt="Elina como sirena en Mermaidia" class="poster-img">
+            <img src="fotos barbie/fotos barbie/8 barbie mermaidia/Barbie Mermaidia (2).jpg" alt="El mundo submarino de Mermaidia" class="poster-img">
+        </div>
+    </section>
+
+    <section id="ficha" class="py-12 content-box max-w-5xl mx-auto mt-12 animate__animated animate__fadeInUp">
+        <h3 class="text-3xl font-bold text-cyan-600 mb-8">Ficha Técnica</h3>
+        <ul class="space-y-3 text-gray-700 text-lg">
+            <li><b>Título original:</b> Barbie Fairytopia: Mermaidia</li>
+            <li><b>Título en español:</b> Barbie Fairytopia: Mermaidia</li>
+            <li><b>Año de estreno:</b> 2006</li>
+            <li><b>Duración:</b> 75 minutos</li>
+            <li><b>Director:</b> Walter P. Martishius</li>
+            <li><b>Producción:</b> Mainframe Entertainment y Mattel Entertainment</li>
+            <li><b>Género:</b> Fantasía, Aventura</li>
+            <li><b>Música:</b> Arnie Roth</li>
+        </ul>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="animate__animated animate__fadeIn">
+                <h3 class="text-3xl font-bold text-cyan-600 mb-8">Resumen completo de la historia</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    Esta película es la segunda entrega dentro de la saga Fairytopia. La historia sigue a Elina, el hada sin alas de la primera película, quien ahora se embarca en una nueva aventura para salvar el reino submarino de Mermaidia.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Elina recibe un llamado urgente de la princesa de Mermaidia, Nalu, ya que el malvado hechicero Laverna (la bruja que apareció en la primera película) ha secuestrado a Nalu y pretende robar la fuente de la magia que mantiene el equilibrio en Mermaidia y Fairytopia.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Para rescatar a Nalu y proteger ambos reinos, Elina se transforma en una sirena con la ayuda de un mágico collar. Junto a sus amigos, incluyendo a Bibble, enfrenta numerosos peligros bajo el mar, desde criaturas misteriosas hasta trampas mágicas.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Durante su viaje, Elina descubre que la fuerza más poderosa no está en la magia o en la transformación física, sino en la valentía, la amistad y la determinación para luchar por lo que es justo.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Finalmente, Elina enfrenta a Laverna, rescata a la princesa Nalu y logra restaurar la paz en el mundo submarino y en Fairytopia.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="mb-12">
+            <h3 class="text-3xl font-bold text-cyan-600 mb-8">Mensaje central y temas clave</h3>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "La verdadera fuerza está en la valentía para defender a los que amas. La amistad y la esperanza pueden iluminar hasta los lugares más oscuros."</p>
+            <div class="ocean-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Valentía y sacrificio: Elina arriesga todo para salvar a Mermaidia</li>
+                    <li>Amistad y lealtad: la confianza entre amigos es fundamental para superar obstáculos</li>
+                    <li>Magia y transformación: el cambio externo es una herramienta, pero lo importante es el crecimiento interno</li>
+                    <li>Bien contra mal: la lucha continúa para proteger la armonía entre los reinos</li>
+                    <li>Respeto por la naturaleza: se destaca la belleza y el cuidado del mundo submarino</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-cyan-600 mb-8">Notas especiales</h3>
+            <div class="ocean-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Esta película continúa expandiendo el universo de Fairytopia con nuevos escenarios y personajes</li>
+                    <li>Introduce el mundo submarino, con hermosos diseños y música evocadora</li>
+                    <li>Sigue el formato de aventura y fantasía que conecta con valores positivos para el público infantil</li>
+                    <li>La película se ha convertido en un clásico entre las seguidoras de la saga</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-cyan-600 mb-8 text-center">Personajes de Mermaidia</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-cyan-600 mb-3">🧜‍♀️ Elina como Sirena</h4>
+                <p class="text-gray-700">Transformada por magia para navegar el mundo submarino, demostrando que su verdadero poder está en su valentía, no en su forma.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-cyan-600 mb-3">👸 Princesa Nalu</h4>
+                <p class="text-gray-700">La gobernante de Mermaidia cuyo secuestro amenaza el equilibrio entre los reinos submarino y aéreo.</p>
+            </div>
+            <div class="feature-card character-companion">
+                <h4 class="text-xl font-bold text-cyan-600 mb-3">Bibble</h4>
+                <p class="text-gray-700">El fiel compañero que demuestra que la lealtad verdadera supera cualquier barrera, incluso bajo el agua.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-cyan-600 mb-3">🧙‍♀️ Laverna</h4>
+                <p class="text-gray-700">La villana que regresa más poderosa, representando la amenaza constante a la armonía de los reinos mágicos.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-cyan-600 mb-3">🐚 Criaturas Marinas</h4>
+                <p class="text-gray-700">Los habitantes de Mermaidia que ayudan a Elina, mostrando la diversidad y belleza del mundo submarino.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-cyan-600 mb-3">🔮 Magia Submarina</h4>
+                <p class="text-gray-700">La fuente de poder que conecta ambos reinos, representando la interdependencia entre diferentes mundos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-cyan-600 mb-8 text-center">Expansión del Universo Fairytopia</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-cyan-600 mb-3">🌊 Mundo Submarino</h4>
+                <p class="text-gray-700">Introduce Mermaidia, expandiendo significativamente el universo mágico establecido en la primera película.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-cyan-600 mb-3">🔄 Continuidad Narrativa</h4>
+                <p class="text-gray-700">Mantiene a Laverna como villana principal, creando una continuidad que enriquece la saga.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-cyan-600 mb-3">🎨 Diseño Visual</h4>
+                <p class="text-gray-700">Los escenarios submarinos presentan una paleta de colores y diseños que contrastan con el mundo aéreo de Fairytopia.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-cyan-600 mb-3">💪 Desarrollo de Personaje</h4>
+                <p class="text-gray-700">Elina demuestra crecimiento al enfrentar nuevos desafíos en un entorno completamente diferente.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12 text-center">
+        <h3 class="text-3xl font-bold text-cyan-600 mb-8">Sumérgete en la Aventura</h3>
+        <p class="text-gray-700 mb-8 text-lg">
+            Podés ver Barbie Fairytopia: Mermaidia haciendo clic en el siguiente enlace:
+        </p>
+        <a href="https://www.youtube.com/watch?v=YqO46O04a5c&list=PLtg-pmXw5U7LLnEpST1CRA-oLZnFSaX7u" id="verPeliLink" class="button text-xl px-12 py-4" target="_blank">Ver película</a>
+    </section>
+
+    <footer class="bg-cyan-600 text-white mt-16 content-box max-w-6xl mx-auto mb-12 rounded-2xl shadow-2xl">
+        <div class="py-12 px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="text-xl font-bold">Barbie Movies</h4>
+                <p class="mt-3 text-lg">Explora el mundo mágico de todas las películas de Barbie™.</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Navegación</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="index.html" class="hover:text-yellow-300 transition-colors">Inicio</a></li>
+                    <li><a href="peliculas.html" class="hover:text-yellow-300 transition-colors">Películas</a></li>
+                    <li><a href="videos.html" class="hover:text-yellow-300 transition-colors">Videos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Redes</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="https://www.facebook.com/share/17SzdE5NAC/" target="_blank">Facebook</a></li>
+      	            <li><a href="https://www.instagram.com/barbie?igsh=MWs0bWpkbzV2aXMxdw==" target="_blank">Instagram</a></li>
+      	            <li><a href="https://www.youtube.com/@barbielatinoamericano" target="_blank">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center py-6 bg-cyan-700 text-lg rounded-b-2xl">
+            © 2025 Mattel | Sitio de fans, no oficial
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    (function createParticles() {
+        const count = 35;
+        const container = document.getElementById('particles');
+        
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement('div');
+            const particleType = Math.random();
+            
+            if (particleType < 0.5) {
+                el.className = 'particle ocean-bubble';
+                const size = 8 + Math.random() * 15;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else if (particleType < 0.8) {
+                el.className = 'particle magic-pearl';
+                const size = 6 + Math.random() * 12;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else {
+                el.className = 'particle sea-plant';
+                const width = 4 + Math.random() * 8;
+                const height = 15 + Math.random() * 25;
+                el.style.width = width + 'px';
+                el.style.height = height + 'px';
+            }
+            
+            el.style.left = (Math.random() * 100) + '%';
+            el.style.top = (Math.random() * 100) + '%';
+            el.style.animationDuration = (10 + Math.random() * 15) + 's';
+            el.style.animationDelay = (Math.random() * 8) + 's';
+            
+            container.appendChild(el);
+        }
+    })();
+</script>
+
+</body>
+</html>

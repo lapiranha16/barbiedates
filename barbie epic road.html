@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbie: Viaje épico - Barbie Dates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8E53 25%, #4ECDC4 50%, #556270 75%, #1A535C 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            opacity: 0.7;
+            animation: floatParticles infinite ease-in-out;
+        }
+
+        .road-sparkle {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 107, 53, 0.4) 70%);
+            box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+            border-radius: 50%;
+        }
+
+        .map-icon {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(78, 205, 196, 0.4) 70%);
+            box-shadow: 0 0 12px rgba(78, 205, 196, 0.6);
+            border-radius: 50%;
+        }
+
+        .road-sign {
+            background: linear-gradient(45deg, #FF6B35, #FF8E53);
+            border-radius: 20% 20% 0 0;
+        }
+
+        @keyframes floatParticles {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-25px) translateX(8px) rotate(90deg) scale(1.1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-15px) translateX(-5px) rotate(180deg) scale(0.95);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateY(-30px) translateX(5px) rotate(270deg) scale(1.05);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg) scale(1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes roadTrip {
+            0%, 100% {
+                transform: translateY(0) translateX(0) scale(1);
+            }
+            25% {
+                transform: translateY(-8px) translateX(5px) scale(1.05);
+            }
+            75% {
+                transform: translateY(-12px) translateX(-3px) scale(1.03);
+            }
+        }
+
+        @keyframes roadGlow {
+            0%, 100% {
+                opacity: 0.8;
+                filter: brightness(1);
+                box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+            }
+            50% {
+                opacity: 1;
+                filter: brightness(1.3);
+                box-shadow: 0 0 20px rgba(255, 107, 53, 0.8), 0 0 30px rgba(78, 205, 196, 0.6);
+            }
+        }
+
+        .content-box {
+            background: rgba(255, 253, 250, 0.95);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            margin-top: 2rem;
+            border: 4px solid #FF6B35;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #FF6B35, #FF8E53, #4ECDC4, #556270, #1A535C);
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+
+        h1.barbie-font {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #FF6B35;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .poster-img {
+            border-radius: 2rem;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 4px solid #FF6B35;
+        }
+
+        .poster-img:hover {
+            transform: scale(1.07);
+            box-shadow: 0 25px 55px rgba(255, 107, 53, 0.4);
+        }
+
+        a.button {
+            background: linear-gradient(135deg, #FF6B35, #4ECDC4);
+            color: white;
+            padding: 1rem 2.2rem;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            font-size: 1.1rem;
+            animation: roadGlow 2s ease-in-out infinite;
+        }
+
+        a.button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(255, 107, 53, 0.5);
+            background: linear-gradient(135deg, #4ECDC4, #FF6B35);
+        }
+
+        .roadtrip-theme {
+            background: linear-gradient(135deg, #FF6B35, #FF8E53, #4ECDC4, #556270, #1A535C);
+            background-size: 400% 400%;
+            animation: roadTripShift 15s ease infinite;
+        }
+
+        @keyframes roadTripShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .roadtrip-icon {
+            display: inline-block;
+            animation: roadTrip 3s ease-in-out infinite;
+        }
+
+        .interactive-icon {
+            display: inline-block;
+            animation: roadGlow 2.5s ease-in-out infinite;
+        }
+
+        .road-border {
+            border-left: 6px solid;
+            border-image: linear-gradient(to bottom, #FF6B35, #FF8E53, #4ECDC4) 1;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .road-divider {
+            height: 60px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23FF8E53"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23FF8E53"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%234ECDC4"/></svg>');
+            background-size: 1200px 60px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #fffaf0, #fff5e6);
+            border-radius: 1.2rem;
+            padding: 1.8rem;
+            margin: 1rem 0;
+            border: 3px solid #FF6B35;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.2);
+        }
+
+        .interactive-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #FF6B35, #4ECDC4);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            animation: roadGlow 3s ease-in-out infinite;
+        }
+
+        .character-companion {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .character-companion::before {
+            content: "🚗";
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+
+        .interactive-highlight {
+            background: linear-gradient(135deg, #FF6B35, #4ECDC4);
+            color: white;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: roadGlow 4s ease-in-out infinite;
+        }
+
+        .decision-point {
+            background: linear-gradient(135deg, #4ECDC4, #1A535C);
+            color: white;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            border-left: 5px solid #FF6B35;
+        }
+
+        .road-path {
+            position: relative;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            border: 2px dashed #FF6B35;
+        }
+    </style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<div class="wrap">
+
+    <header class="bg-white shadow-lg content-box max-w-6xl mx-auto mt-4 flex justify-between items-center px-6 py-4">
+        <h1 class="barbie-font italic">Barbie Dates</h1>
+        <nav class="space-x-6">
+            <a href="index.html" class="button">Inicio</a>
+            <a href="peliculas.html" class="button">Películas</a>
+            <a href="videos.html" class="button">Videos</a>
+        </nav>
+    </header>
+
+    <section class="text-center py-24 content-box max-w-6xl mx-auto mt-8 roadtrip-theme rounded-2xl shadow-2xl animate__animated animate__fadeIn relative">
+        <div class="interactive-badge">¡PELÍCULA INTERACTIVA!</div>
+        <h2 class="text-white text-5xl font-extrabold mb-6 animate__animated animate__bounce" style="text-shadow: 3px 3px 8px rgba(0,0,0,0.5);">
+            <span class="roadtrip-icon"></span> Barbie: Viaje épico <span class="interactive-icon"></span>
+        </h2>
+        <p class="text-white text-xl max-w-2xl mx-auto mb-8" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Donde tú decides el camino y cada elección crea una aventura única</p>
+        <div class="space-x-6">
+            <a href="#ficha" class="button">Ver ficha</a>
+            <a href="peliculas.html" class="button">Ver catálogo</a>
+        </div>
+    </section>
+
+    <div class="road-divider my-12"></div>
+
+    <section id="pelicula" class="max-w-5xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-12 items-center content-box mt-8">
+        <img src="fotos de inicio/barbie epic road.jpg" alt="Poster de Barbie: Viaje épico" class="poster-img">
+        <div>
+            <h3 class="text-3xl font-bold text-orange-500 mb-6">Sinopsis</h3>
+            <p class="text-gray-700 mb-6 text-lg">Barbie y sus hermanas (Skipper, Stacie y Chelsea) deciden emprender un emocionante viaje por carretera en su auto deportivo a través de paisajes increíbles, con el objetivo de llegar a un festival de música que se celebrará en un destino lejano.</p>
+            
+            <div class="interactive-highlight">
+                ¡TÚ DECIDES EL CAMINO! Elecciones interactivas que cambian la historia en cada visualización
+            </div>
+            
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li class="text-lg"><b>Año:</b> 2022</li>
+                <li class="text-lg"><b>Duración:</b> 60 minutos (aproximadamente)</li>
+                <li class="text-lg"><b>Género:</b> Animación, Aventura, Interactivo</li>
+                <li class="text-lg"><b>Distribución:</b> Netflix</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-orange-500 mb-8 text-center">Galería del Viaje</h3>
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
+            <img src="fotos barbie/fotos barbie/41 Barbie Epic Road Trip (especial interactivo/Barbie epic road tip.jpg" alt="Barbie y sus hermanas en el auto deportivo" class="poster-img">
+            <img src="fotos barbie/fotos barbie/41 Barbie Epic Road Trip (especial interactivo/Barbie epic road tip (2).jpg" alt="Paisajes increíbles del viaje por carretera" class="poster-img">
+        </div>
+    </section>
+
+    <section id="ficha" class="py-12 content-box max-w-5xl mx-auto mt-12 animate__animated animate__fadeInUp">
+        <h3 class="text-3xl font-bold text-orange-500 mb-8">Ficha Técnica</h3>
+        <ul class="space-y-3 text-gray-700 text-lg">
+            <li><b>Título original:</b> Barbie: Epic Road Trip</li>
+            <li><b>Título en español:</b> Barbie: Viaje épico</li>
+            <li><b>Año de estreno:</b> 2022</li>
+            <li><b>Duración:</b> 60 minutos (aproximadamente)</li>
+            <li><b>Director:</b> Mattel Creations</li>
+            <li><b>Producción:</b> Mattel</li>
+            <li><b>Género:</b> Animación, Aventura, Interactivo</li>
+            <li><b>Distribución:</b> Netflix</li>
+        </ul>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="animate__animated animate__fadeIn">
+                <h3 class="text-3xl font-bold text-orange-500 mb-8">Resumen completo de la historia</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    En Barbie: Viaje épico, Barbie y sus hermanas (Skipper, Stacie y Chelsea) emprenden un emocionante viaje por carretera en su auto deportivo a través de paisajes increíbles, con el objetivo de llegar a un festival de música en un destino lejano.
+                </p>
+                
+                <div class="decision-point">
+                    <strong>¡Característica única!</strong> Este no es un viaje cualquiera: ¡tú, el espectador, eres quien toma las decisiones en el camino!
+                </div>
+
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    A lo largo de la película, Barbie y sus hermanas se enfrentan a diferentes situaciones en las que pueden tomar diversas rutas y decisiones. El destino del viaje depende completamente de las elecciones que hagas, lo que hace que cada visualización sea única.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Las decisiones incluyen desde qué música escuchar en el camino hasta cómo resolver pequeños contratiempos que surgen durante el viaje, como averías del coche o lugares interesantes que podrían ser explorados.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Cada vez que el espectador elige una opción, la historia cambia de rumbo, llevando a Barbie y sus hermanas por nuevas y emocionantes experiencias. En su trayecto, las chicas descubren nuevos lugares, hacen paradas en ciudades encantadoras, interactúan con personajes divertidos y resuelven desafíos.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    A lo largo de su viaje, Barbie y sus hermanas aprenden que lo más importante no es solo llegar al destino, sino disfrutar del viaje, enfrentarse a lo inesperado con optimismo y trabajar juntas para superar cualquier reto.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="mb-12">
+            <h3 class="text-3xl font-bold text-orange-500 mb-8">Mensaje central y temas clave</h3>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "El viaje es tan importante como el destino, y lo que importa es disfrutar del camino junto a quienes amas."</p>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "Las decisiones que tomamos, grandes y pequeñas, pueden cambiar el rumbo de nuestras aventuras y de nuestras vidas."</p>
+            <div class="road-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li><b>Aventura y exploración:</b> La importancia de descubrir el mundo y vivir nuevas experiencias</li>
+                    <li><b>Trabajo en equipo:</b> Tomar decisiones juntos y apoyarse mutuamente</li>
+                    <li><b>Vivir el momento:</b> Apreciar cada experiencia y disfrutar del presente</li>
+                    <li><b>Toma de decisiones:</b> Cómo nuestras elecciones moldean nuestro camino</li>
+                    <li><b>Flexibilidad y adaptación:</b> Aprender a manejar lo inesperado con optimismo</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-orange-500 mb-8">Notas especiales</h3>
+            <div class="road-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Especial interactivo que permite al espectador tomar decisiones durante la película</li>
+                    <li>Cada visualización es única gracias a las diferentes opciones disponibles</li>
+                    <li>Las decisiones van desde simples (música, comida) hasta complejas (resolver problemas)</li>
+                    <li>Fomenta la creatividad, toma de decisiones y disfrute del momento presente</li>
+                    <li>Ideal para ver en familia, ya que cada elección puede cambiar la historia</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-orange-500 mb-8 text-center">Compañeros de Viaje</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-orange-500 mb-3">🚗 Barbie Conductora</h4>
+                <p class="text-gray-700">Lidera el viaje épico con sus hermanas, mostrando que la aventura está en el camino, no solo en el destino.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-orange-500 mb-3">👧 Skipper</h4>
+                <p class="text-gray-700">La hermana mayor que aporta su estilo único y perspectiva fresca a cada decisión del viaje.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-orange-500 mb-3">👧 Stacie</h4>
+                <p class="text-gray-700">Llena de energía y entusiasmo, siempre lista para la siguiente aventura en el camino.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-orange-500 mb-3">👶 Chelsea</h4>
+                <p class="text-gray-700">La más pequeña que ve la magia en cada parada y descubre la alegría en lo simple.</p>
+            </div>
+            <div class="feature-card character-companion">
+                <h4 class="text-xl font-bold text-orange-500 mb-3">Auto Deportivo</h4>
+                <p class="text-gray-700">El fiel compañero de viaje que lleva a las hermanas a través de paisajes increíbles.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-orange-500 mb-3">🎮 Tú, el Espectador</h4>
+                <p class="text-gray-700">El copiloto invisible que toma las decisiones que moldean esta aventura única.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-orange-500 mb-8 text-center">Decisiones del Camino</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-orange-500 mb-3">🎵 Elecciones Musicales</h4>
+                <p class="text-gray-700">Decide qué canciones escuchar durante el viaje, creando la banda sonora perfecta para cada momento.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-orange-500 mb-3">🛣️ Rutas Alternativas</h4>
+                <p class="text-gray-700">Elige entre diferentes caminos que llevan a destinos y experiencias completamente distintas.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-orange-500 mb-3">🍕 Paradas Gastronómicas</h4>
+                <p class="text-gray-700">Selecciona dónde y qué comer, descubriendo delicias locales en el camino.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-orange-500 mb-3">🔧 Solución de Problemas</h4>
+                <p class="text-gray-700">Ayuda a las hermanas a resolver contratiempos como averías o desafíos inesperados.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-orange-500 mb-8 text-center">¿Qué camino tomarías?</h3>
+        <div class="road-path">
+            <h4 class="text-xl font-bold text-teal-600 mb-4">Escenario: Encuentras una bifurcación en el camino</h4>
+            <div class="grid md:grid-cols-2 gap-6 mt-6">
+                <div class="decision-point">
+                    <h5 class="font-bold mb-2">🏞️ Camino de la Montaña</h5>
+                    <p class="text-sm">Paisajes espectaculares pero camino sinuoso. Podrías encontrar vistas increíbles pero el viaje será más largo.</p>
+                </div>
+                <div class="decision-point">
+                    <h5 class="font-bold mb-2">🏖️ Camino Costero</h5>
+                    <p class="text-sm">Playas hermosas y pueblos pesqueros. Más relajado pero podrías encontrar tráfico turístico.</p>
+                </div>
+            </div>
+            <p class="text-center mt-6 text-gray-600 italic">En la película, ¡tú decides! Cada elección lleva a aventuras completamente diferentes.</p>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12 text-center">
+        <h3 class="text-3xl font-bold text-orange-500 mb-8">¡Comienza Tu Aventura!</h3>
+        <p class="text-gray-700 mb-8 text-lg">
+            Podés ver Barbie: Viaje épico en Netflix y crear tu propia aventura única:
+        </p>
+        <a href="https://www.youtube.com/watch?v=Ei3_K2MfDwc&list=PLRbLPM2ZQrMBYQ9IkS5z-MgrY0eY095G0" id="verPeliLink" class="button text-xl px-12 py-4" target="_blank">Ver en Netflix</a>
+        <p class="text-gray-600 mt-4 text-lg">¡Cada vez que la veas será una experiencia diferente!</p>
+    </section>
+
+    <footer class="bg-orange-500 text-white mt-16 content-box max-w-6xl mx-auto mb-12 rounded-2xl shadow-2xl">
+        <div class="py-12 px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="text-xl font-bold">Barbie Movies</h4>
+                <p class="mt-3 text-lg">Explora el mundo mágico de todas las películas de Barbie™.</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Navegación</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="index.html" class="hover:text-yellow-200 transition-colors">Inicio</a></li>
+                    <li><a href="peliculas.html" class="hover:text-yellow-200 transition-colors">Películas</a></li>
+                    <li><a href="videos.html" class="hover:text-yellow-200 transition-colors">Videos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Redes</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="https://www.facebook.com/share/17SzdE5NAC/" target="_blank">Facebook</a></li>
+      	            <li><a href="https://www.instagram.com/barbie?igsh=MWs0bWpkbzV2aXMxdw==" target="_blank">Instagram</a></li>
+      	            <li><a href="https://www.youtube.com/@barbielatinoamericano" target="_blank">YouTube</a></li>
+              	</ul>
+            </div>
+        </div>
+        <div class="text-center py-6 bg-orange-600 text-lg rounded-b-2xl">
+            © 2025 Mattel | Sitio de fans, no oficial
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    (function createParticles() {
+        const count = 35;
+        const container = document.getElementById('particles');
+        
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement('div');
+            const particleType = Math.random();
+            
+            if (particleType < 0.5) {
+                el.className = 'particle road-sparkle';
+                const size = 8 + Math.random() * 15;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else if (particleType < 0.8) {
+                el.className = 'particle map-icon';
+                const size = 6 + Math.random() * 12;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else {
+                el.className = 'particle road-sign';
+                const width = 4 + Math.random() * 8;
+                const height = 15 + Math.random() * 25;
+                el.style.width = width + 'px';
+                el.style.height = height + 'px';
+            }
+            
+            el.style.left = (Math.random() * 100) + '%';
+            el.style.top = (Math.random() * 100) + '%';
+            el.style.animationDuration = (10 + Math.random() * 15) + 's';
+            el.style.animationDelay = (Math.random() * 8) + 's';
+            
+            container.appendChild(el);
+        }
+    })();
+</script>
+
+</body>
+</html>

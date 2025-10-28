@@ -1,0 +1,477 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbie en el Cascanueces - Barbie Dates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a237e 0%, #4a148c 30%, #880e4f 70%, #f8bbd0 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            opacity: 0.7;
+            animation: floatParticles infinite ease-in-out;
+        }
+
+        .snowflake {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(224, 247, 250, 0.3) 70%);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+        }
+
+        .magic-sparkle {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.9), rgba(255, 193, 7, 0.4) 70%);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            border-radius: 50%;
+        }
+
+        .ballet-slipper {
+            background: linear-gradient(45deg, #f8bbd0, #e91e63);
+            border-radius: 60% 40% 40% 60%;
+        }
+
+        @keyframes floatParticles {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-25px) translateX(8px) rotate(90deg) scale(1.1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-15px) translateX(-5px) rotate(180deg) scale(0.95);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateY(-30px) translateX(5px) rotate(270deg) scale(1.05);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg) scale(1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes balletTwirl {
+            0%, 100% {
+                transform: rotate(0deg) scale(1);
+            }
+            25% {
+                transform: rotate(90deg) scale(1.1);
+            }
+            50% {
+                transform: rotate(180deg) scale(1);
+            }
+            75% {
+                transform: rotate(270deg) scale(1.1);
+            }
+        }
+
+        @keyframes nutcrackerMarch {
+            0%, 100% {
+                transform: translateX(0) rotate(0deg);
+            }
+            25% {
+                transform: translateX(5px) rotate(2deg);
+            }
+            75% {
+                transform: translateX(-5px) rotate(-2deg);
+            }
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            margin-top: 2rem;
+            border: 4px solid #e91e63;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #e91e63, #4a148c, #1a237e);
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+
+        h1.barbie-font {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #e91e63;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .poster-img {
+            border-radius: 2rem;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 4px solid #4a148c;
+        }
+
+        .poster-img:hover {
+            transform: scale(1.07);
+            box-shadow: 0 25px 55px rgba(233, 30, 99, 0.4);
+        }
+
+        a.button {
+            background: linear-gradient(135deg, #e91e63, #4a148c);
+            color: white;
+            padding: 1rem 2.2rem;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            font-size: 1.1rem;
+        }
+
+        a.button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(233, 30, 99, 0.5);
+            background: linear-gradient(135deg, #4a148c, #e91e63);
+        }
+
+        .ballet-theme {
+            background: linear-gradient(135deg, #1a237e, #4a148c, #880e4f, #e91e63);
+            background-size: 400% 400%;
+            animation: balletShift 15s ease infinite;
+        }
+
+        @keyframes balletShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .ballet-icon {
+            display: inline-block;
+            animation: balletTwirl 3s ease-in-out infinite;
+        }
+
+        .nutcracker-icon {
+            display: inline-block;
+            animation: nutcrackerMarch 2s ease-in-out infinite;
+        }
+
+        .ballet-border {
+            border-left: 6px solid;
+            border-image: linear-gradient(to bottom, #e91e63, #4a148c, #1a237e) 1;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .snow-divider {
+            height: 60px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23ffffff"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23ffffff"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23ffffff"/></svg>');
+            background-size: 1200px 60px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #fce4ec, #f3e5f5);
+            border-radius: 1.2rem;
+            padding: 1.8rem;
+            margin: 1rem 0;
+            border: 3px solid #e91e63;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .historical-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #e91e63, #4a148c);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<div class="wrap">
+
+    <header class="bg-white shadow-lg content-box max-w-6xl mx-auto mt-4 flex justify-between items-center px-6 py-4">
+        <h1 class="barbie-font italic">Barbie Dates</h1>
+        <nav class="space-x-6">
+            <a href="index.html" class="button">Inicio</a>
+            <a href="peliculas.html" class="button">Películas</a>
+            <a href="videos.html" class="button">Videos</a>
+        </nav>
+    </header>
+
+    <section class="text-center py-24 content-box max-w-6xl mx-auto mt-8 ballet-theme rounded-2xl shadow-2xl animate__animated animate__fadeIn relative">
+        <div class="historical-badge">PRIMERA PELÍCULA ANIMADA</div>
+        <h2 class="text-white text-5xl font-extrabold mb-6 animate__animated animate__bounce" style="text-shadow: 3px 3px 8px rgba(0,0,0,0.5);">
+            <span class="ballet-icon"></span> Barbie en el Cascanueces <span class="nutcracker-icon"></span>
+        </h2>
+        <p class="text-white text-xl max-w-2xl mx-auto mb-8" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Donde la magia navideña y el ballet se encuentran en una aventura inolvidable</p>
+        <div class="space-x-6">
+            <a href="#ficha" class="button">Ver ficha</a>
+            <a href="peliculas.html" class="button">Ver catálogo</a>
+        </div>
+    </section>
+
+    <div class="snow-divider my-12"></div>
+
+    <section id="pelicula" class="max-w-5xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-12 items-center content-box mt-8">
+        <img src="fotos de inicio/barbie cascanueces.jpg" alt="Poster de Barbie en el Cascanueces" class="poster-img">
+        <div>
+            <h3 class="text-3xl font-bold text-purple-600 mb-6">Sinopsis</h3>
+            <p class="text-gray-700 mb-6 text-lg">Barbie narra la historia de Clara, una joven valiente que recibe un cascanueces mágico en Nochebuena y es transportada a un mundo encantado donde debe ayudar al príncipe Eric a derrotar al malvado Rey Ratón y restaurar la paz en el Reino de los Dulces.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li class="text-lg"><b>Año:</b> 2001</li>
+                <li class="text-lg"><b>Duración:</b> 76 minutos</li>
+                <li class="text-lg"><b>Género:</b> Fantasía, Aventura, Musical</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8 text-center">Galería Mágica</h3>
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
+            <img src="fotos barbie/fotos barbie/1 cascanueces/Barbie el cascanueces.jpg" alt="Clara y el Cascanueces en el mundo mágico" class="poster-img">
+            <img src="fotos barbie/fotos barbie/1 cascanueces/Barbie el cascanueces (2).jpg" alt="El Reino de los Dulces" class="poster-img">
+        </div>
+    </section>
+
+    <section id="ficha" class="py-12 content-box max-w-5xl mx-auto mt-12 animate__animated animate__fadeInUp">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8">Ficha Técnica</h3>
+        <ul class="space-y-3 text-gray-700 text-lg">
+            <li><b>Título original:</b> Barbie in the Nutcracker</li>
+            <li><b>Título en español:</b> Barbie en el Cascanueces</li>
+            <li><b>Año de estreno:</b> 2001</li>
+            <li><b>Duración:</b> 76 minutos</li>
+            <li><b>Director:</b> Owen Hurley</li>
+            <li><b>Música:</b> Pyotr Ilyich Tchaikovsky (adaptación del ballet original)</li>
+            <li><b>Inspiración:</b> Basada en el cuento de E. T. A. Hoffmann y el ballet El Cascanueces</li>
+            <li><b>Producción:</b> Mainframe Entertainment y Mattel Entertainment</li>
+        </ul>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="animate__animated animate__fadeIn">
+                <h3 class="text-3xl font-bold text-purple-600 mb-8">Resumen completo de la historia</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    La historia comienza con Barbie como narradora, contándole un cuento a su hermana menor, Kelly, quien se siente insegura sobre su desempeño en una presentación de ballet. Para inspirarla, Barbie le cuenta la historia de Clara.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Clara vive con su tía Elizabeth y su hermano pequeño Tommy. En Nochebuena, su tía le regala un hermoso cascanueces de madera, obsequio que originalmente pertenecía a la madre de Clara.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Esa noche, Clara es despertada por ruidos extraños y se encuentra con que el cascanueces ha cobrado vida y está luchando contra el malvado Rey Ratón. Durante la pelea, Clara interviene y es encogida mágicamente al tamaño del cascanueces.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Juntos, son transportados a un mundo mágico conquistado por el Rey Ratón, donde descubren que el Cascanueces es en realidad el príncipe Eric, quien fue maldecido.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Para romper el hechizo, Clara y el Cascanueces deben encontrar la Princesa de Azúcar y el Corazón de Dulzura, enfrentando múltiples obstáculos y las trampas del Rey Ratón.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Durante la batalla final, Clara se sacrifica para proteger al Cascanueces, demostrando un acto de puro coraje que rompe el hechizo y libera el reino.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="mb-12">
+            <h3 class="text-3xl font-bold text-purple-600 mb-8">Mensaje central y temas clave</h3>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "Todo es posible si crees en ti mismo y no te das por vencido."</p>
+            <div class="ballet-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Valor frente al miedo</li>
+                    <li>Sacrificio desinteresado</li>
+                    <li>Autoestima y confianza personal</li>
+                    <li>El poder del amor y la amistad</li>
+                    <li>Superación de la inseguridad</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-purple-600 mb-8">Notas especiales</h3>
+            <div class="ballet-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Fue la primera película animada por computadora de Barbie</li>
+                    <li>Incluye música original del ballet El Cascanueces, interpretada por la Orquesta Sinfónica de Londres</li>
+                    <li>La coreografía de ballet fue realizada con captura de movimiento por bailarines profesionales</li>
+                    <li>Clara es presentada como una protagonista activa, valiente y compasiva, rompiendo con los estereotipos de princesas pasivas</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8 text-center">Personajes Principales</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">👸 Clara</h4>
+                <p class="text-gray-700">Una joven valiente y compasiva que demuestra coraje excepcional al enfrentar el mal y sacrificarse por los demás.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🤴 Príncipe Eric / Cascanueces</h4>
+                <p class="text-gray-700">Un príncipe maldecido que recupera su forma humana gracias al acto de valentía de Clara.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🐭 Rey Ratón</h4>
+                <p class="text-gray-700">El villano que ha conquistado el Reino de los Dulces y representa la oscuridad y el miedo.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🍬 Princesa de Azúcar</h4>
+                <p class="text-gray-700">La guardiana del Corazón de Dulzura, que ayuda a Clara en su misión para restaurar la paz.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8 text-center">Legado Histórico</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🎬 Primera Animación CGI</h4>
+                <p class="text-gray-700">Marcó el inicio de la era de animación por computadora para las películas de Barbie, estableciendo un nuevo estándar visual.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🎵 Música Clásica</h4>
+                <p class="text-gray-700">Presentó la música de Tchaikovsky a nuevas generaciones, combinando tradición clásica con animación moderna.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">💃 Innovación en Coreografía</h4>
+                <p class="text-gray-700">Utilizó tecnología de captura de movimiento con bailarines profesionales para crear secuencias de ballet auténticas.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🌟 Protagonista Empoderada</h4>
+                <p class="text-gray-700">Clara rompió moldes como una heroína activa y valiente, inspirando a niñas a ser protagonistas de sus propias aventuras.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12 text-center">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8">Revive la Magia Navideña</h3>
+        <p class="text-gray-700 mb-8 text-lg">
+            Podés ver Barbie en el Cascanueces haciendo clic en el siguiente enlace:
+        </p>
+        <a href="https://www.youtube.com/watch?v=PO61tMqSgSw" id="verPeliLink" class="button text-xl px-12 py-4" target="_blank">Ver película</a>
+    </section>
+
+    <footer class="bg-purple-600 text-white mt-16 content-box max-w-6xl mx-auto mb-12 rounded-2xl shadow-2xl">
+        <div class="py-12 px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="text-xl font-bold">Barbie Movies</h4>
+                <p class="mt-3 text-lg">Explora el mundo mágico de todas las películas de Barbie™.</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Navegación</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="index.html" class="hover:text-yellow-300 transition-colors">Inicio</a></li>
+                    <li><a href="peliculas.html" class="hover:text-yellow-300 transition-colors">Películas</a></li>
+                    <li><a href="videos.html" class="hover:text-yellow-300 transition-colors">Videos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Redes</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="https://www.facebook.com/share/17SzdE5NAC/" target="_blank">Facebook</a></li>
+      	            <li><a href="https://www.instagram.com/barbie?igsh=MWs0bWpkbzV2aXMxdw==" target="_blank">Instagram</a></li>
+                  	<li><a href="https://www.youtube.com/@barbielatinoamericano" target="_blank">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center py-6 bg-purple-700 text-lg rounded-b-2xl">
+            © 2025 Mattel | Sitio de fans, no oficial
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    (function createParticles() {
+        const count = 35;
+        const container = document.getElementById('particles');
+        
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement('div');
+            const particleType = Math.random();
+            
+            if (particleType < 0.6) {
+                el.className = 'particle snowflake';
+                const size = 6 + Math.random() * 12;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else if (particleType < 0.85) {
+                el.className = 'particle magic-sparkle';
+                const size = 8 + Math.random() * 15;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else {
+                el.className = 'particle ballet-slipper';
+                const width = 8 + Math.random() * 12;
+                const height = 15 + Math.random() * 20;
+                el.style.width = width + 'px';
+                el.style.height = height + 'px';
+            }
+            
+            el.style.left = (Math.random() * 100) + '%';
+            el.style.top = (Math.random() * 100) + '%';
+            el.style.animationDuration = (10 + Math.random() * 15) + 's';
+            el.style.animationDelay = (Math.random() * 8) + 's';
+            
+            container.appendChild(el);
+        }
+    })();
+</script>
+
+</body>
+</html>

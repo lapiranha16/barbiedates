@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbie y las 12 Princesas Bailarinas- Barbie Dates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #8B4513 0%, #D2B48C 25%, #F5F5DC 50%, #E6E6FA 75%, #DDA0DD 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            opacity: 0.7;
+            animation: floatParticles infinite ease-in-out;
+        }
+
+        .ballet-slipper {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(221, 160, 221, 0.4) 70%);
+            box-shadow: 0 0 10px rgba(221, 160, 221, 0.5);
+            border-radius: 50%;
+        }
+
+        .magic-pearl {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(147, 197, 253, 0.4) 70%);
+            box-shadow: 0 0 12px rgba(147, 197, 253, 0.6);
+            border-radius: 50%;
+        }
+
+        .royal-jewel {
+            background: linear-gradient(45deg, #8B4513, #DDA0DD);
+            border-radius: 50% 50% 0 0;
+        }
+
+        @keyframes floatParticles {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-25px) translateX(8px) rotate(90deg) scale(1.1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-15px) translateX(-5px) rotate(180deg) scale(0.95);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateY(-30px) translateX(5px) rotate(270deg) scale(1.05);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg) scale(1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes danceTwirl {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-8px) rotate(2deg);
+            }
+            75% {
+                transform: translateY(-12px) rotate(-2deg);
+            }
+        }
+
+        @keyframes royalGlow {
+            0%, 100% {
+                opacity: 0.8;
+                filter: brightness(1);
+            }
+            50% {
+                opacity: 1;
+                filter: brightness(1.3);
+            }
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            margin-top: 2rem;
+            border: 4px solid #DDA0DD;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #8B4513, #D2B48C, #F5F5DC, #DDA0DD);
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+
+        h1.barbie-font {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #8B4513;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .poster-img {
+            border-radius: 2rem;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 4px solid #DDA0DD;
+        }
+
+        .poster-img:hover {
+            transform: scale(1.07);
+            box-shadow: 0 25px 55px rgba(221, 160, 221, 0.4);
+        }
+
+        a.button {
+            background: linear-gradient(135deg, #8B4513, #DDA0DD);
+            color: white;
+            padding: 1rem 2.2rem;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            font-size: 1.1rem;
+        }
+
+        a.button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(221, 160, 221, 0.5);
+            background: linear-gradient(135deg, #DDA0DD, #8B4513);
+        }
+
+        .ballet-theme {
+            background: linear-gradient(135deg, #8B4513, #D2B48C, #F5F5DC, #E6E6FA, #DDA0DD);
+            background-size: 400% 400%;
+            animation: oceanShift 18s ease infinite;
+        }
+
+        @keyframes oceanShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .ballet-icon {
+            display: inline-block;
+            animation: danceTwirl 4s ease-in-out infinite;
+        }
+
+        .royal-icon {
+            display: inline-block;
+            animation: royalGlow 3s ease-in-out infinite;
+        }
+
+        .royal-border {
+            border-left: 6px solid;
+            border-image: linear-gradient(to bottom, #8B4513, #D2B48C, #DDA0DD) 1;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .wave-divider {
+            height: 60px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="%23DDA0DD"/></svg>');
+            background-size: 1200px 60px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #ecfeff, #cffafe);
+            border-radius: 1.2rem;
+            padding: 1.8rem;
+            margin: 1rem 0;
+            border: 3px solid #DDA0DD;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .sequel-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #8B4513, #DDA0DD);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        .character-companion {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .character-companion::before {
+            content: "👑";
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<div class="wrap">
+
+    <header class="bg-white shadow-lg content-box max-w-6xl mx-auto mt-4 flex justify-between items-center px-6 py-4">
+        <h1 class="barbie-font italic">Barbie Dates</h1>
+        <nav class="space-x-6">
+            <a href="index.html" class="button">Inicio</a>
+            <a href="peliculas.html" class="button">Películas</a>
+            <a href="videos.html" class="button">Videos</a>
+        </nav>
+    </header>
+
+    <section class="text-center py-24 content-box max-w-6xl mx-auto mt-8 ballet-theme rounded-2xl shadow-2xl animate__animated animate__fadeIn relative">
+        <div class="sequel-badge">MUSICAL CLÁSICO</div>
+        <h2 class="text-white text-5xl font-extrabold mb-6 animate__animated animate__bounce" style="text-shadow: 3px 3px 8px rgba(0,0,0,0.5);">
+            <span class="ballet-icon"></span> Barbie y las 12 Princesas Bailarinas <span class="royal-icon"></span>
+        </h2>
+        <p class="text-white text-xl max-w-2xl mx-auto mb-8" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Donde la danza y la unión familiar vencen cualquier obstáculo</p>
+        <div class="space-x-6">
+            <a href="#ficha" class="button">Ver ficha</a>
+            <a href="peliculas.html" class="button">Ver catálogo</a>
+        </div>
+    </section>
+
+    <div class="wave-divider my-12"></div>
+
+    <section id="pelicula" class="max-w-5xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-12 items-center content-box mt-8">
+        <img src="fotos de inicio/barbie y las 12 princesas.png" alt="Poster de Barbie y las 12 Princesas Bailarinas" class="poster-img">
+        <div>
+            <h3 class="text-3xl font-bold text-purple-600 mb-6">Sinopsis</h3>
+            <p class="text-gray-700 mb-6 text-lg">Las 12 princesas Avalor viven en un castillo con su padre después de la muerte de su madre. Su pasión por la danza se ve amenazada cuando su malvado tío Derek llega para tomar el trono y prohibirles bailar.</p>
+            <p class="text-gray-700 mb-6 text-lg">Cada noche, las princesas escapan a través de una puerta mágica al Reino Encantado, donde pueden bailar libremente. Con la ayuda de su tutora Genevieve, desafían al tío malvado en una aventura llena de música, magia y baile.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li class="text-lg"><b>Año:</b> 2006</li>
+                <li class="text-lg"><b>Duración:</b> 85 minutos</li>
+                <li class="text-lg"><b>Género:</b> Fantasía, Musical, Aventura</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8 text-center">Galería Real</h3>
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
+            <img src="fotos barbie/fotos barbie/9 barbie12 bailarinas/Barbie y las 12 bailarinas.jpg" alt="Las 12 princesas bailando" class="poster-img">
+            <img src="fotos barbie/fotos barbie/9 barbie12 bailarinas/Barbie y las 12 bailarinas (2).jpg" alt="El Reino Encantado" class="poster-img">
+        </div>
+    </section>
+
+    <section id="ficha" class="py-12 content-box max-w-5xl mx-auto mt-12 animate__animated animate__fadeInUp">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8">Ficha Técnica</h3>
+        <ul class="space-y-3 text-gray-700 text-lg">
+            <li><b>Título original:</b> Barbie in the 12 Dancing Princesses</li>
+            <li><b>Título en español:</b> Barbie y las 12 princesas bailarinas</li>
+            <li><b>Año de estreno:</b> 2006</li>
+            <li><b>Duración:</b> 85 minutos</li>
+            <li><b>Director:</b> Greg Richardson</li>
+            <li><b>Producción:</b> Mainframe Entertainment y Mattel Entertainment</li>
+            <li><b>Género:</b> Fantasía, Musical, Aventura</li>
+            <li><b>Música:</b> Arnie Roth</li>
+        </ul>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="animate__animated animate__fadeIn">
+                <h3 class="text-3xl font-bold text-purple-600 mb-8">Resumen completo de la historia</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    La película cuenta la historia de las 12 princesas Avalor, quienes viven en un castillo con su padre, el rey, después de la muerte de su madre. Las princesas tienen una gran pasión por la danza, pero su vida cambia cuando su malvado tío Derek llega con la intención de tomar el trono y prohibirles bailar.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Cada noche, las princesas escapan a través de una puerta mágica en el sótano que las lleva a un mundo secreto llamado el Reino Encantado. Allí, pueden bailar libremente y disfrutar de su pasión sin miedo a las prohibiciones de Derek.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Para proteger a las princesas, se contrata a una joven tutora llamada Genevieve, quien descubre el secreto de las chicas y las ayuda a mantener su libertad y a desafiar al tío malvado.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Genevieve se une a las princesas en una aventura llena de música, magia y baile para desvelar la verdad, recuperar el castillo y restaurar la justicia.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    A lo largo del filme, las princesas muestran que la unión familiar, la pasión y la perseverancia pueden vencer cualquier obstáculo.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="mb-12">
+            <h3 class="text-3xl font-bold text-purple-600 mb-8">Mensaje central y temas clave</h3>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "La pasión y la unidad familiar son fuerzas poderosas que pueden superar cualquier desafío."</p>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "Nunca dejes que otros apaguen tu luz o te impidan seguir tus sueños."</p>
+            <div class="royal-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Importancia de la familia y la unión: las princesas trabajan juntas para protegerse y cumplir sus sueños</li>
+                    <li>Seguir tus pasiones: la danza es símbolo de libertad y autoexpresión</li>
+                    <li>Luchar contra la injusticia: enfrentan a un villano que busca controlar y limitar</li>
+                    <li>Magia y fantasía: la puerta secreta y el Reino Encantado agregan misterio y encanto</li>
+                    <li>Valor y confianza: Genevieve y las princesas aprenden a confiar en sí mismas</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-purple-600 mb-8">Notas especiales</h3>
+            <div class="royal-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Esta es una de las pocas películas de Barbie que es un musical completo, con numerosas piezas de ballet y canciones</li>
+                    <li>La animación incluye bellas escenas de danza que inspiran a la audiencia a valorar el arte y el movimiento</li>
+                    <li>Fue muy bien recibida por su combinación de música, historia y personajes femeninos fuertes</li>
+                    <li>La historia está basada en el cuento clásico "Las doce princesas bailarinas" de los Hermanos Grimm</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8 text-center">Personajes Principales</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">👑 Las 12 Princesas</h4>
+                <p class="text-gray-700">Cada una con personalidad única pero unidas por su amor al baile y la familia, demostrando que juntas son invencibles.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">📚 Genevieve</h4>
+                <p class="text-gray-700">La tutora que se convierte en aliada clave, mostrando que la verdadera enseñanza viene del corazón.</p>
+            </div>
+            <div class="feature-card character-companion">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">Rey Randolph</h4>
+                <p class="text-gray-700">El padre amoroso que debe encontrar el equilibrio entre proteger a sus hijas y dejarlas florecer.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">😠 Tío Derek</h4>
+                <p class="text-gray-700">El villano que representa la opresión y el intento de apagar la creatividad y libertad de las princesas.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🌹 Reino Encantado</h4>
+                <p class="text-gray-700">El mundo mágico donde las princesas pueden bailar libremente, simbolizando la esperanza y los sueños.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🩰 La Danza</h4>
+                <p class="text-gray-700">No es solo un personaje, sino el corazón de la historia, representando libertad, expresión y unión.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8 text-center">Elementos Destacados</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🎵 Musical Completo</h4>
+                <p class="text-gray-700">Una de las pocas películas de Barbie con numerosas piezas de ballet y canciones originales.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🏰 Inspiración Clásica</h4>
+                <p class="text-gray-700">Basada en el cuento de los Hermanos Grimm, manteniendo la esencia mágica pero con un toque moderno.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">💪 Personajes Femeninos Fuertes</h4>
+                <p class="text-gray-700">Doce princesas con personalidades distintas pero igualmente valientes y determinadas.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🎨 Animación Elegante</h4>
+                <p class="text-gray-700">Las escenas de baile están especialmente cuidadas, con movimientos fluidos y coreografías elaboradas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12 text-center">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8">Únete al Baile Mágico</h3>
+        <p class="text-gray-700 mb-8 text-lg">
+            Podés ver Barbie y las 12 Princesas Bailarinas haciendo clic en el siguiente enlace:
+        </p>
+        <a href="https://www.youtube.com/watch?v=z0JCte-xtAA&list=PLscMi9GaG7w0f2SscFGKkrGeajCp-uMvP" id="verPeliLink" class="button text-xl px-12 py-4" target="_blank">Ver película</a>
+    </section>
+
+    <footer class="bg-purple-600 text-white mt-16 content-box max-w-6xl mx-auto mb-12 rounded-2xl shadow-2xl">
+        <div class="py-12 px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="text-xl font-bold">Barbie Movies</h4>
+                <p class="mt-3 text-lg">Explora el mundo mágico de todas las películas de Barbie™.</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Navegación</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="index.html" class="hover:text-yellow-300 transition-colors">Inicio</a></li>
+                    <li><a href="peliculas.html" class="hover:text-yellow-300 transition-colors">Películas</a></li>
+                    <li><a href="videos.html" class="hover:text-yellow-300 transition-colors">Videos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Redes</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="https://www.facebook.com/share/17SzdE5NAC/" target="_blank">Facebook</a></li>
+      	            <li><a href="https://www.instagram.com/barbie?igsh=MWs0bWpkbzV2aXMxdw==" target="_blank">Instagram</a></li>
+      	            <li><a href="https://www.youtube.com/@barbielatinoamericano" target="_blank">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center py-6 bg-purple-700 text-lg rounded-b-2xl">
+            © 2025 Mattel | Sitio de fans, no oficial
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    (function createParticles() {
+        const count = 35;
+        const container = document.getElementById('particles');
+        
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement('div');
+            const particleType = Math.random();
+            
+            if (particleType < 0.5) {
+                el.className = 'particle ballet-slipper';
+                const size = 8 + Math.random() * 15;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else if (particleType < 0.8) {
+                el.className = 'particle magic-pearl';
+                const size = 6 + Math.random() * 12;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else {
+                el.className = 'particle royal-jewel';
+                const width = 4 + Math.random() * 8;
+                const height = 15 + Math.random() * 25;
+                el.style.width = width + 'px';
+                el.style.height = height + 'px';
+            }
+            
+            el.style.left = (Math.random() * 100) + '%';
+            el.style.top = (Math.random() * 100) + '%';
+            el.style.animationDuration = (10 + Math.random() * 15) + 's';
+            el.style.animationDelay = (Math.random() * 8) + 's';
+            
+            container.appendChild(el);
+        }
+    })();
+</script>
+
+</body>
+</html>
+

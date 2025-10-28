@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbie Dates</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+html, body {
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+  overflow-x:hidden;
+  background: radial-gradient(circle at top left, #ffe4f7 0%, #ffc0e8 50%, #ffb3d9 100%);
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index:0;
+  animation: floatBG 30s linear infinite;
+}
+@keyframes floatBG {
+  0% { background-position: 0 0; }
+  100% { background-position: 1000px 1000px; }
+}
+
+.barbie-font { font-family:'Dancing Script', cursive; font-style:italic; }
+
+header {
+  display:flex; justify-content:space-between; align-items:center; padding:16px 24px;
+  background:#ff1493; color:white; border-radius:12px; margin-bottom:30px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.2);
+  position:relative; z-index:1;
+}
+header h1 { font-size:3rem; }
+nav ul { display:flex; gap:20px; list-style:none; }
+nav ul li a { color:white; text-decoration:none; font-weight:bold; transition: all 0.3s ease; }
+nav ul li a:hover { text-decoration:underline; color:#ffe4f7; text-shadow:0 0 5px #ff69b4; }
+
+.hero {
+  display:flex; flex-wrap:wrap; gap:30px; align-items:center; justify-content:center;
+  margin-bottom:40px;
+  background: rgba(255,255,255,0.85);
+  padding:40px; border-radius:24px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  transform:translateZ(0);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+.hero:hover { transform:scale(1.01); box-shadow:0 15px 35px rgba(0,0,0,0.25); }
+.hero .left { flex:1; min-width:280px; text-align:center; }
+.hero .left h2 { font-size:2.5rem; font-weight:bold; color:#ff1493; margin-bottom:12px; text-shadow:0 2px 8px rgba(255,20,147,0.3);}
+.hero .left p { color:#6b2a68; font-size:1.1rem; margin-bottom:16px; line-height:1.5; }
+.cta a { margin:6px; padding:12px 22px; border-radius:16px; font-weight:bold; cursor:pointer; display:inline-block; text-decoration:none; text-align:center; transition: all 0.3s ease; font-size:1rem; }
+.cta a.primary { background:#ff1493; color:white; box-shadow:0 5px 15px rgba(255,20,147,0.3); }
+.cta a.primary:hover { background:#ff69b4; transform:scale(1.15); box-shadow:0 8px 20px rgba(255,20,147,0.5); }
+.cta a.ghost { background:white; color:#ff1493; border:2px solid #ff1493; box-shadow:0 5px 15px rgba(255,20,147,0.2); }
+.cta a.ghost:hover { background:#ffe4f7; transform:scale(1.15); box-shadow:0 8px 20px rgba(255,20,147,0.4); }
+.poster img { max-width:300px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.25); transition: transform 0.3s ease; }
+.poster img:hover { transform:scale(1.05) rotateY(5deg); }
+
+footer {
+  background:linear-gradient(135deg, #ff1493, #ff69b4); color:white; text-align:center; padding:30px; border-radius:12px; margin-top:40px;
+  position:relative; z-index:1;
+}
+footer a { margin:0 12px; text-decoration:none; font-weight:bold; transition: all 0.3s ease; }
+footer a:hover { color:#ffe4f7; transform:scale(1.1); text-shadow:0 0 5px #ff1493; }
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1 class="barbie-font">Barbie Dates</h1>
+  <nav>
+	<ul>
+  	<li><a href="index.html">Inicio</a></li>
+  	<li><a href="peliculas.html">Películas</a></li>
+  	<li><a href="videos.html">Videos</a></li>
+	</ul>
+  </nav>
+</header>
+
+<section class="page hero">
+  <div class="left">
+	<h2>Bienvenida al Universo de Barbie</h2>
+	<p>Catálogo de películas con tarjetas grandes y fechas visibles.</p>
+	<div class="cta">
+  	<a href="catalogo barbie.html" class="primary">Ver catálogo</a>
+  	<a href="#" class="ghost" id="btnSuggest">Sugerime una</a>
+	</div>
+  </div>
+  <div class="poster">
+	<img src="fotos de inicio/barbie nashe.jpg" alt="Poster destacado">
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Barbie Movies Fan Page - No oficial</p>
+  <div>
+	<a href="https://www.instagram.com/barbie" target="_blank" rel="noopener noreferrer">Instagram</a> |
+	<a href="https://www.facebook.com/share/17SzdE5NAC/" target="_blank" rel="noopener noreferrer">Facebook</a> |
+	<a href="https://www.youtube.com/@barbielatinoamericano" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script>
+const peliculas = [
+  "Barbie Cascanueces.html","Barbie Rapunzel.html","Barbie en El Lago de los Cisnes.html",
+  "Barbie La Princesa y la Plebeya.html","Barbie Fairytopia.html","barbie 12 princesas.html",
+  "Barbie Mermaidia.html","barbie magia arcoiris.html","barbie magia pegaso.html",
+  "Barbie Diamantes.html","Barbie Mariposa.html","Barbie Navidad.html",
+  "Barbie pulgarcita.html","Barbie paris.html","Barbie Mosquetera.html",
+  "Barbie Sirena.html","Barbie Escuela.html","Barbie Hada.html",
+  "Barbie Sirenas 2.html","barbie isla princesas.html",
+  "Barbie caballo.html", "Barbie Mariposa Hada.html","Barbie Puerta Secreta.html",
+  "Barbie y la Estrella.html","Barbie Superpoderes.html", "Barbie Cachorros.html",
+  "Barbie Espías.html","Barbie Videojuego.html","Barbie tesoro.html","Barbie Delfin.html", 
+  "Barbie aventura princesa.html", "Barbie cumpleaños.html","Barbie City Dreams.html","barbie  rock.html",
+  "barbie diario.html","barbie perlas.html", "barbie navidad perfecta.html", "barbie zapas.html", 
+  "barbie poder sirena.html", "barbie epic road.html","barbie niñera.html", "barbie y stacie.html",
+  "barbie y teresa.html"
+];
+
+document.getElementById("btnSuggest").addEventListener("click", () => {
+  const aleatoria = peliculas[Math.floor(Math.random()*peliculas.length)];
+  window.location.href = aleatoria;
+});
+</script>
+
+</body>
+</html>

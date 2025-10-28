@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbie en un Cuento de Navidad - Barbie Dates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a472a 0%, #2d5a3c 25%, #3c6e4a 50%, #4a8261 75%, #5a9779 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            opacity: 0.7;
+            animation: floatParticles infinite ease-in-out;
+        }
+
+        .snowflake {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4) 70%);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+        }
+
+        .christmas-ornament {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(220, 53, 69, 0.4) 70%);
+            box-shadow: 0 0 12px rgba(220, 53, 69, 0.6);
+            border-radius: 50%;
+        }
+
+        .holly-leaf {
+            background: linear-gradient(45deg, #1a472a, #2d5a3c);
+            border-radius: 50% 50% 0 0;
+        }
+
+        @keyframes floatParticles {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-25px) translateX(8px) rotate(90deg) scale(1.1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-15px) translateX(-5px) rotate(180deg) scale(0.95);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateY(-30px) translateX(5px) rotate(270deg) scale(1.05);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg) scale(1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes snowFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-8px) rotate(5deg);
+            }
+            75% {
+                transform: translateY(-12px) rotate(-5deg);
+            }
+        }
+
+        @keyframes christmasGlow {
+            0%, 100% {
+                opacity: 0.8;
+                filter: brightness(1);
+            }
+            50% {
+                opacity: 1;
+                filter: brightness(1.3);
+            }
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            margin-top: 2rem;
+            border: 4px solid #dc3545;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #1a472a, #2d5a3c, #3c6e4a, #dc3545, #ffc107);
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+
+        h1.barbie-font {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #dc3545;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .poster-img {
+            border-radius: 2rem;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 4px solid #dc3545;
+        }
+
+        .poster-img:hover {
+            transform: scale(1.07);
+            box-shadow: 0 25px 55px rgba(220, 53, 69, 0.4);
+        }
+
+        a.button {
+            background: linear-gradient(135deg, #1a472a, #dc3545);
+            color: white;
+            padding: 1rem 2.2rem;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            font-size: 1.1rem;
+        }
+
+        a.button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(220, 53, 69, 0.5);
+            background: linear-gradient(135deg, #dc3545, #1a472a);
+        }
+
+        .christmas-theme {
+            background: linear-gradient(135deg, #1a472a, #2d5a3c, #3c6e4a, #dc3545, #ffc107);
+            background-size: 400% 400%;
+            animation: christmasShift 18s ease infinite;
+        }
+
+        @keyframes christmasShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .snow-icon {
+            display: inline-block;
+            animation: snowFloat 4s ease-in-out infinite;
+        }
+
+        .christmas-icon {
+            display: inline-block;
+            animation: christmasGlow 3s ease-in-out infinite;
+        }
+
+        .christmas-border {
+            border-left: 6px solid;
+            border-image: linear-gradient(to bottom, #1a472a, #2d5a3c, #dc3545) 1;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .wave-divider {
+            height: 60px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="%23dc3545"/></svg>');
+            background-size: 1200px 60px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 1.2rem;
+            padding: 1.8rem;
+            margin: 1rem 0;
+            border: 3px solid #dc3545;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .christmas-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #1a472a, #dc3545);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        .ghost-companion {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .ghost-companion::before {
+            content: "👻";
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<div class="wrap">
+
+    <header class="bg-white shadow-lg content-box max-w-6xl mx-auto mt-4 flex justify-between items-center px-6 py-4">
+        <h1 class="barbie-font italic">Barbie Dates</h1>
+        <nav class="space-x-6">
+            <a href="index.html" class="button">Inicio</a>
+            <a href="peliculas.html" class="button">Películas</a>
+            <a href="videos.html" class="button">Videos</a>
+        </nav>
+    </header>
+
+    <section class="text-center py-24 content-box max-w-6xl mx-auto mt-8 christmas-theme rounded-2xl shadow-2xl animate__animated animate__fadeIn relative">
+        <div class="christmas-badge">CLÁSICO NAVIDEÑO</div>
+        <h2 class="text-white text-5xl font-extrabold mb-6 animate__animated animate__bounce" style="text-shadow: 3px 3px 8px rgba(0,0,0,0.5);">
+            <span class="snow-icon"></span> Barbie en un Cuento de Navidad <span class="christmas-icon"></span>
+        </h2>
+        <p class="text-white text-xl max-w-2xl mx-auto mb-8" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Donde la magia de la Navidad transforma corazones</p>
+        <div class="space-x-6">
+            <a href="#ficha" class="button">Ver ficha</a>
+            <a href="peliculas.html" class="button">Ver catálogo</a>
+        </div>
+    </section>
+
+    <div class="wave-divider my-12"></div>
+
+    <section id="pelicula" class="max-w-5xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-12 items-center content-box mt-8">
+        <img src="fotos de inicio/barbie cuento de navida.jpg" alt="Poster de Barbie en un Cuento de Navidad" class="poster-img">
+        <div>
+            <h3 class="text-3xl font-bold text-red-600 mb-6">Sinopsis</h3>
+            <p class="text-gray-700 mb-6 text-lg">Esta película es una adaptación del clásico Cuento de Navidad de Charles Dickens, pero protagonizada por Barbie en el papel de Kristen, una talentosa y exitosa cantante que vive en Londres victoriano.</p>
+            <p class="text-gray-700 mb-6 text-lg">Kristen es conocida por su talento, pero también por ser egoísta y olvidarse del verdadero significado de la Navidad, preocupándose solo por su fama y éxito.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li class="text-lg"><b>Año:</b> 2008</li>
+                <li class="text-lg"><b>Duración:</b> 73 minutos</li>
+                <li class="text-lg"><b>Género:</b> Animación, Fantasía, Musical</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-red-600 mb-8 text-center">Galería Navideña</h3>
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
+            <img src="fotos barbie/fotos barbie/14 cuento de navidad/Barbie en un cuento de navidad.jpg" alt="Kristen en el Londres victoriano" class="poster-img">
+            <img src="fotos barbie/fotos barbie/14 cuento de navidad/Barbie en un cuento de navidad (2).jpg" alt="Los tres fantasmas navideños" class="poster-img">
+        </div>
+    </section>
+
+    <section id="ficha" class="py-12 content-box max-w-5xl mx-auto mt-12 animate__animated animate__fadeInUp">
+        <h3 class="text-3xl font-bold text-red-600 mb-8">Ficha Técnica</h3>
+        <ul class="space-y-3 text-gray-700 text-lg">
+            <li><b>Título original:</b> Barbie in a Christmas Carol</li>
+            <li><b>Título en español:</b> Barbie en un cuento de Navidad</li>
+            <li><b>Año de estreno:</b> 2008</li>
+            <li><b>Duración:</b> 73 minutos</li>
+            <li><b>Director:</b> William Lau</li>
+            <li><b>Producción:</b> Mainframe Entertainment y Mattel Entertainment</li>
+            <li><b>Género:</b> Animación, Fantasía, Musical</li>
+            <li><b>Música:</b> Arnie Roth</li>
+        </ul>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="animate__animated animate__fadeIn">
+                <h3 class="text-3xl font-bold text-red-600 mb-8">Resumen completo de la historia</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    Esta película es una adaptación del clásico Cuento de Navidad de Charles Dickens, pero protagonizada por Barbie en el papel de Kristen, una talentosa y exitosa cantante que vive en Londres victoriano.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Kristen es conocida por su talento, pero también por ser egoísta y olvidarse del verdadero significado de la Navidad, preocupándose solo por su fama y éxito.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    La víspera de Navidad, la visita de tres fantasmas –el Fantasma del Pasado, el Presente y el Futuro– la llevan en un viaje mágico a través de su vida, mostrándole cómo sus acciones han afectado a los demás y qué podría pasar si sigue siendo indiferente.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    A través de estas experiencias, Kristen comprende la importancia de la generosidad, el amor y la familia, y decide cambiar para mejor, ayudando a su comunidad y celebrando la Navidad con un corazón abierto.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="mb-12">
+            <h3 class="text-3xl font-bold text-red-600 mb-8">Mensaje central y temas clave</h3>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "La Navidad es tiempo de amor, generosidad y cambio personal."</p>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "Reconocer nuestros errores y abrir el corazón puede transformar nuestra vida y la de quienes nos rodean."</p>
+            <div class="christmas-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Redención y transformación personal</li>
+                    <li>Importancia de la empatía y la generosidad</li>
+                    <li>Valor de la familia y la comunidad</li>
+                    <li>Espíritu navideño y esperanza</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-red-600 mb-8">Notas especiales</h3>
+            <div class="christmas-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Adaptación infantil y musical del clásico cuento de Dickens, con canciones originales</li>
+                    <li>Combina elementos tradicionales con el estilo característico de Barbie</li>
+                    <li>Mensaje profundo y positivo para toda la familia, especialmente en la temporada navideña</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-red-600 mb-8 text-center">Personajes Principales</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-red-600 mb-3">🎤 Kristen (Barbie)</h4>
+                <p class="text-gray-700">La talentosa cantante que debe aprender el verdadero significado de la Navidad a través de un viaje mágico.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-red-600 mb-3">👻 Fantasma del Pasado</h4>
+                <p class="text-gray-700">El primer fantasma que muestra a Kristen momentos clave de su vida que la llevaron a ser quien es.</p>
+            </div>
+            <div class="feature-card ghost-companion">
+                <h4 class="text-xl font-bold text-red-600 mb-3">👻 Fantasma del Presente</h4>
+                <p class="text-gray-700">El segundo fantasma que revela cómo las acciones de Kristen afectan a quienes la rodean en el presente.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-red-600 mb-3">👻 Fantasma del Futuro</h4>
+                <p class="text-gray-700">El tercer fantasma que muestra las posibles consecuencias si Kristen no cambia su actitud.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-red-600 mb-3">🏘️ Comunidad Londinense</h4>
+                <p class="text-gray-700">Los personajes secundarios cuya vida es afectada por las decisiones de Kristen.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-red-600 mb-3">💝 Espíritu Navideño</h4>
+                <p class="text-gray-700">El tema central que guía la transformación de Kristen hacia la generosidad y el amor.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-red-600 mb-8 text-center">Adaptación del Clásico</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-red-600 mb-3">📖 Fidelidad al Original</h4>
+                <p class="text-gray-700">Mantiene la estructura y mensaje principal del cuento clásico de Charles Dickens.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-red-600 mb-3">🎵 Toque Musical</h4>
+                <p class="text-gray-700">Incorpora canciones originales que enriquecen la narrativa y el mensaje navideño.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-red-600 mb-3">✨ Magia Navideña</h4>
+                <p class="text-gray-700">Los elementos fantásticos y los fantasmas mantienen la esencia mágica del cuento original.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-red-600 mb-3">💫 Mensaje Universal</h4>
+                <p class="text-gray-700">El tema de redención y transformación personal trasciende épocas y culturas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12 text-center">
+        <h3 class="text-3xl font-bold text-red-600 mb-8">Vive la Magia de la Navidad</h3>
+        <p class="text-gray-700 mb-8 text-lg">
+            Podés ver Barbie en un Cuento de Navidad haciendo clic en el siguiente enlace:
+        </p>
+        <a href="https://www.youtube.com/watch?v=w3Hdzzuzx9E&list=PLfFKy71MkB8YYYK-dO8hDqrZxvYUqaAKd" id="verPeliLink" class="button text-xl px-12 py-4" target="_blank">Ver película</a>
+    </section>
+
+    <footer class="bg-red-600 text-white mt-16 content-box max-w-6xl mx-auto mb-12 rounded-2xl shadow-2xl">
+        <div class="py-12 px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="text-xl font-bold">Barbie Movies</h4>
+                <p class="mt-3 text-lg">Explora el mundo mágico de todas las películas de Barbie™.</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Navegación</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="index.html" class="hover:text-yellow-300 transition-colors">Inicio</a></li>
+                    <li><a href="peliculas.html" class="hover:text-yellow-300 transition-colors">Películas</a></li>
+                    <li><a href="videos.html" class="hover:text-yellow-300 transition-colors">Videos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Redes</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="https://www.facebook.com/share/17SzdE5NAC/" target="_blank">Facebook</a></li>
+      	            <li><a href="https://www.instagram.com/barbie?igsh=MWs0bWpkbzV2aXMxdw==" target="_blank">Instagram</a></li>
+      	            <li><a href="https://www.youtube.com/@barbielatinoamericano" target="_blank">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center py-6 bg-red-700 text-lg rounded-b-2xl">
+            © 2025 Mattel | Sitio de fans, no oficial
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    (function createParticles() {
+        const count = 35;
+        const container = document.getElementById('particles');
+        
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement('div');
+            const particleType = Math.random();
+            
+            if (particleType < 0.5) {
+                el.className = 'particle snowflake';
+                const size = 8 + Math.random() * 15;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else if (particleType < 0.8) {
+                el.className = 'particle christmas-ornament';
+                const size = 6 + Math.random() * 12;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else {
+                el.className = 'particle holly-leaf';
+                const width = 4 + Math.random() * 8;
+                const height = 15 + Math.random() * 25;
+                el.style.width = width + 'px';
+                el.style.height = height + 'px';
+            }
+            
+            el.style.left = (Math.random() * 100) + '%';
+            el.style.top = (Math.random() * 100) + '%';
+            el.style.animationDuration = (10 + Math.random() * 15) + 's';
+            el.style.animationDelay = (Math.random() * 8) + 's';
+            
+            container.appendChild(el);
+        }
+    })();
+</script>
+
+</body>
+</html>

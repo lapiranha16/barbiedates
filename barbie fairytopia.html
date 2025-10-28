@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbie: Fairytopia - Barbie Dates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #8a2be2 0%, #9370db 25%, #ba55d3 50%, #da70d6 75%, #ee82ee 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            opacity: 0.7;
+            animation: floatParticles infinite ease-in-out;
+        }
+
+        .fairy-dust {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(218, 112, 214, 0.4) 70%);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+        }
+
+        .magic-sparkle {
+            background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.9), rgba(255, 193, 7, 0.4) 70%);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            border-radius: 50%;
+        }
+
+        .crystal-shard {
+            background: linear-gradient(45deg, #9370db, #8a2be2);
+            border-radius: 50% 50% 20% 80%;
+        }
+
+        @keyframes floatParticles {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-25px) translateX(10px) rotate(90deg) scale(1.1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-15px) translateX(-5px) rotate(180deg) scale(0.95);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateY(-30px) translateX(5px) rotate(270deg) scale(1.05);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg) scale(1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes fairyGlow {
+            0%, 100% {
+                opacity: 0.8;
+                filter: brightness(1);
+            }
+            50% {
+                opacity: 1;
+                filter: brightness(1.3);
+            }
+        }
+
+        @keyframes bibbleBounce {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            25% {
+                transform: translateY(-8px) scale(1.05);
+            }
+            75% {
+                transform: translateY(-4px) scale(0.95);
+            }
+        }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            margin-top: 2rem;
+            border: 4px solid #9370db;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #8a2be2, #9370db, #ba55d3, #da70d6);
+            border-radius: 1.5rem 1.5rem 0 0;
+        }
+
+        h1.barbie-font {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #8a2be2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .poster-img {
+            border-radius: 2rem;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 4px solid #9370db;
+        }
+
+        .poster-img:hover {
+            transform: scale(1.07);
+            box-shadow: 0 25px 55px rgba(147, 112, 219, 0.4);
+        }
+
+        a.button {
+            background: linear-gradient(135deg, #8a2be2, #9370db);
+            color: white;
+            padding: 1rem 2.2rem;
+            border-radius: 999px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            font-size: 1.1rem;
+        }
+
+        a.button:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 30px rgba(138, 43, 226, 0.5);
+            background: linear-gradient(135deg, #9370db, #8a2be2);
+        }
+
+        .fairytopia-theme {
+            background: linear-gradient(135deg, #8a2be2, #9370db, #ba55d3, #da70d6, #ee82ee);
+            background-size: 400% 400%;
+            animation: fairyShift 18s ease infinite;
+        }
+
+        @keyframes fairyShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .fairy-icon {
+            display: inline-block;
+            animation: fairyGlow 3s ease-in-out infinite;
+        }
+
+        .bibble-icon {
+            display: inline-block;
+            animation: bibbleBounce 2s ease-in-out infinite;
+        }
+
+        .magic-border {
+            border-left: 6px solid;
+            border-image: linear-gradient(to bottom, #8a2be2, #9370db, #ba55d3) 1;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .fairy-divider {
+            height: 60px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="%239370db"/></svg>');
+            background-size: 1200px 60px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+            border-radius: 1.2rem;
+            padding: 1.8rem;
+            margin: 1rem 0;
+            border: 3px solid #9370db;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .original-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #8a2be2, #9370db);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        .character-companion {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .character-companion::before {
+            content: "🐰";
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="particles"></div>
+
+<div class="wrap">
+
+    <header class="bg-white shadow-lg content-box max-w-6xl mx-auto mt-4 flex justify-between items-center px-6 py-4">
+        <h1 class="barbie-font italic">Barbie Dates</h1>
+        <nav class="space-x-6">
+            <a href="index.html" class="button">Inicio</a>
+            <a href="peliculas.html" class="button">Películas</a>
+            <a href="videos.html" class="button">Videos</a>
+        </nav>
+    </header>
+
+    <section class="text-center py-24 content-box max-w-6xl mx-auto mt-8 fairytopia-theme rounded-2xl shadow-2xl animate__animated animate__fadeIn relative">
+        <div class="original-badge">PRIMERA SAGA ORIGINAL</div>
+        <h2 class="text-white text-5xl font-extrabold mb-6 animate__animated animate__bounce" style="text-shadow: 3px 3px 8px rgba(0,0,0,0.5);">
+            <span class="fairy-icon"></span> Barbie: Fairytopia <span class="bibble-icon"></span>
+        </h2>
+        <p class="text-white text-xl max-w-2xl mx-auto mb-8" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Donde la verdadera magia no necesita alas para volar</p>
+        <div class="space-x-6">
+            <a href="#ficha" class="button">Ver ficha</a>
+            <a href="peliculas.html" class="button">Ver catálogo</a>
+        </div>
+    </section>
+
+    <div class="fairy-divider my-12"></div>
+
+    <section id="pelicula" class="max-w-5xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-12 items-center content-box mt-8">
+        <img src="fotos de inicio/barbie fairytopia.jpg" alt="Poster de Barbie: Fairytopia" class="poster-img">
+        <div>
+            <h3 class="text-3xl font-bold text-purple-600 mb-6">Sinopsis</h3>
+            <p class="text-gray-700 mb-6 text-lg">Elina, un hada sin alas, debe salvar Fairytopia cuando la malvada hechicera Laverna lanza un hechizo que hace que todas las hadas pierdan sus alas. Con valentía y la ayuda de su amigo Bibble, descubre que la verdadera magia está en su corazón.</p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li class="text-lg"><b>Año:</b> 2005</li>
+                <li class="text-lg"><b>Duración:</b> 79 minutos</li>
+                <li class="text-lg"><b>Género:</b> Fantasía, Aventura</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8 text-center">Galería de Fairytopia</h3>
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
+            <img src="fotos barbie/fotos barbie/5 fairytopia/Barbie Fairytopia.jpg" alt="Elina en el mundo mágico de Fairytopia" class="poster-img">
+            <img src="fotos barbie/fotos barbie/5 fairytopia/Barbie Fairytopia (2).jpg" alt="Bibble y las criaturas mágicas" class="poster-img">
+        </div>
+    </section>
+
+    <section id="ficha" class="py-12 content-box max-w-5xl mx-auto mt-12 animate__animated animate__fadeInUp">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8">Ficha Técnica</h3>
+        <ul class="space-y-3 text-gray-700 text-lg">
+            <li><b>Título original:</b> Barbie: Fairytopia</li>
+            <li><b>Título en español:</b> Barbie: Fairytopia (se mantuvo el título en inglés en Latinoamérica)</li>
+            <li><b>Año de estreno:</b> 2005</li>
+            <li><b>Duración:</b> 79 minutos</li>
+            <li><b>Director:</b> Walter P. Martishius</li>
+            <li><b>Producción:</b> Mainframe Entertainment y Mattel Entertainment</li>
+            <li><b>Música:</b> Arnie Roth</li>
+            <li><b>Género:</b> Fantasía, Aventura</li>
+        </ul>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="grid md:grid-cols-2 gap-12 items-start">
+            <div class="animate__animated animate__fadeIn">
+                <h3 class="text-3xl font-bold text-purple-600 mb-8">Resumen completo de la historia</h3>
+                <p class="text-gray-700 leading-relaxed text-lg">
+                    La historia sigue a Elina, una hada sin alas que vive en un mundo mágico llamado Fairytopia, un reino lleno de criaturas fantásticas y colores vibrantes.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    A diferencia de las otras hadas, Elina nació sin alas, lo que la hace sentir diferente y a veces excluida. Sin embargo, es amable, valiente y está decidida a demostrar que no necesita alas para ser una verdadera hada.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Un día, su amigo Bibble, un conejito torpe pero adorable, la acompaña en una misión para salvar a Fairytopia del malvado hechicero Laverna.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Laverna, una bruja oscura que odia la felicidad y la luz, ha lanzado un maleficio que hace que todas las hadas con alas pierdan la suya, debilitando a las habitantes de Fairytopia y sembrando el miedo.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Para salvar a su mundo, Elina debe embarcarse en una aventura peligrosa y enfrentarse a Laverna. En el camino, descubre su propio poder interior y que la verdadera magia no reside en las alas, sino en el corazón y la valentía.
+                </p>
+                <p class="text-gray-700 leading-relaxed text-lg mt-4">
+                    Elina logra derrotar a Laverna con su coraje y la ayuda de sus amigos, restaurando las alas y la paz en Fairytopia, aprendiendo a aceptarse y valorarse tal como es.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <div class="mb-12">
+            <h3 class="text-3xl font-bold text-purple-600 mb-8">Mensaje central y temas clave</h3>
+            <p class="text-gray-700 mb-6 text-lg"><b>Mensaje:</b> "La verdadera magia está dentro de ti, no en cómo luces. El valor y la bondad pueden superar cualquier adversidad."</p>
+            <div class="magic-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Autoaceptación y amor propio: Elina aprende a quererse sin importar no tener alas</li>
+                    <li>Valentía y perseverancia: enfrentarse a los miedos y adversidades con coraje</li>
+                    <li>La importancia de la amistad: Bibble y otros amigos la apoyan incondicionalmente</li>
+                    <li>El poder interior sobre las apariencias: la magia no depende de atributos físicos</li>
+                    <li>La lucha entre el bien y el mal: el triunfo de la luz y la esperanza frente a la oscuridad</li>
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="text-3xl font-bold text-purple-600 mb-8">Notas especiales</h3>
+            <div class="magic-border">
+                <ul class="list-disc list-inside text-gray-700 space-y-3 text-lg">
+                    <li>Esta película dio origen a una saga dentro del universo Barbie con varias secuelas</li>
+                    <li>Fue la primera película de Barbie con un enfoque más fantástico y original, sin basarse en cuentos tradicionales</li>
+                    <li>Bibble, el conejo azul, se volvió uno de los personajes más queridos por los fans</li>
+                    <li>La animación mejoró respecto a entregas anteriores, con paisajes coloridos y efectos mágicos</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8 text-center">Personajes de Fairytopia</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🧚‍♀️ Elina</h4>
+                <p class="text-gray-700">Un hada sin alas que descubre que la verdadera magia está en su corazón y valentía, no en sus apariencias.</p>
+            </div>
+            <div class="feature-card character-companion">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">Bibble</h4>
+                <p class="text-gray-700">El adorable conejo azul y mejor amigo de Elina, torpe pero leal, que se convirtió en ícono de la saga.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🧙‍♀️ Laverna</h4>
+                <p class="text-gray-700">La malvada hechicera que representa la oscuridad y el miedo, enemiga de la felicidad en Fairytopia.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">👑 La Reina</h4>
+                <p class="text-gray-700">La gobernante de Fairytopia que confía en Elina y representa la sabiduría y la esperanza.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">✨ Las Hadas Aladas</h4>
+                <p class="text-gray-700">Las habitantes de Fairytopia que pierden sus alas por el hechizo de Laverna, representando la vulnerabilidad.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🌺 Criaturas Mágicas</h4>
+                <p class="text-gray-700">Los diversos seres fantásticos que habitan Fairytopia, creando un mundo vibrante y lleno de vida.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8 text-center">Legado e Innovación</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🌟 Primera Historia Original</h4>
+                <p class="text-gray-700">Rompió el molde al no basarse en cuentos tradicionales, creando un universo completamente nuevo para Barbie.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🎨 Mundo Colorido</h4>
+                <p class="text-gray-700">Estableció un estándar visual con paisajes vibrantes y diseños fantásticos que definirían películas futuras.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">💖 Mensaje de Autoaceptación</h4>
+                <p class="text-gray-700">Presentó un poderoso mensaje sobre valorarse a uno mismo independientemente de las diferencias físicas.</p>
+            </div>
+            <div class="feature-card">
+                <h4 class="text-xl font-bold text-purple-600 mb-3">🐰 Ícono Bibble</h4>
+                <p class="text-gray-700">Creó uno de los personajes secundarios más queridos que aparecería en múltiples películas posteriores.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 content-box max-w-5xl mx-auto mt-12 text-center">
+        <h3 class="text-3xl font-bold text-purple-600 mb-8">Descubre el Mundo Mágico</h3>
+        <p class="text-gray-700 mb-8 text-lg">
+            Podés ver Barbie: Fairytopia haciendo clic en el siguiente enlace:
+        </p>
+        <a href="https://www.youtube.com/watch?v=hP0vhrpgwSk&list=PLtg-pmXw5U7JMbNMfje0awKfrWaMkiiYx" id="verPeliLink" class="button text-xl px-12 py-4" target="_blank">Ver película</a>
+    </section>
+
+    <footer class="bg-purple-600 text-white mt-16 content-box max-w-6xl mx-auto mb-12 rounded-2xl shadow-2xl">
+        <div class="py-12 px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="text-xl font-bold">Barbie Movies</h4>
+                <p class="mt-3 text-lg">Explora el mundo mágico de todas las películas de Barbie™.</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Navegación</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="index.html" class="hover:text-yellow-300 transition-colors">Inicio</a></li>
+                    <li><a href="peliculas.html" class="hover:text-yellow-300 transition-colors">Películas</a></li>
+                    <li><a href="videos.html" class="hover:text-yellow-300 transition-colors">Videos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold">Redes</h4>
+                <ul class="mt-3 space-y-2 text-lg">
+                    <li><a href="https://www.facebook.com/share/17SzdE5NAC/" target="_blank">Facebook</a></li>
+      	            <li><a href="https://www.instagram.com/barbie?igsh=MWs0bWpkbzV2aXMxdw==" target="_blank">Instagram</a></li>
+      	            <li><a href="https://www.youtube.com/@barbielatinoamericano" target="_blank">YouTube</a></li>
+            </div>
+        </div>
+        <div class="text-center py-6 bg-purple-700 text-lg rounded-b-2xl">
+            © 2025 Mattel | Sitio de fans, no oficial
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    (function createParticles() {
+        const count = 40;
+        const container = document.getElementById('particles');
+        
+        for (let i = 0; i < count; i++) {
+            const el = document.createElement('div');
+            const particleType = Math.random();
+            
+            if (particleType < 0.5) {
+                el.className = 'particle fairy-dust';
+                const size = 6 + Math.random() * 12;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else if (particleType < 0.8) {
+                el.className = 'particle magic-sparkle';
+                const size = 8 + Math.random() * 15;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            } else {
+                el.className = 'particle crystal-shard';
+                const size = 10 + Math.random() * 18;
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+            }
+            
+            el.style.left = (Math.random() * 100) + '%';
+            el.style.top = (Math.random() * 100) + '%';
+            el.style.animationDuration = (12 + Math.random() * 18) + 's';
+            el.style.animationDelay = (Math.random() * 10) + 's';
+            
+            container.appendChild(el);
+        }
+    })();
+</script>
+
+</body>
+</html>
